@@ -14,21 +14,23 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="GDVJ"
+config/name="GDVJ-2"
 config/version="1.1.0 beta"
-run/main_scene="uid://dn5hnojjq0cu2"
+run/main_scene="uid://fpf5hcxvb6a3"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 GLOBAL="*res://autoload/Global.gd"
+GlobalCodeEdit="*uid://jopskob2g5d0"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=3
+window/subwindows/embed_subwindows=false
 window/stretch/mode="canvas_items"
 
 [input]
@@ -139,9 +141,9 @@ joy_shear_decr={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=2
+rendering_device/fallback_to_d3d12=false
+renderer/rendering_method="gl_compatibility"
 anti_aliasing/quality/msaa_2d=3
 anti_aliasing/quality/msaa_3d=3
 anti_aliasing/quality/screen_space_aa=2
 anti_aliasing/quality/use_taa=true
-rendering_device/fallback_to_d3d12=false
-renderer/rendering_method="gl_compatibility"

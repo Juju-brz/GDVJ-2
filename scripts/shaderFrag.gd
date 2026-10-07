@@ -4,13 +4,13 @@ var hide = false
 @onready var code = self
 #var shader_path = "res://shaders/shaderEmpty.gdshader"
 var shader_path = "res://shaders/mainShader.gdshader"
+
+# must change
 @onready var colorRect = get_node("../../../../ColorRect2")
 
 func _ready():
 	var execute = $Execute
 	execute.pressed.connect(_on_execute_pressed)
-	if colorRect == null:
-		print("Error: colorRect is null.")
 	
 	code.text = GLOBAL.ShaderFrag
 
@@ -28,7 +28,6 @@ func _input(event: InputEvent) -> void:
 func _on_execute_pressed() -> void:
 	var user_code = self.text
 	
-
 	var mat = colorRect.material
 	if mat is ShaderMaterial:
 		var shader = mat.shader
