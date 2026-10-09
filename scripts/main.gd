@@ -15,7 +15,6 @@ func _ready() -> void:
 	#pass
 	file_dialog = $FileDialog
 	file_dialog.file_selected.connect(on_file_selected)
-	
 	GLOBAL.code_pushed.connect(_on_code_pushed)
 
 

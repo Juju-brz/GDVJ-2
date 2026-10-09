@@ -59,6 +59,10 @@ layout_mode = 2
 text = "Functions"
 horizontal_alignment = 1
 
+[node name="CheckButton" type="CheckButton" parent="Control/Window/VBoxContainer" unique_id=1105479017]
+layout_mode = 2
+text = "Function"
+
 [node name="FileDialog" type="FileDialog" parent="." unique_id=931939840]
 title = "Open a File"
 file_mode = 0
