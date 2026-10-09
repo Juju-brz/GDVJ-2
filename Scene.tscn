@@ -16,7 +16,11 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_j2eoc")
 
+[node name="CodeLine" parent="." unique_id=1876606309 instance=ExtResource("3_7mckg")]
+layout_mode = 0
+
 [node name="ColorRect" type="ColorRect" parent="." unique_id=2083374301]
+visible = false
 material = SubResource("ShaderMaterial_4cvuw")
 layout_mode = 1
 anchors_preset = 15
@@ -26,5 +30,41 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="CodeLine" parent="." unique_id=1876606309 instance=ExtResource("3_7mckg")]
-layout_mode = 0
+[node name="Control" type="Control" parent="." unique_id=692261966]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Window" type="Window" parent="Control" unique_id=564823500]
+oversampling_override = 1.0
+title = "Options"
+position = Vector2i(1074, 36)
+size = Vector2i(272, 566)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Window" unique_id=1799799337]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Control/Window/VBoxContainer" unique_id=244229089]
+layout_mode = 2
+text = "Import Media"
+
+[node name="Label" type="Label" parent="Control/Window/VBoxContainer" unique_id=178597838]
+layout_mode = 2
+text = "Functions"
+horizontal_alignment = 1
+
+[node name="FileDialog" type="FileDialog" parent="." unique_id=931939840]
+title = "Open a File"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*png", "*.jpg", "*.jpeg", "*.svg")
+use_native_dialog = true
+
+[connection signal="pressed" from="Control/Window/VBoxContainer/Button" to="." method="_on_button_pressed"]
