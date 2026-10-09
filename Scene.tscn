@@ -20,7 +20,6 @@ script = ExtResource("1_j2eoc")
 layout_mode = 0
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=2083374301]
-visible = false
 material = SubResource("ShaderMaterial_4cvuw")
 layout_mode = 1
 anchors_preset = 15
