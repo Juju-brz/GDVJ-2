@@ -10,7 +10,9 @@ void fragment() {
 	vec2 uv = UV;
 
 	vec3 color = mix(color3, color2, uv.x + sin(TIME * 0.5));
-	COLOR = vec4(color, 0.5);
+	COLOR = vec4(color, 1.0);
 }"""
+
+signal code_pushed(code)
 
 var mouse_activation : bool = true
