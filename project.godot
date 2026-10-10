@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="GDVJ-2"
-config/version="1.1.0 beta"
+config/version="2.0.0"
 run/main_scene="uid://fpf5hcxvb6a3"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
@@ -23,7 +23,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 GLOBAL="*res://autoload/Global.gd"
-GlobalCodeEdit="*uid://jopskob2g5d0"
 
 [display]
 

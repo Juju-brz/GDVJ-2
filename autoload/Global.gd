@@ -19,5 +19,6 @@ void fragment() {
 }"""
 
 signal code_pushed(code)
+signal color_changed(bg_color: Color)
 
 var mouse_activation : bool = true

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c1oxuosamq8ko" path="res://scripts/main.gd" id="1_j2eoc"]
 [ext_resource type="Shader" uid="uid://b0jcj53b5croi" path="res://shaders/mainShader.gdshader" id="1_t6lng"]
 [ext_resource type="PackedScene" uid="uid://boolpupubgd3f" path="res://UI/CodeLine.tscn" id="3_7mckg"]
+[ext_resource type="PackedScene" uid="uid://bpk0n61sh0j44" path="res://importMedia.tscn" id="4_7mckg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4cvuw"]
 shader = ExtResource("1_t6lng")
@@ -20,6 +21,7 @@ script = ExtResource("1_j2eoc")
 layout_mode = 0
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=2083374301]
+visible = false
 material = SubResource("ShaderMaterial_4cvuw")
 layout_mode = 1
 anchors_preset = 15
@@ -27,7 +29,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+color = Color(0.6126474, 0.0013455433, 0.7660969, 1)
+
+[node name="Main" parent="." unique_id=642545413 instance=ExtResource("4_7mckg")]
+visible = false
 
 [node name="Control" type="Control" parent="." unique_id=692261966]
 layout_mode = 1
@@ -62,6 +67,10 @@ horizontal_alignment = 1
 [node name="CheckButton" type="CheckButton" parent="Control/Window/VBoxContainer" unique_id=1105479017]
 layout_mode = 2
 text = "Function"
+
+[node name="Label2" type="Label" parent="Control/Window/VBoxContainer" unique_id=2073561369]
+layout_mode = 2
+text = "Loop Animation"
 
 [node name="FileDialog" type="FileDialog" parent="." unique_id=931939840]
 title = "Open a File"

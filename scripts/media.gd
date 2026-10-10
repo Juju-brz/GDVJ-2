@@ -3,16 +3,19 @@ extends Sprite2D  # ou Area2D
 # Variables pour le déplacement
 var is_dragging := false
 var drag_offset := Vector2.ZERO
-
+#@onready var color_rect
 # Variable pour la sélection
 var is_selected := false
 @onready var file_dialog = $"../ControlUI/FileDialog"
-@onready var sprite = $Sprite2D
+@onready var sprite
 var zoom_mode = false
 var lock = false
-
+@export var emetteur: Node
 func _ready():
+	sprite = self
 	set_process_input(true)
+	GLOBAL.color_changed.connect(_on_color_changed)
+	#color_rect = $ColorRect
 
 func _input(event):
 	if Input.is_action_just_pressed("change_mode"):
@@ -74,9 +77,15 @@ func _process(delta):
 			pass
 		else:
 			global_position = get_global_mouse_position() + drag_offset
+	#sprite.material.set_shader_parameter("blend_color", color_rect.color)
+	#emetteur.color_changed.connect(_on_color)
 
 func bring_to_front() -> void:
 	get_parent().move_child(self, -1)
 
 func send_to_back() -> void:
 	get_parent().move_child(self, +1)  
+	
+
+func _on_color_changed(bg_color: Color) -> void:
+	sprite.material.set_shader_parameter("blend_color", bg_color)

@@ -5,6 +5,7 @@ extends Control
 @onready var Code = $ColorRect
 @onready var file_dialog
 const MediaScene = preload("res://scenes/media.tscn")
+signal color(BGColor : Color)
 
 #MEDIA
 var instances: Array = []  #All media imported
@@ -16,26 +17,26 @@ func _ready() -> void:
 	file_dialog = $FileDialog
 	file_dialog.file_selected.connect(on_file_selected)
 	GLOBAL.code_pushed.connect(_on_code_pushed)
+	var mat := Code.material as ShaderMaterial
+	if mat == null:
+		print("Le ColorRect not ShaderMaterial")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	GLOBAL.color_changed.emit(Code.color)
+	#print(Code.color)
 	pass
 
 func _on_code_pushed(code: String) -> void:
-	print("signal reçu : ", code)
-	#Code.shader = GLOBAL.ShaderFrag
 	Code.material.shader.code = code
-	# exemple pour appliquer le shader :
-	# material.shader.code = code
+	color.emit(Code.color)
 
 func open_file_dialog():
 	file_dialog.show()
 
-
 func _on_button_pressed() -> void:
 	open_file_dialog()
-
 
 func on_file_selected(path: String) -> void:
 	var image = Image.load_from_file(path)
