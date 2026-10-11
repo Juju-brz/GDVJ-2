@@ -13,7 +13,7 @@ anchors_preset = 0
 oversampling_override = 1.0
 title = "CODE"
 position = Vector2i(12, 36)
-size = Vector2i(373, 654)
+size = Vector2i(435, 654)
 
 [node name="Fragment" type="CodeEdit" parent="Control" unique_id=1104231432]
 anchors_preset = 15

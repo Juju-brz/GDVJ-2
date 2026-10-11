@@ -1,13 +1,9 @@
 [gd_scene format=3 uid="uid://d3152mxnx3mng"]
 
 [ext_resource type="Texture2D" uid="uid://dyf2tlsdgaykh" path="res://icon.svg" id="1_hqyvl"]
-[ext_resource type="Shader" uid="uid://dk5m5cktmvsho" path="res://shaders/blendmode.gdshader" id="1_qw4y4"]
 [ext_resource type="Script" uid="uid://f383p0vyc7fk" path="res://scripts/media.gd" id="2_p5jcl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bvi38"]
-shader = ExtResource("1_qw4y4")
-shader_parameter/multiplyblend = true
-shader_parameter/blend_color = Color(1, 1, 1, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0e48y"]
 radius = 105.0

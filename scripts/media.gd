@@ -17,9 +17,24 @@ func _ready():
 	set_process_input(true)
 	#GLOBAL.color_changed.connect(_on_color_changed)
 	
-	var mat := CanvasItemMaterial.new()
-	mat.blend_mode = CanvasItemMaterial.BLEND_MODE_MUL
+	### MULTIPLY BLEND MODE ###
+	var shader := Shader.new()
+	shader.code = """
+shader_type canvas_item;
+render_mode blend_mul;
+
+void fragment() {
+	vec4 c = texture(TEXTURE, UV);
+	// transparent -> blanc (neutre), opaque -> sa vraie couleur
+	COLOR = vec4(mix(vec3(1.0), c.rgb, c.a), 1.0);
+}
+"""
+	var mat := ShaderMaterial.new()
+	mat.shader = shader
 	material = mat
+	### MULTIPLY BLEND MODE ###
+
+
 
 func _input(event):
 	if Input.is_action_just_pressed("media_change_mode"):
@@ -73,6 +88,12 @@ func _input(event):
 				bring_to_front()
 			if Input.is_action_just_pressed("media_back"):
 				send_to_back()
+			
+			if Input.is_action_just_pressed("media_delete"):
+				delete_image()
+
+func delete_image():
+	queue_free()
 
 func _process(delta):
 	if is_dragging:
@@ -80,8 +101,7 @@ func _process(delta):
 			pass
 		else:
 			global_position = get_global_mouse_position() + drag_offset
-	#sprite.material.set_shader_parameter("blend_color", color_rect.color)
-	#emetteur.color_changed.connect(_on_color)
+
 
 func bring_to_front() -> void:
 	get_parent().move_child(self, -1)

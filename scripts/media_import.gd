@@ -1,15 +1,5 @@
 extends Node2D
 
-### BLEND MODE ###
-# Called when the node enters the scene tree for the first time.
-#@export var texRect :TextureRect
-## Called when the node enters the scene tree for the first time.
-#
-#func _ready() -> void:
-	#var mat := CanvasItemMaterial.new()
-	#mat.blend_mode = CanvasItemMaterial.BLEND_MODE_MUL
-	#material = mat
-#
 
 
 ### IMPORT MEDIA ###
@@ -32,6 +22,7 @@ func _on_button_pressed() -> void:
 
 func on_file_selected(path: String) -> void:
 	var image = Image.load_from_file(path)
+	var sequence = AnimatedSprite2D
 	var texture = ImageTexture.create_from_image(image)
 	var new_instance = MediaScene.instantiate()
 	add_child(new_instance)
@@ -58,19 +49,18 @@ func on_file_selected(path: String) -> void:
 		new_instance.position = screen_size * 0.5
 	
 	instances.append(new_instance)
-	#canvas.add_child(new_instance)
-	#print("add media ", new_instance)
-	#print("position", new_instance.position)
-	#print(new_instance.is_inside_tree()) 
-	#print(new_instance.get_parent().get_path())  
-	#print(new_instance.visible, " ", new_instance.get_global_position())
-	#new_instance.color_rect = color_rect
+	print("add media ", new_instance)
+	print("position", new_instance.position)
+	print(new_instance.is_inside_tree()) 
+	print(new_instance.get_parent().get_path())  
+	print(new_instance.visible, " ", new_instance.get_global_position())
 
-func remove_last_image() -> void:
-	if instances.size() > 0:
-		var last = instances.pop_back()
-		last.queue_free()
 
-func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("media_delete"):
-		remove_last_image()
+#func remove_last_image() -> void:
+	#if instances.size() > 0:
+		#var last = instances.pop_back()
+		#last.queue_free()
+
+#func _input(event: InputEvent) -> void:
+	#if Input.is_action_just_pressed("media_delete"):
+		#remove_last_image()
