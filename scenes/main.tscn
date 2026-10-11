@@ -5,6 +5,7 @@
 [ext_resource type="Shader" uid="uid://b0jcj53b5croi" path="res://shaders/mainShader.gdshader" id="3_tefeu"]
 [ext_resource type="Script" uid="uid://d2ht8jdigqi78" path="res://scripts/media_import.gd" id="4_o6xl0"]
 [ext_resource type="Theme" uid="uid://bw2i1kpeccik" path="res://Themes/juju.tres" id="4_tefeu"]
+[ext_resource type="Script" uid="uid://bllo8srcd4uax" path="res://scripts/ui.gd" id="5_o6xl0"]
 [ext_resource type="Script" uid="uid://n2qolndaj24c" path="res://scripts/color_palette.gd" id="5_tbgi4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ojabb"]
@@ -50,7 +51,7 @@ access = 2
 filters = PackedStringArray("*png", "*.jpg", "*.jpeg", "*.svg")
 use_native_dialog = true
 
-[node name="UI" type="Control" parent="." unique_id=1981191330]
+[node name="UI" type="Control" parent="." unique_id=1981191330 node_paths=PackedStringArray("color_palette")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -58,6 +59,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_tefeu")
+script = ExtResource("5_o6xl0")
+color_palette = NodePath("Color_Palette/Window")
 
 [node name="Color_Palette" type="Control" parent="UI" unique_id=726714338 node_paths=PackedStringArray("color_picker")]
 layout_mode = 1
@@ -74,6 +77,7 @@ oversampling_override = 1.0
 title = "Color Palette"
 position = Vector2i(899, 36)
 size = Vector2i(313, 611)
+visible = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/Color_Palette/Window" unique_id=116535653]
 anchors_preset = 15
@@ -139,6 +143,11 @@ text = "Function"
 layout_mode = 2
 text = "Loop Animation"
 
+[node name="CheckButton2" type="CheckButton" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=1731296238]
+layout_mode = 2
+text = "Color Palette
+"
+
 [node name="CodeLine" parent="UI" unique_id=1876606309 instance=ExtResource("2_tbgi4")]
 layout_mode = 1
 anchors_preset = 15
@@ -149,3 +158,5 @@ grow_vertical = 2
 
 [connection signal="pressed" from="UI/Color_Palette/Window/VBoxContainer/Button" to="UI/Color_Palette" method="_on_button_pressed"]
 [connection signal="pressed" from="UI/Propeties_Panel/Window/VBoxContainer/Button" to="CanvasLayer/mediaImport" method="_on_button_pressed"]
+[connection signal="button_down" from="UI/Propeties_Panel/Window/VBoxContainer/CheckButton2" to="UI" method="_on_check_button_2_button_down"]
+[connection signal="button_up" from="UI/Propeties_Panel/Window/VBoxContainer/CheckButton2" to="UI" method="_on_check_button_2_button_up"]
