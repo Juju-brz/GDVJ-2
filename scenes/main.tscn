@@ -16,6 +16,11 @@ texRect = NodePath("CanvasLayer/TextureRect")
 Code = NodePath("SubViewport/ColorRect")
 
 [node name="CodeLine" parent="." unique_id=1876606309 instance=ExtResource("2_tbgi4")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=130595857]
 size = Vector2i(1280, 720)
@@ -55,7 +60,7 @@ grow_vertical = 2
 [node name="Window" type="Window" parent="Propeties_Panel" unique_id=1172507678]
 oversampling_override = 1.0
 title = "Propeties Panel"
-position = Vector2i(940, 36)
+position = Vector2i(345, 36)
 size = Vector2i(272, 566)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Propeties_Panel/Window" unique_id=213695121]
@@ -102,8 +107,8 @@ color_picker = NodePath("Window/VBoxContainer/ColorPicker")
 [node name="Window" type="Window" parent="Color_Palette" unique_id=2129214435]
 oversampling_override = 1.0
 title = "Color Palette"
-position = Vector2i(0, 36)
-size = Vector2i(313, 634)
+position = Vector2i(899, 36)
+size = Vector2i(313, 611)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Color_Palette/Window" unique_id=116535653]
 anchors_preset = 15
@@ -115,9 +120,9 @@ grow_vertical = 2
 [node name="ColorPicker" type="ColorPicker" parent="Color_Palette/Window/VBoxContainer" unique_id=1775879278]
 layout_mode = 2
 edit_alpha = false
+picker_shape = 2
 
 [node name="ColorPickerButton" type="ColorPickerButton" parent="Color_Palette/Window/VBoxContainer" unique_id=1696268050]
-visible = false
 layout_mode = 2
 size_flags_vertical = 3
 

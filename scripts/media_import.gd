@@ -12,7 +12,7 @@ extends Node2D
 #
 
 
-### IMPORT MEDIA
+### IMPORT MEDIA ###
 var instances: Array = []  #All media imported
 const TARGET_SIZE := 200.0 
 @export var file_dialog : FileDialog
