@@ -17,7 +17,7 @@ var instances: Array = []  #All media imported
 const TARGET_SIZE := 200.0 
 @export var file_dialog : FileDialog
 const MediaScene = preload("res://scenes/media.tscn")
-@export var canvas : CanvasLayer
+#@export var canvas : CanvasLayer
 @export var color_rect : ColorRect
 
 func _ready() -> void:

@@ -1,7 +1,6 @@
 extends Node2D
 
 @export var sub_viewport: SubViewport
-#@export var result: Sprite2D
 @export var texRect: TextureRect
 @export var Code : ColorRect
 signal color(BGColor : Color)
