@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c76vmibe63csv"]
 
-[ext_resource type="Script" uid="uid://bh8afa30mf70" path="res://import_media.gd" id="1_jyhfs"]
+[ext_resource type="Script" uid="uid://dem03cehl18g6" path="res://scripts/mainWindow.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://boolpupubgd3f" path="res://UI/CodeLine.tscn" id="2_tbgi4"]
 [ext_resource type="Shader" uid="uid://b0jcj53b5croi" path="res://shaders/mainShader.gdshader" id="3_tefeu"]
 [ext_resource type="Script" uid="uid://d2ht8jdigqi78" path="res://scripts/media_import.gd" id="4_o6xl0"]

@@ -2,7 +2,6 @@ extends Sprite2D
 
 var is_dragging := false
 var drag_offset := Vector2.ZERO
-#@onready var color_rect
 
 var is_selected := false
 @onready var sprite
