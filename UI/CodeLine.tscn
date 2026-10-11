@@ -2,7 +2,7 @@
 
 [ext_resource type="CodeHighlighter" uid="uid://slm4j1utevg6" path="res://UI/SyntaxColor2.tres" id="1_y3jrh"]
 [ext_resource type="Script" uid="uid://dopbw671o2emm" path="res://scripts/shaderFrag.gd" id="2_njy0r"]
-[ext_resource type="Texture2D" uid="uid://cwr75hikdjaj7" path="res://play.svg" id="3_tdmuj"]
+[ext_resource type="Texture2D" uid="uid://ci6jwc3ole0a" path="res://UI/play.svg" id="3_y3jrh"]
 
 [node name="CodeLine" type="Control" unique_id=1876606309]
 z_index = 5
@@ -43,6 +43,6 @@ grow_vertical = 0
 [node name="Play" type="Sprite2D" parent="Control/Fragment/Execute" unique_id=8680247]
 position = Vector2(21.5, 22.135)
 scale = Vector2(0.15, 0.15)
-texture = ExtResource("3_tdmuj")
+texture = ExtResource("3_y3jrh")
 
 [connection signal="pressed" from="Control/Fragment/Execute" to="Control/Fragment" method="_on_execute_pressed"]

@@ -65,3 +65,12 @@ func on_file_selected(path: String) -> void:
 	#print(new_instance.get_parent().get_path())  
 	#print(new_instance.visible, " ", new_instance.get_global_position())
 	#new_instance.color_rect = color_rect
+
+func remove_last_image() -> void:
+	if instances.size() > 0:
+		var last = instances.pop_back()
+		last.queue_free()
+
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("media_delete"):
+		remove_last_image()

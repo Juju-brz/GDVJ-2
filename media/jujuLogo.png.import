@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmtl556s22br8"
-path="res://.godot/imported/jujuLogo.png-b98d41a1f5a049109759a8a487ae5e58.ctex"
+uid="uid://0oef10haog0c"
+path="res://.godot/imported/jujuLogo.png-3544d2c6a2b9352d60bb5e93840aafa7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://jujuLogo.png"
-dest_files=["res://.godot/imported/jujuLogo.png-b98d41a1f5a049109759a8a487ae5e58.ctex"]
+source_file="res://media/jujuLogo.png"
+dest_files=["res://.godot/imported/jujuLogo.png-3544d2c6a2b9352d60bb5e93840aafa7.ctex"]
 
 [params]
 

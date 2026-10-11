@@ -1,12 +1,10 @@
-extends Sprite2D  # ou Area2D
+extends Sprite2D
 
-# Variables pour le déplacement
 var is_dragging := false
 var drag_offset := Vector2.ZERO
 #@onready var color_rect
-# Variable pour la sélection
+
 var is_selected := false
-#@onready var file_dialog = $"../ControlUI/FileDialog"
 @onready var sprite
 var zoom_mode = false
 var lock = false
@@ -15,13 +13,6 @@ var lock = false
 
 #@export var texRect :TextureRect
 ## Called when the node enters the scene tree for the first time.
-#
-#func _ready() -> void:
-	#var mat := CanvasItemMaterial.new()
-	#mat.blend_mode = CanvasItemMaterial.BLEND_MODE_MUL
-	#material = mat
-#
-
 func _ready():
 	sprite = self
 	set_process_input(true)
@@ -32,7 +23,7 @@ func _ready():
 	#material = mat
 
 func _input(event):
-	if Input.is_action_just_pressed("change_mode"):
+	if Input.is_action_just_pressed("media_change_mode"):
 		if zoom_mode == true:
 			zoom_mode = false
 		else:
@@ -46,13 +37,12 @@ func _input(event):
 				is_dragging = true
 				drag_offset = global_position - get_global_mouse_position()
 			else:
-				is_selected = false  # Désélectionne si on clique ailleurs
+				is_selected = false 
 		else:
 			is_dragging = false
-
-	# Zoom avec la molette UNIQUEMENT si l'objet est sélectionné
+		
 	if is_selected:
-		if Input.is_action_just_pressed("lock"):
+		if Input.is_action_just_pressed("media_lock"):
 			if lock == true:
 				lock = false
 				print(lock)
@@ -63,9 +53,9 @@ func _input(event):
 		if lock == true:
 			pass
 		else:
-			if Input.is_action_pressed("zoom_in"):
+			if Input.is_action_pressed("media_zoom_in"):
 				scale += Vector2(0.05, 0.05)  
-			elif Input.is_action_pressed("zoom_out"):
+			elif Input.is_action_pressed("media_zoom_out"):
 				scale -= Vector2(0.05, 0.05)
 				scale = scale.clamp(Vector2(0.1, 0.1), Vector2(10, 10))  # Limite la taille
 		
@@ -80,9 +70,9 @@ func _input(event):
 				elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 					scale -= Vector2(0.05, 0.05)
 					scale = scale.clamp(Vector2(0.1, 0.1), Vector2(10, 10))  # Limite la taille
-			if Input.is_action_just_pressed("front"):
+			if Input.is_action_just_pressed("media_front"):
 				bring_to_front()
-			if Input.is_action_just_pressed("back"):
+			if Input.is_action_just_pressed("media_back"):
 				send_to_back()
 
 func _process(delta):

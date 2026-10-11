@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://c76vmibe63csv"]
+
+[ext_resource type="Script" uid="uid://bh8afa30mf70" path="res://import_media.gd" id="1_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://boolpupubgd3f" path="res://UI/CodeLine.tscn" id="2_tbgi4"]
+[ext_resource type="Shader" uid="uid://b0jcj53b5croi" path="res://shaders/mainShader.gdshader" id="3_tefeu"]
+[ext_resource type="Script" uid="uid://d2ht8jdigqi78" path="res://scripts/media_import.gd" id="4_o6xl0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ojabb"]
+shader = ExtResource("3_tefeu")
+
+[node name="Main" type="Node2D" unique_id=642545413 node_paths=PackedStringArray("sub_viewport", "texRect", "Code")]
+script = ExtResource("1_jyhfs")
+sub_viewport = NodePath("SubViewport")
+texRect = NodePath("CanvasLayer/TextureRect")
+Code = NodePath("SubViewport/ColorRect")
+
+[node name="CodeLine" parent="." unique_id=1876606309 instance=ExtResource("2_tbgi4")]
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=130595857]
+size = Vector2i(1280, 720)
+
+[node name="ColorRect" type="ColorRect" parent="SubViewport" unique_id=1368685040]
+material = SubResource("ShaderMaterial_ojabb")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.67785305, 0.0003527984, 0.67961687, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=728399109]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=500291957]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="mediaImport" type="Node2D" parent="CanvasLayer" unique_id=827084082 node_paths=PackedStringArray("file_dialog", "canvas", "color_rect")]
+script = ExtResource("4_o6xl0")
+file_dialog = NodePath("../../FileDialog")
+canvas = NodePath("..")
+color_rect = NodePath("../../SubViewport/ColorRect")
+
+[node name="Control" type="Control" parent="." unique_id=883644413]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Window" type="Window" parent="Control" unique_id=1172507678]
+oversampling_override = 1.0
+title = "Options"
+position = Vector2i(940, 36)
+size = Vector2i(272, 566)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Window" unique_id=213695121]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Control/Window/VBoxContainer" unique_id=1112446033]
+layout_mode = 2
+text = "Import Media"
+
+[node name="Label" type="Label" parent="Control/Window/VBoxContainer" unique_id=1938293329]
+layout_mode = 2
+text = "Functions"
+horizontal_alignment = 1
+
+[node name="CheckButton" type="CheckButton" parent="Control/Window/VBoxContainer" unique_id=1039785589]
+layout_mode = 2
+text = "Function"
+
+[node name="Label2" type="Label" parent="Control/Window/VBoxContainer" unique_id=113334318]
+layout_mode = 2
+text = "Loop Animation"
+
+[node name="FileDialog" type="FileDialog" parent="." unique_id=1966622314]
+title = "Open a File"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*png", "*.jpg", "*.jpeg", "*.svg")
+use_native_dialog = true
+
+[connection signal="pressed" from="Control/Window/VBoxContainer/Button" to="CanvasLayer/mediaImport" method="_on_button_pressed"]
