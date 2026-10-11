@@ -6,16 +6,30 @@ var drag_offset := Vector2.ZERO
 #@onready var color_rect
 # Variable pour la sélection
 var is_selected := false
-@onready var file_dialog = $"../ControlUI/FileDialog"
+#@onready var file_dialog = $"../ControlUI/FileDialog"
 @onready var sprite
 var zoom_mode = false
 var lock = false
 @export var emetteur: Node
+
+
+#@export var texRect :TextureRect
+## Called when the node enters the scene tree for the first time.
+#
+#func _ready() -> void:
+	#var mat := CanvasItemMaterial.new()
+	#mat.blend_mode = CanvasItemMaterial.BLEND_MODE_MUL
+	#material = mat
+#
+
 func _ready():
 	sprite = self
 	set_process_input(true)
 	GLOBAL.color_changed.connect(_on_color_changed)
-	#color_rect = $ColorRect
+	
+	#var mat := CanvasItemMaterial.new()
+	#mat.blend_mode = CanvasItemMaterial.BLEND_MODE_MUL
+	#material = mat
 
 func _input(event):
 	if Input.is_action_just_pressed("change_mode"):
@@ -70,7 +84,7 @@ func _input(event):
 				bring_to_front()
 			if Input.is_action_just_pressed("back"):
 				send_to_back()
-		
+
 func _process(delta):
 	if is_dragging:
 		if lock == true:
