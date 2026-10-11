@@ -17,9 +17,9 @@ func _ready():
 	set_process_input(true)
 	#GLOBAL.color_changed.connect(_on_color_changed)
 	
-	#var mat := CanvasItemMaterial.new()
-	#mat.blend_mode = CanvasItemMaterial.BLEND_MODE_MUL
-	#material = mat
+	var mat := CanvasItemMaterial.new()
+	mat.blend_mode = CanvasItemMaterial.BLEND_MODE_MUL
+	material = mat
 
 func _input(event):
 	if Input.is_action_just_pressed("media_change_mode"):
