@@ -15,7 +15,7 @@ var lock = false
 func _ready():
 	sprite = self
 	set_process_input(true)
-	GLOBAL.color_changed.connect(_on_color_changed)
+	#GLOBAL.color_changed.connect(_on_color_changed)
 	
 	#var mat := CanvasItemMaterial.new()
 	#mat.blend_mode = CanvasItemMaterial.BLEND_MODE_MUL

@@ -1,0 +1,26 @@
+[gd_resource type="Theme" format=3 uid="uid://bw2i1kpeccik"]
+
+[ext_resource type="StyleBox" uid="uid://c3y2cq20wo6pg" path="res://Themes/jujuBoxFlat.tres" id="1_170hi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hrs6w"]
+bg_color = Color(0.4835255, 0.60613275, 0.7951887, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_170hi"]
+color = Color(0.2800387, 0.49566567, 1, 1)
+thickness = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_170hi"]
+bg_color = Color(0.7655621, 0.33249533, 0.8485446, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lu8dl"]
+bg_color = Color(0.82711315, 0.4029355, 0.85511965, 1)
+
+[resource]
+BoxContainer/constants/separation = 6
+Button/colors/font_color = Color(0.12225201, 0.12225232, 0.122252114, 1)
+Button/styles/hover = ExtResource("1_170hi")
+Button/styles/normal = SubResource("StyleBoxFlat_hrs6w")
+CheckButton/styles/focus = ExtResource("1_170hi")
+HSlider/styles/slider = SubResource("StyleBoxLine_170hi")
+Window/styles/embedded_border = SubResource("StyleBoxFlat_170hi")
+Window/styles/embedded_unfocused_border = SubResource("StyleBoxFlat_lu8dl")
