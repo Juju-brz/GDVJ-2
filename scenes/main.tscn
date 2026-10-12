@@ -39,14 +39,22 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
 
-[node name="mediaImport" type="Node2D" parent="CanvasLayer" unique_id=827084082 node_paths=PackedStringArray("file_dialog", "color_rect")]
+[node name="mediaImport" type="Node2D" parent="CanvasLayer" unique_id=827084082 node_paths=PackedStringArray("file_dialog_image", "file_dialog_video", "color_rect")]
 script = ExtResource("4_o6xl0")
-file_dialog = NodePath("../../FileDialog")
+file_dialog_image = NodePath("../../FileDialog_image")
+file_dialog_video = NodePath("../../FileDialog_video")
 color_rect = NodePath("../../SubViewport/ColorRect")
 
-[node name="FileDialog" type="FileDialog" parent="." unique_id=1966622314]
+[node name="FileDialog_image" type="FileDialog" parent="." unique_id=1966622314]
 title = "Open a File"
 file_mode = 0
+access = 2
+filters = PackedStringArray("*png", "*.jpg", "*.jpeg", "*.svg")
+use_native_dialog = true
+
+[node name="FileDialog_video" type="FileDialog" parent="." unique_id=1436063736]
+title = "Open a Directory"
+file_mode = 2
 access = 2
 filters = PackedStringArray("*png", "*.jpg", "*.jpeg", "*.svg")
 use_native_dialog = true
@@ -117,7 +125,7 @@ grow_vertical = 2
 
 [node name="Window" type="Window" parent="UI/Propeties_Panel" unique_id=1172507678]
 oversampling_override = 1.0
-title = "Propeties Panel (alpha)"
+title = "Propeties Panel"
 position = Vector2i(668, 36)
 size = Vector2i(272, 566)
 
@@ -128,11 +136,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=1112446033]
+[node name="ButtonImage" type="Button" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=1112446033]
 layout_mode = 2
 text = "Import Media"
 
+[node name="ButtonVideo" type="Button" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=826516093]
+layout_mode = 2
+text = "import image sequence"
+
 [node name="Label2" type="Label" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=113334318]
+visible = false
 layout_mode = 2
 text = "Loop Animation (Alpha)"
 
@@ -155,6 +168,7 @@ text = "Color Palette Panel
 "
 
 [node name="CheckFunction" type="CheckButton" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=1039785589]
+visible = false
 layout_mode = 2
 text = "Function (Alpha)"
 
@@ -170,7 +184,8 @@ grow_vertical = 2
 visible = false
 
 [connection signal="pressed" from="UI/Color_Palette/Window/VBoxContainer/Button" to="UI/Color_Palette" method="_on_button_pressed"]
-[connection signal="pressed" from="UI/Propeties_Panel/Window/VBoxContainer/Button" to="CanvasLayer/mediaImport" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/Propeties_Panel/Window/VBoxContainer/ButtonImage" to="CanvasLayer/mediaImport" method="_on_button_image_pressed"]
+[connection signal="pressed" from="UI/Propeties_Panel/Window/VBoxContainer/ButtonVideo" to="CanvasLayer/mediaImport" method="_on_button_video_pressed"]
 [connection signal="toggled" from="UI/Propeties_Panel/Window/VBoxContainer/CheckCode" to="UI" method="_on_check_code_toggled"]
 [connection signal="button_down" from="UI/Propeties_Panel/Window/VBoxContainer/CheckColorPalette" to="UI" method="_on_check_color_palette_button_down"]
 [connection signal="button_up" from="UI/Propeties_Panel/Window/VBoxContainer/CheckColorPalette" to="UI" method="_on_check_color_palette_button_up"]

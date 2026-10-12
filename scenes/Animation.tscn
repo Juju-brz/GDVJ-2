@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://ceagp3tlatdqm"]
+
+[ext_resource type="Script" uid="uid://ccdofnkyxrks7" path="res://scripts/animation.gd" id="1_425qn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yjmcx"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 24.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" unique_id=768838037]
+z_index = 3
+sprite_frames = SubResource("SpriteFrames_yjmcx")
+script = ExtResource("1_425qn")

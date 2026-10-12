@@ -35,7 +35,6 @@ void fragment() {
 	### MULTIPLY BLEND MODE ###
 
 
-
 func _input(event):
 	if Input.is_action_just_pressed("media_change_mode"):
 		if zoom_mode == true:
@@ -71,7 +70,7 @@ func _input(event):
 				scale += Vector2(0.05, 0.05)  
 			elif Input.is_action_pressed("media_zoom_out"):
 				scale -= Vector2(0.05, 0.05)
-				scale = scale.clamp(Vector2(0.1, 0.1), Vector2(10, 10))  # Limite la taille
+				scale = scale.clamp(Vector2(0.1, 0.1), Vector2(10, 10))  # Limit Size
 		
 			if zoom_mode == false:
 				if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_WHEEL_UP:
@@ -83,7 +82,7 @@ func _input(event):
 					scale += Vector2(0.05, 0.05)  
 				elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 					scale -= Vector2(0.05, 0.05)
-					scale = scale.clamp(Vector2(0.1, 0.1), Vector2(10, 10))  # Limite la taille
+					scale = scale.clamp(Vector2(0.1, 0.1), Vector2(10, 10))  # Limit Size
 			if Input.is_action_just_pressed("media_front"):
 				bring_to_front()
 			if Input.is_action_just_pressed("media_back"):
