@@ -51,7 +51,7 @@ access = 2
 filters = PackedStringArray("*png", "*.jpg", "*.jpeg", "*.svg")
 use_native_dialog = true
 
-[node name="UI" type="Control" parent="." unique_id=1981191330 node_paths=PackedStringArray("color_palette")]
+[node name="UI" type="Control" parent="." unique_id=1981191330 node_paths=PackedStringArray("color_palette", "Code_line")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -61,6 +61,7 @@ grow_vertical = 2
 theme = ExtResource("4_tefeu")
 script = ExtResource("5_o6xl0")
 color_palette = NodePath("Color_Palette/Window")
+Code_line = NodePath("CodeLine/Control")
 
 [node name="Color_Palette" type="Control" parent="UI" unique_id=726714338 node_paths=PackedStringArray("color_picker")]
 layout_mode = 1
@@ -117,7 +118,7 @@ grow_vertical = 2
 [node name="Window" type="Window" parent="UI/Propeties_Panel" unique_id=1172507678]
 oversampling_override = 1.0
 title = "Propeties Panel (alpha)"
-position = Vector2i(345, 36)
+position = Vector2i(668, 36)
 size = Vector2i(272, 566)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/Propeties_Panel/Window" unique_id=213695121]
@@ -131,22 +132,31 @@ grow_vertical = 2
 layout_mode = 2
 text = "Import Media"
 
-[node name="Label" type="Label" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=1938293329]
-layout_mode = 2
-text = "Functions"
-
-[node name="CheckButton" type="CheckButton" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=1039785589]
-layout_mode = 2
-text = "Function"
-
 [node name="Label2" type="Label" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=113334318]
 layout_mode = 2
-text = "Loop Animation"
+text = "Loop Animation (Alpha)"
 
-[node name="CheckButton2" type="CheckButton" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=1731296238]
+[node name="HSeparator" type="HSeparator" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=992584073]
 layout_mode = 2
-text = "Color Palette
+
+[node name="GUI" type="Label" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=1409470558]
+layout_mode = 2
+text = "GUI"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CheckCode" type="CheckButton" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=1299150340]
+layout_mode = 2
+text = "Code Panel"
+
+[node name="CheckColorPalette" type="CheckButton" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=1731296238]
+layout_mode = 2
+text = "Color Palette Panel
 "
+
+[node name="CheckFunction" type="CheckButton" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=1039785589]
+layout_mode = 2
+text = "Function (Alpha)"
 
 [node name="CodeLine" parent="UI" unique_id=1876606309 instance=ExtResource("2_tbgi4")]
 layout_mode = 1
@@ -156,7 +166,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Control" parent="UI/CodeLine" index="0" unique_id=488710302]
+visible = false
+
 [connection signal="pressed" from="UI/Color_Palette/Window/VBoxContainer/Button" to="UI/Color_Palette" method="_on_button_pressed"]
 [connection signal="pressed" from="UI/Propeties_Panel/Window/VBoxContainer/Button" to="CanvasLayer/mediaImport" method="_on_button_pressed"]
-[connection signal="button_down" from="UI/Propeties_Panel/Window/VBoxContainer/CheckButton2" to="UI" method="_on_check_button_2_button_down"]
-[connection signal="button_up" from="UI/Propeties_Panel/Window/VBoxContainer/CheckButton2" to="UI" method="_on_check_button_2_button_up"]
+[connection signal="toggled" from="UI/Propeties_Panel/Window/VBoxContainer/CheckCode" to="UI" method="_on_check_code_toggled"]
+[connection signal="button_down" from="UI/Propeties_Panel/Window/VBoxContainer/CheckColorPalette" to="UI" method="_on_check_color_palette_button_down"]
+[connection signal="button_up" from="UI/Propeties_Panel/Window/VBoxContainer/CheckColorPalette" to="UI" method="_on_check_color_palette_button_up"]
+[connection signal="pressed" from="UI/Propeties_Panel/Window/VBoxContainer/CheckColorPalette" to="UI" method="_on_check_color_palette_pressed"]
+[connection signal="toggled" from="UI/Propeties_Panel/Window/VBoxContainer/CheckColorPalette" to="UI" method="_on_check_color_palette_toggled"]
+
+[editable path="UI/CodeLine"]

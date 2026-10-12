@@ -14,7 +14,7 @@ void fragment() {
 	
 	vec3 color = mix(color3, color2, uv.x + sin(TIME * 0.5));
 	
-	//OUTPUT
+	// OUTPUT //
 	COLOR = vec4(color, 1.0);
 }"""
 

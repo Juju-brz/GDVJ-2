@@ -2,19 +2,16 @@ extends Control
 
 #@export var color_palette : Control
 @export var color_palette : Window
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+@export var Code_line : Window
+
+#func _on_check_color_palette_button_down() -> void:
+	#color_palette.hide()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+
+func _on_check_color_palette_toggled(toggled_on: bool) -> void:
+	color_palette.visible = toggled_on
 
 
-func _on_check_button_2_button_down() -> void:
-	color_palette.hide()
-
-
-func _on_check_button_2_button_up() -> void:
-	color_palette.show()
+func _on_check_code_toggled(toggled_on: bool) -> void:
+	Code_line.visible = toggled_on
