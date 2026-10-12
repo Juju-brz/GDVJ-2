@@ -1,5 +1,5 @@
 # Godot Video Jockey 2
- a real time generator of Pattern  and Shaders based on Godot 4.5
+ a real time generator of Pattern  and Shaders based on Godot 4.6
 
 made by juju
 
