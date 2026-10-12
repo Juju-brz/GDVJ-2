@@ -17,6 +17,8 @@ media are images & videos
 Q = Lock Media
 
 Backspace = Delette Media
+
 mouse wheel = rotate
+
 mouse wheel + ALT = Zoom 
 
