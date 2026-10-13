@@ -49,7 +49,7 @@ color_rect = NodePath("../../SubViewport/ColorRect")
 title = "Open a File"
 file_mode = 0
 access = 2
-filters = PackedStringArray("*png", "*.jpg", "*.jpeg", "*.svg")
+filters = PackedStringArray("*png", "*.jpg", "*.jpeg", "*.svg", "*.webp")
 use_native_dialog = true
 
 [node name="FileDialog_video" type="FileDialog" parent="." unique_id=1436063736]
