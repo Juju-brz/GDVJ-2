@@ -5,8 +5,7 @@ extends Node2D
 @export var Code : ColorRect
 signal color(BGColor : Color)
 var switch = true
-
-var test = 200
+@export var BPM_Line_Edit : LineEdit
 
 func _ready() -> void:
 	var tex: ViewportTexture = $SubViewport.get_texture()
@@ -16,7 +15,7 @@ func _ready() -> void:
 		texRect.texture = tex
 		
 	#file_dialog.file_selected.connect(on_file_selected)
-	test_func()
+	bpm_changed()
 
 func _process(delta: float) -> void:
 	GLOBAL.color_changed.emit(Code.color)
@@ -26,16 +25,14 @@ func _on_code_pushed(code: String) -> void:
 	Code.material.shader.code = code
 	color.emit(Code.color)
 
-func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("sound_BPM"):
-		test_func()
 
-func test_func():
+func bpm_changed():
+	GLOBAL.BPM = BPM_Line_Edit.text
 	var bpmfloat = GLOBAL.BPM 
 	var mat := Code.material as ShaderMaterial
 	mat.set_shader_parameter("BPM", bpmfloat)
-	print("proute")
-
+	print("BPM submitted")
+	print("BPM value", GLOBAL.BPM)
 
 func _on_bpm_line_edit_text_submitted(new_text: String) -> void:
-	test_func()
+	bpm_changed()
