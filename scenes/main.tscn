@@ -7,9 +7,11 @@
 [ext_resource type="Theme" uid="uid://bw2i1kpeccik" path="res://Themes/juju.tres" id="4_tefeu"]
 [ext_resource type="Script" uid="uid://bllo8srcd4uax" path="res://scripts/ui.gd" id="5_o6xl0"]
 [ext_resource type="Script" uid="uid://n2qolndaj24c" path="res://scripts/color_palette.gd" id="5_tbgi4"]
+[ext_resource type="Script" uid="uid://b3xbx6c3gelh0" path="res://scripts/bpm_line_edit.gd" id="7_tipki"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ojabb"]
 shader = ExtResource("3_tefeu")
+shader_parameter/BPM = 120.0
 
 [node name="Main" type="Node2D" unique_id=642545413 node_paths=PackedStringArray("sub_viewport", "texRect", "Code")]
 script = ExtResource("1_jyhfs")
@@ -59,7 +61,7 @@ access = 2
 filters = PackedStringArray("*png", "*.jpg", "*.jpeg", "*.svg")
 use_native_dialog = true
 
-[node name="UI" type="Control" parent="." unique_id=1981191330 node_paths=PackedStringArray("color_palette", "Code_line")]
+[node name="UI" type="Control" parent="." unique_id=1981191330 node_paths=PackedStringArray("color_palette", "Code_line", "BPM_Line_Edit")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -70,6 +72,7 @@ theme = ExtResource("4_tefeu")
 script = ExtResource("5_o6xl0")
 color_palette = NodePath("Color_Palette/Window")
 Code_line = NodePath("CodeLine/Control")
+BPM_Line_Edit = NodePath("Propeties_Panel/Window/VBoxContainer/HBoxContainer/BPM_Line_Edit")
 
 [node name="Color_Palette" type="Control" parent="UI" unique_id=726714338 node_paths=PackedStringArray("color_picker")]
 layout_mode = 1
@@ -172,6 +175,35 @@ visible = false
 layout_mode = 2
 text = "Function (Alpha)"
 
+[node name="Label" type="Label" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=865681601]
+layout_mode = 2
+text = "AUDIO (beta)"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=506101977]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/Propeties_Panel/Window/VBoxContainer/HBoxContainer" unique_id=715706233]
+layout_mode = 2
+text = "BPM"
+horizontal_alignment = 1
+
+[node name="BPM_Text" type="TextEdit" parent="UI/Propeties_Panel/Window/VBoxContainer/HBoxContainer" unique_id=1357009830]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+text = "120"
+context_menu_enabled = false
+virtual_keyboard_show_on_focus = false
+scroll_fit_content_height = true
+scroll_fit_content_width = true
+
+[node name="BPM_Line_Edit" type="LineEdit" parent="UI/Propeties_Panel/Window/VBoxContainer/HBoxContainer" unique_id=420750488]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "120"
+alignment = 1
+script = ExtResource("7_tipki")
+
 [node name="CodeLine" parent="UI" unique_id=1876606309 instance=ExtResource("2_tbgi4")]
 layout_mode = 1
 anchors_preset = 15
@@ -183,6 +215,8 @@ grow_vertical = 2
 [node name="Control" parent="UI/CodeLine" index="0" unique_id=488710302]
 visible = false
 
+[node name="Node" type="Node" parent="." unique_id=1794126360]
+
 [connection signal="pressed" from="UI/Color_Palette/Window/VBoxContainer/Button" to="UI/Color_Palette" method="_on_button_pressed"]
 [connection signal="pressed" from="UI/Propeties_Panel/Window/VBoxContainer/ButtonImage" to="CanvasLayer/mediaImport" method="_on_button_image_pressed"]
 [connection signal="pressed" from="UI/Propeties_Panel/Window/VBoxContainer/ButtonVideo" to="CanvasLayer/mediaImport" method="_on_button_video_pressed"]
@@ -191,5 +225,9 @@ visible = false
 [connection signal="button_up" from="UI/Propeties_Panel/Window/VBoxContainer/CheckColorPalette" to="UI" method="_on_check_color_palette_button_up"]
 [connection signal="pressed" from="UI/Propeties_Panel/Window/VBoxContainer/CheckColorPalette" to="UI" method="_on_check_color_palette_pressed"]
 [connection signal="toggled" from="UI/Propeties_Panel/Window/VBoxContainer/CheckColorPalette" to="UI" method="_on_check_color_palette_toggled"]
+[connection signal="text_changed" from="UI/Propeties_Panel/Window/VBoxContainer/HBoxContainer/BPM_Text" to="UI" method="_on_bpm_text_text_changed"]
+[connection signal="text_set" from="UI/Propeties_Panel/Window/VBoxContainer/HBoxContainer/BPM_Text" to="UI" method="_on_bpm_text_text_set"]
+[connection signal="text_submitted" from="UI/Propeties_Panel/Window/VBoxContainer/HBoxContainer/BPM_Line_Edit" to="." method="_on_bpm_line_edit_text_submitted"]
+[connection signal="text_submitted" from="UI/Propeties_Panel/Window/VBoxContainer/HBoxContainer/BPM_Line_Edit" to="UI" method="_on_bpm_line_edit_text_submitted"]
 
 [editable path="UI/CodeLine"]
