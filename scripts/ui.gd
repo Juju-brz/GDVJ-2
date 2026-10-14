@@ -4,10 +4,6 @@ extends Control
 @export var color_palette : Window
 @export var Code_line : Window
 
-#func _on_check_color_palette_button_down() -> void:
-	#color_palette.hide()
-
-
 
 func _on_check_color_palette_toggled(toggled_on: bool) -> void:
 	color_palette.visible = toggled_on

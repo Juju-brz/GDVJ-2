@@ -1,4 +1,5 @@
 shader_type canvas_item;
+uniform float BPM = 120.0;
 
 void fragment() {
 	vec3 color1 = vec3(1.0, 0.5, 0.0); //orange
