@@ -10,11 +10,13 @@ var switch = true
 func _ready() -> void:
 	var tex: ViewportTexture = $SubViewport.get_texture()
 	GLOBAL.code_pushed.connect(_on_code_pushed)
+	
 	#result.texture = tex
 	if switch == true:
 		texRect.texture = tex
 		
 	#file_dialog.file_selected.connect(on_file_selected)
+	
 	bpm_changed()
 
 func _process(delta: float) -> void:

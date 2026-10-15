@@ -8,6 +8,8 @@
 [ext_resource type="Script" uid="uid://bllo8srcd4uax" path="res://scripts/ui.gd" id="5_o6xl0"]
 [ext_resource type="Script" uid="uid://n2qolndaj24c" path="res://scripts/color_palette.gd" id="5_tbgi4"]
 [ext_resource type="Script" uid="uid://b3xbx6c3gelh0" path="res://scripts/bpm_line_edit.gd" id="7_tipki"]
+[ext_resource type="Script" uid="uid://rl8itots4uke" path="res://scripts/functions.gd" id="9_85g3d"]
+[ext_resource type="CodeHighlighter" uid="uid://mikmy4deotb0" path="res://UI/SyntaxColor.tres" id="10_choun"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ojabb"]
 shader = ExtResource("3_tefeu")
@@ -62,7 +64,8 @@ access = 2
 filters = PackedStringArray("*png", "*.jpg", "*.jpeg", "*.svg")
 use_native_dialog = true
 
-[node name="UI" type="Control" parent="." unique_id=1981191330 node_paths=PackedStringArray("color_palette", "Code_line")]
+[node name="UI" type="Control" parent="." unique_id=1981191330 node_paths=PackedStringArray("color_palette", "code_line", "function")]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -72,7 +75,87 @@ grow_vertical = 2
 theme = ExtResource("4_tefeu")
 script = ExtResource("5_o6xl0")
 color_palette = NodePath("Color_Palette/Window")
-Code_line = NodePath("CodeLine/Control")
+code_line = NodePath("CodeLine/CodeLineWindow")
+function = NodePath("Functions/Functions")
+
+[node name="Propeties_Panel" type="Control" parent="UI" unique_id=883644413]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Window" type="Window" parent="UI/Propeties_Panel" unique_id=1172507678]
+oversampling_override = 1.0
+title = "Propeties Panel"
+position = Vector2i(345, 36)
+size = Vector2i(272, 566)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Propeties_Panel/Window" unique_id=213695121]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonImage" type="Button" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=1112446033]
+layout_mode = 2
+text = "Import Media"
+
+[node name="ButtonVideo" type="Button" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=826516093]
+layout_mode = 2
+text = "import image sequence"
+
+[node name="Label2" type="Label" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=113334318]
+visible = false
+layout_mode = 2
+text = "Loop Animation (Alpha)"
+
+[node name="HSeparator" type="HSeparator" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=992584073]
+layout_mode = 2
+
+[node name="GUI" type="Label" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=1409470558]
+layout_mode = 2
+text = "GUI"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CheckCode" type="CheckButton" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=1299150340]
+layout_mode = 2
+text = "Code Panel"
+
+[node name="CheckColorPalette" type="CheckButton" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=1731296238]
+layout_mode = 2
+text = "Color Palette Panel
+"
+
+[node name="CheckFunctions" type="CheckButton" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=1039785589]
+layout_mode = 2
+text = "Functions"
+
+[node name="HSeparator2" type="HSeparator" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=1453738857]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=865681601]
+layout_mode = 2
+text = "AUDIO"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=506101977]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/Propeties_Panel/Window/VBoxContainer/HBoxContainer" unique_id=715706233]
+layout_mode = 2
+text = "BPM"
+horizontal_alignment = 1
+
+[node name="BPM_Line_Edit" type="LineEdit" parent="UI/Propeties_Panel/Window/VBoxContainer/HBoxContainer" unique_id=420750488]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "120"
+alignment = 1
+script = ExtResource("7_tipki")
 
 [node name="Color_Palette" type="Control" parent="UI" unique_id=726714338 node_paths=PackedStringArray("color_picker")]
 layout_mode = 1
@@ -118,86 +201,6 @@ text = "Test
 layout_mode = 2
 text = "Copy Color"
 
-[node name="Propeties_Panel" type="Control" parent="UI" unique_id=883644413]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Window" type="Window" parent="UI/Propeties_Panel" unique_id=1172507678]
-oversampling_override = 1.0
-title = "Propeties Panel"
-position = Vector2i(668, 36)
-size = Vector2i(272, 566)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/Propeties_Panel/Window" unique_id=213695121]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ButtonImage" type="Button" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=1112446033]
-layout_mode = 2
-text = "Import Media"
-
-[node name="ButtonVideo" type="Button" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=826516093]
-layout_mode = 2
-text = "import image sequence"
-
-[node name="Label2" type="Label" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=113334318]
-visible = false
-layout_mode = 2
-text = "Loop Animation (Alpha)"
-
-[node name="HSeparator" type="HSeparator" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=992584073]
-layout_mode = 2
-
-[node name="GUI" type="Label" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=1409470558]
-layout_mode = 2
-text = "GUI"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="CheckCode" type="CheckButton" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=1299150340]
-layout_mode = 2
-text = "Code Panel"
-
-[node name="CheckColorPalette" type="CheckButton" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=1731296238]
-layout_mode = 2
-text = "Color Palette Panel
-"
-
-[node name="CheckFunction" type="CheckButton" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=1039785589]
-visible = false
-layout_mode = 2
-text = "Function (Alpha)"
-
-[node name="HSeparator2" type="HSeparator" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=1453738857]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=865681601]
-layout_mode = 2
-text = "AUDIO"
-horizontal_alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=506101977]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="UI/Propeties_Panel/Window/VBoxContainer/HBoxContainer" unique_id=715706233]
-layout_mode = 2
-text = "BPM"
-horizontal_alignment = 1
-
-[node name="BPM_Line_Edit" type="LineEdit" parent="UI/Propeties_Panel/Window/VBoxContainer/HBoxContainer" unique_id=420750488]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "120"
-alignment = 1
-script = ExtResource("7_tipki")
-
 [node name="CodeLine" parent="UI" unique_id=1876606309 instance=ExtResource("2_tbgi4")]
 layout_mode = 1
 anchors_preset = 15
@@ -206,20 +209,66 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Control" parent="UI/CodeLine" index="0" unique_id=488710302]
+[node name="CodeLineWindow" parent="UI/CodeLine" index="0" unique_id=488710302]
 visible = false
 
-[node name="Node" type="Node" parent="." unique_id=1794126360]
+[node name="Functions" type="Control" parent="UI" unique_id=970065845 node_paths=PackedStringArray("codeEdit", "file_dialog_save")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("9_85g3d")
+codeEdit = NodePath("Functions/TabContainer/CodeEdit")
+file_dialog_save = NodePath("Functions/FileDialogSave")
 
-[connection signal="pressed" from="UI/Color_Palette/Window/VBoxContainer/Button" to="UI/Color_Palette" method="_on_button_pressed"]
+[node name="Functions" type="Window" parent="UI/Functions" unique_id=1261847861]
+oversampling_override = 1.0
+position = Vector2i(916, 67)
+size = Vector2i(296, 548)
+visible = false
+
+[node name="FileDialogSave" type="FileDialog" parent="UI/Functions/Functions" unique_id=2099204610]
+oversampling_override = 1.0
+filters = PackedStringArray("*.gdshaderinc", "*.juju")
+
+[node name="TabContainer" type="TabContainer" parent="UI/Functions/Functions" unique_id=422073127]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 0
+
+[node name="CodeEdit" type="CodeEdit" parent="UI/Functions/Functions/TabContainer" unique_id=404006726]
+layout_mode = 2
+syntax_highlighter = ExtResource("10_choun")
+metadata/_tab_index = 0
+
+[node name="ButtonSave" type="Button" parent="UI/Functions/Functions/TabContainer/CodeEdit" unique_id=1464673314]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -85.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Save"
+
 [connection signal="pressed" from="UI/Propeties_Panel/Window/VBoxContainer/ButtonImage" to="CanvasLayer/mediaImport" method="_on_button_image_pressed"]
 [connection signal="pressed" from="UI/Propeties_Panel/Window/VBoxContainer/ButtonVideo" to="CanvasLayer/mediaImport" method="_on_button_video_pressed"]
 [connection signal="toggled" from="UI/Propeties_Panel/Window/VBoxContainer/CheckCode" to="UI" method="_on_check_code_toggled"]
-[connection signal="button_down" from="UI/Propeties_Panel/Window/VBoxContainer/CheckColorPalette" to="UI" method="_on_check_color_palette_button_down"]
-[connection signal="button_up" from="UI/Propeties_Panel/Window/VBoxContainer/CheckColorPalette" to="UI" method="_on_check_color_palette_button_up"]
-[connection signal="pressed" from="UI/Propeties_Panel/Window/VBoxContainer/CheckColorPalette" to="UI" method="_on_check_color_palette_pressed"]
 [connection signal="toggled" from="UI/Propeties_Panel/Window/VBoxContainer/CheckColorPalette" to="UI" method="_on_check_color_palette_toggled"]
+[connection signal="toggled" from="UI/Propeties_Panel/Window/VBoxContainer/CheckFunctions" to="UI" method="_on_check_function_toggled"]
 [connection signal="text_submitted" from="UI/Propeties_Panel/Window/VBoxContainer/HBoxContainer/BPM_Line_Edit" to="." method="_on_bpm_line_edit_text_submitted"]
 [connection signal="text_submitted" from="UI/Propeties_Panel/Window/VBoxContainer/HBoxContainer/BPM_Line_Edit" to="UI" method="_on_bpm_line_edit_text_submitted"]
+[connection signal="pressed" from="UI/Color_Palette/Window/VBoxContainer/Button" to="UI/Color_Palette" method="_on_button_pressed"]
+[connection signal="confirmed" from="UI/Functions/Functions/FileDialogSave" to="UI/Functions" method="_on_file_dialog_save_confirmed"]
+[connection signal="files_selected" from="UI/Functions/Functions/FileDialogSave" to="UI/Functions" method="_on_file_dialog_save_files_selected"]
+[connection signal="pressed" from="UI/Functions/Functions/TabContainer/CodeEdit/ButtonSave" to="UI/Functions" method="_on_button_save_pressed"]
 
 [editable path="UI/CodeLine"]
