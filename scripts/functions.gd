@@ -1,19 +1,19 @@
 extends Control
 
 @export var codeEdit : CodeEdit 
-@export var FileDialogSave : FileDialog
+@export var file_dialog_save : FileDialog
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
 	load_from_file("res://functions/test.juju")
 	codeEdit.text = load_from_file("res://functions/test.juju")
+	file_dialog_save.file_selected.connect(_on_file_selected)
+	#file_dialog_save.file_mode = FileDialog.FILE_MODE_SAVE_FILE
+	#file_dialog_save.access = FileDialog.ACCESS_FILESYSTEM
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
+### LOAD ###
 
 func load_from_file(fileDir):
 	var file = FileAccess.open(fileDir, FileAccess.READ)
@@ -23,10 +23,16 @@ func load_from_file(fileDir):
 	return content
 
 
+### SAVE ###
+
 func _on_button_save_pressed() -> void:
-	FileDialogSave.show()
+	file_dialog_save.show()
 
 
-func _on_file_dialog_save_confirmed() -> void:
-	print("proute")
-	pass # Replace with function body.
+func _on_file_selected(path: String) -> void:
+	var f := FileAccess.open(path, FileAccess.WRITE)
+	if f == null:
+		#push_error("Écriture impossible : erreur %d" % FileAccess.get_open_error())
+		return
+	f.store_string(codeEdit.text)
+	print("save in : ", path)

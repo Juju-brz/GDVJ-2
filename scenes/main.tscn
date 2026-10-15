@@ -89,7 +89,7 @@ grow_vertical = 2
 [node name="Window" type="Window" parent="UI/Propeties_Panel" unique_id=1172507678]
 oversampling_override = 1.0
 title = "Propeties Panel"
-position = Vector2i(668, 36)
+position = Vector2i(345, 36)
 size = Vector2i(272, 566)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/Propeties_Panel/Window" unique_id=213695121]
@@ -212,7 +212,7 @@ grow_vertical = 2
 [node name="CodeLineWindow" parent="UI/CodeLine" index="0" unique_id=488710302]
 visible = false
 
-[node name="Functions" type="Control" parent="UI" unique_id=970065845 node_paths=PackedStringArray("codeEdit", "FileDialogSave")]
+[node name="Functions" type="Control" parent="UI" unique_id=970065845 node_paths=PackedStringArray("codeEdit", "file_dialog_save")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -221,7 +221,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("9_85g3d")
 codeEdit = NodePath("Functions/TabContainer/CodeEdit")
-FileDialogSave = NodePath("Functions/FileDialogSave")
+file_dialog_save = NodePath("Functions/FileDialogSave")
 
 [node name="Functions" type="Window" parent="UI/Functions" unique_id=1261847861]
 oversampling_override = 1.0
@@ -232,7 +232,6 @@ visible = false
 [node name="FileDialogSave" type="FileDialog" parent="UI/Functions/Functions" unique_id=2099204610]
 oversampling_override = 1.0
 filters = PackedStringArray("*.juju")
-use_native_dialog = true
 
 [node name="TabContainer" type="TabContainer" parent="UI/Functions/Functions" unique_id=422073127]
 anchors_preset = 15
@@ -269,6 +268,7 @@ text = "Save"
 [connection signal="text_submitted" from="UI/Propeties_Panel/Window/VBoxContainer/HBoxContainer/BPM_Line_Edit" to="UI" method="_on_bpm_line_edit_text_submitted"]
 [connection signal="pressed" from="UI/Color_Palette/Window/VBoxContainer/Button" to="UI/Color_Palette" method="_on_button_pressed"]
 [connection signal="confirmed" from="UI/Functions/Functions/FileDialogSave" to="UI/Functions" method="_on_file_dialog_save_confirmed"]
+[connection signal="files_selected" from="UI/Functions/Functions/FileDialogSave" to="UI/Functions" method="_on_file_dialog_save_files_selected"]
 [connection signal="pressed" from="UI/Functions/Functions/TabContainer/CodeEdit/ButtonSave" to="UI/Functions" method="_on_button_save_pressed"]
 
 [editable path="UI/CodeLine"]
