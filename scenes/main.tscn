@@ -132,7 +132,7 @@ text = "Color Palette Panel
 
 [node name="CheckFunctions" type="CheckButton" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=1039785589]
 layout_mode = 2
-text = "Functions (Alpha)"
+text = "Functions"
 
 [node name="HSeparator2" type="HSeparator" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=1453738857]
 layout_mode = 2
@@ -231,7 +231,7 @@ visible = false
 
 [node name="FileDialogSave" type="FileDialog" parent="UI/Functions/Functions" unique_id=2099204610]
 oversampling_override = 1.0
-filters = PackedStringArray("*.juju")
+filters = PackedStringArray("*.gdshaderinc", "*.juju")
 
 [node name="TabContainer" type="TabContainer" parent="UI/Functions/Functions" unique_id=422073127]
 anchors_preset = 15

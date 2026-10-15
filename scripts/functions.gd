@@ -6,8 +6,8 @@ extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
-	load_from_file("res://functions/test.juju")
-	codeEdit.text = load_from_file("res://functions/test.juju")
+	load_from_file("res://functions/functions.gdshaderinc")
+	codeEdit.text = load_from_file("res://functions/functions.gdshaderinc")
 	file_dialog_save.file_selected.connect(_on_file_selected)
 	#file_dialog_save.file_mode = FileDialog.FILE_MODE_SAVE_FILE
 	#file_dialog_save.access = FileDialog.ACCESS_FILESYSTEM
@@ -32,7 +32,6 @@ func _on_button_save_pressed() -> void:
 func _on_file_selected(path: String) -> void:
 	var f := FileAccess.open(path, FileAccess.WRITE)
 	if f == null:
-		#push_error("Écriture impossible : erreur %d" % FileAccess.get_open_error())
 		return
 	f.store_string(codeEdit.text)
 	print("save in : ", path)

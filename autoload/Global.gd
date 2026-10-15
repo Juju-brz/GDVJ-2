@@ -3,6 +3,7 @@ extends Node
 
 var ShaderFrag : String = """shader_type canvas_item;
 
+#include "res://functions/functions.gdshaderinc"
 uniform float BPM = 120; // Default Value
 
 void fragment() {
@@ -11,10 +12,7 @@ void fragment() {
 	vec3 color3 = vec3(0.3, 1.0, 0.3); // green
 	
 	// SOUND CAPTATION //
-	//float minute = 60.0;
 	float BPS = BPM / 60.0; //Beat per second
-	//float rythm = TIME * (float(beat));
-	//float phase = fract(beat);
 	float onde = sin(TIME * BPS * TAU);
 	
 	// CENTER UV //
