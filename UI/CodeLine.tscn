@@ -9,13 +9,13 @@ z_index = 5
 layout_mode = 3
 anchors_preset = 0
 
-[node name="Control" type="Window" parent="." unique_id=488710302]
+[node name="CodeLineWindow" type="Window" parent="." unique_id=488710302]
 oversampling_override = 1.0
 title = "CODE"
 position = Vector2i(12, 36)
 size = Vector2i(435, 654)
 
-[node name="Fragment" type="CodeEdit" parent="Control" unique_id=1104231432]
+[node name="Fragment" type="CodeEdit" parent="CodeLineWindow" unique_id=1104231432]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -28,7 +28,7 @@ draw_tabs = true
 draw_spaces = true
 script = ExtResource("2_njy0r")
 
-[node name="Execute" type="Button" parent="Control/Fragment" unique_id=2079741509]
+[node name="Execute" type="Button" parent="CodeLineWindow/Fragment" unique_id=2079741509]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -40,9 +40,9 @@ offset_top = -42.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="Play" type="Sprite2D" parent="Control/Fragment/Execute" unique_id=8680247]
+[node name="Play" type="Sprite2D" parent="CodeLineWindow/Fragment/Execute" unique_id=8680247]
 position = Vector2(21.5, 22.135)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("3_y3jrh")
 
-[connection signal="pressed" from="Control/Fragment/Execute" to="Control/Fragment" method="_on_execute_pressed"]
+[connection signal="pressed" from="CodeLineWindow/Fragment/Execute" to="CodeLineWindow/Fragment" method="_on_execute_pressed"]
