@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://d3152mxnx3mng"]
+
+[ext_resource type="Texture2D" uid="uid://dyf2tlsdgaykh" path="res://icon.svg" id="1_hqyvl"]
+[ext_resource type="Script" uid="uid://f383p0vyc7fk" path="res://scripts/media.gd" id="2_p5jcl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bvi38"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0e48y"]
+radius = 105.0
+
+[node name="media" type="Sprite2D" unique_id=2058495412]
+z_index = 3
+material = SubResource("ShaderMaterial_bvi38")
+rotation = -4.4139376
+texture = ExtResource("1_hqyvl")
+script = ExtResource("2_p5jcl")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1490879479]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2052101684]
+shape = SubResource("CircleShape2D_0e48y")

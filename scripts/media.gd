@@ -25,7 +25,6 @@ render_mode blend_mul;
 
 void fragment() {
 	vec4 c = texture(TEXTURE, UV);
-	// transparent -> blanc (neutre), opaque -> sa vraie couleur
 	COLOR = vec4(mix(vec3(1.0), c.rgb, c.a), 1.0);
 }
 """
@@ -100,7 +99,9 @@ func _process(delta):
 			pass
 		else:
 			global_position = get_global_mouse_position() + drag_offset
-
+	#sprite.rotation += deg_to_rad(45.0 * delta)
+	#sprite.scale +=  Vector2(sin(0.1 * delta),sin(0.1 * delta))
+	
 
 func bring_to_front() -> void:
 	get_parent().move_child(self, -1)
