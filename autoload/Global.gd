@@ -7,17 +7,22 @@ var ShaderFrag : String = """shader_type canvas_item;
 uniform float BPM = 120; // Default Value
 
 void fragment() {
+	
+	float sharp = 30.0;
+	
+	// COLORS //
 	vec3 color1 = vec3(1.0, 0.5, 0.0); //orange
 	vec3 color2 = vec3(0.3, 0.4, 0.7); //blue
 	vec3 color3 = vec3(0.3, 1.0, 0.3); // green
 	
 	// SOUND CAPTATION //
 	float BPS = BPM / 60.0; //Beat per second
-	float onde = sin(TIME * BPS * TAU);
+	float onde = sin(TIME * BPS * TAU * 0.50);
 	
 	// CENTER UV //
 	vec2 uv = UV * 2.0 - 1.0;
 	uv.x *= 16.0 / 9.0;
+	
 	
 	vec3 color = mix(color3, color2, uv.x + onde);
 	
