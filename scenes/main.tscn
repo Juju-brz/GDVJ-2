@@ -225,6 +225,7 @@ file_dialog_save = NodePath("Functions/FileDialogSave")
 
 [node name="Functions" type="Window" parent="UI/Functions" unique_id=1261847861]
 oversampling_override = 1.0
+title = "Functions"
 position = Vector2i(916, 67)
 size = Vector2i(296, 548)
 visible = false
@@ -245,6 +246,8 @@ current_tab = 0
 [node name="CodeEdit" type="CodeEdit" parent="UI/Functions/Functions/TabContainer" unique_id=404006726]
 layout_mode = 2
 syntax_highlighter = ExtResource("10_choun")
+draw_tabs = true
+draw_spaces = true
 line_folding = true
 metadata/_tab_index = 0
 
