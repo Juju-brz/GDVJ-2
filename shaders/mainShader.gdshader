@@ -10,7 +10,7 @@ void fragment() {
 	
 	// SOUND CAPTATION //
 	float BPS = BPM / 60.0; //Beat per second
-	float onde = sin(TIME * BPS * TAU);
+	float onde = sin(TIME * BPS * TAU * 0.50);
 	
 	// CENTER UV //
 	vec2 uv = UV * 2.0 - 1.0;

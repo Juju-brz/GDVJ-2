@@ -13,12 +13,13 @@ void fragment() {
 	
 	// SOUND CAPTATION //
 	float BPS = BPM / 60.0; //Beat per second
-	float onde = sin(TIME * BPS * TAU);
+	float onde = sin(TIME * BPS * TAU * 0.50);
 	
 	// CENTER UV //
 	vec2 uv = UV * 2.0 - 1.0;
 	uv.x *= 16.0 / 9.0;
 	
+	float sharp = 30.0;
 	vec3 color = mix(color3, color2, uv.x + onde);
 	
 	// OUTPUT //

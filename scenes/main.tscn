@@ -232,6 +232,7 @@ visible = false
 [node name="FileDialogSave" type="FileDialog" parent="UI/Functions/Functions" unique_id=2099204610]
 oversampling_override = 1.0
 filters = PackedStringArray("*.gdshaderinc", "*.juju")
+use_native_dialog = true
 
 [node name="TabContainer" type="TabContainer" parent="UI/Functions/Functions" unique_id=422073127]
 anchors_preset = 15
@@ -244,6 +245,7 @@ current_tab = 0
 [node name="CodeEdit" type="CodeEdit" parent="UI/Functions/Functions/TabContainer" unique_id=404006726]
 layout_mode = 2
 syntax_highlighter = ExtResource("10_choun")
+line_folding = true
 metadata/_tab_index = 0
 
 [node name="ButtonSave" type="Button" parent="UI/Functions/Functions/TabContainer/CodeEdit" unique_id=1464673314]
