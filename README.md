@@ -18,7 +18,7 @@ Q = Lock Media
 
 Backspace = Delette Media
 
-mouse wheel = rotate
+mouse wheel = rotate / zoom
 
-mouse wheel + ALT = Zoom 
+ALT = change mode  for mouse wheel
 
