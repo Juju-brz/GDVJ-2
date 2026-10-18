@@ -15,11 +15,11 @@
 shader = ExtResource("3_tefeu")
 shader_parameter/BPM = 120.0
 
-[node name="Main" type="Node2D" unique_id=642545413 node_paths=PackedStringArray("sub_viewport", "texRect", "Code", "BPM_Line_Edit")]
+[node name="Main" type="Node2D" unique_id=642545413 node_paths=PackedStringArray("sub_viewport", "texRect", "colorRect", "BPM_Line_Edit")]
 script = ExtResource("1_jyhfs")
 sub_viewport = NodePath("SubViewport")
 texRect = NodePath("CanvasLayer/TextureRect")
-Code = NodePath("SubViewport/ColorRect")
+colorRect = NodePath("SubViewport/ColorRect")
 BPM_Line_Edit = NodePath("UI/Propeties_Panel/Window/VBoxContainer/HBoxContainer/BPM_Line_Edit")
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=130595857]
@@ -226,7 +226,7 @@ file_dialog_save = NodePath("Functions/FileDialogSave")
 oversampling_override = 1.0
 title = "Functions"
 position = Vector2i(916, 67)
-size = Vector2i(296, 548)
+size = Vector2i(414, 583)
 visible = false
 
 [node name="FileDialogSave" type="FileDialog" parent="UI/Functions/Functions" unique_id=2099204610]

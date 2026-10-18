@@ -10,6 +10,7 @@ func _ready():
 	execute.pressed.connect(_on_execute_pressed)
 	
 	code.text = GLOBAL.ShaderFrag
+	#insert_functions_lib(2)
 
 
 func _input(event: InputEvent) -> void:
@@ -25,3 +26,9 @@ func _on_execute_pressed() -> void:
 	#CodePush.emit(user_code)
 	print("signal emit : code Shader")
 	
+
+func insert_functions_lib(numberlib : int):
+	var line = 0
+	for i in range(numberlib):
+		code.insert_line_at(3 + line, "//bol de pipi")
+		line += 1

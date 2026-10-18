@@ -2,7 +2,9 @@ extends Node2D
 
 @export var sub_viewport: SubViewport
 @export var texRect: TextureRect
-@export var Code : ColorRect
+@export var colorRect : ColorRect
+
+
 signal color(BGColor : Color)
 var switch = true
 @export var BPM_Line_Edit : LineEdit
@@ -10,28 +12,25 @@ var switch = true
 func _ready() -> void:
 	var tex: ViewportTexture = $SubViewport.get_texture()
 	GLOBAL.code_pushed.connect(_on_code_pushed)
-	
-	#result.texture = tex
 	if switch == true:
 		texRect.texture = tex
-		
-	#file_dialog.file_selected.connect(on_file_selected)
 	
 	bpm_changed()
+	#Code.text.insert(1, "proute")
 
 func _process(delta: float) -> void:
-	GLOBAL.color_changed.emit(Code.color)
+	GLOBAL.color_changed.emit(colorRect.color)
+	GLOBAL.ShaderFrag = GLOBAL.ShaderFrag.insert(3, "proute")
 
 
 func _on_code_pushed(code: String) -> void:
-	Code.material.shader.code = code
-	color.emit(Code.color)
-
+	colorRect.material.shader.code = code
+	color.emit(colorRect.color)
 
 func bpm_changed():
 	GLOBAL.BPM = BPM_Line_Edit.text
 	var bpmfloat = GLOBAL.BPM 
-	var mat := Code.material as ShaderMaterial
+	var mat := colorRect.material as ShaderMaterial
 	mat.set_shader_parameter("BPM", bpmfloat)
 	print("BPM submitted")
 	print("BPM value", GLOBAL.BPM)

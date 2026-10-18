@@ -3,7 +3,7 @@
 // The MIT License
 // Copyright © 2018 Inigo Quilez
 
-float sdCircle( vec2 p, float r, float sharp ) {
+float sdCircle( vec2 p, float r, float sharp) {
 	return (length(p) - r) * sharp;
 }
 
