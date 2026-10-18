@@ -9,6 +9,7 @@ func _ready() -> void:
 	load_from_file("res://functions/functions.gdshaderinc")
 	codeEdit.text = load_from_file("res://functions/functions.gdshaderinc")
 	file_dialog_save.file_selected.connect(_on_file_selected)
+	codeEdit.duplicate()
 	#file_dialog_save.file_mode = FileDialog.FILE_MODE_SAVE_FILE
 	#file_dialog_save.access = FileDialog.ACCESS_FILESYSTEM
 

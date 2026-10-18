@@ -14,7 +14,6 @@ func _ready() -> void:
 	GLOBAL.code_pushed.connect(_on_code_pushed)
 	if switch == true:
 		texRect.texture = tex
-	
 	bpm_changed()
 	#Code.text.insert(1, "proute")
 

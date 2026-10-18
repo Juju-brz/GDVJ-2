@@ -11,6 +11,7 @@ func _ready():
 	
 	code.text = GLOBAL.ShaderFrag
 	#insert_functions_lib(2)
+	insert_functions_lib()
 
 
 func _input(event: InputEvent) -> void:
@@ -27,8 +28,14 @@ func _on_execute_pressed() -> void:
 	print("signal emit : code Shader")
 	
 
-func insert_functions_lib(numberlib : int):
-	var line = 0
-	for i in range(numberlib):
-		code.insert_line_at(3 + line, "//bol de pipi")
-		line += 1
+func insert_functions_lib(start_line: int = 2):
+	var dir = DirAccess.open("res://functions/")
+	if dir == null:
+		push_error("Dossier introuvable")
+		return
+
+	var i := 0
+	for file in dir.get_files():
+		if file.get_extension() == "gdshaderinc":
+			code.insert_line_at(start_line + i, '#include "res://functions/%s"' % file)
+			i += 1
