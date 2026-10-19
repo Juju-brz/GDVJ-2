@@ -1,6 +1,6 @@
 shader_type canvas_item;
 
-#include "res://functions/functions.gdshaderinc"
+//#include "res://contents/functions/functions.gdshaderinc"
 uniform float BPM = 120; // Default Value
 
 void fragment() {

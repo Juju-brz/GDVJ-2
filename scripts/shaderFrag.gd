@@ -3,14 +3,13 @@ class_name  ShaderCode
 
 @onready var code = self
 var shader_path = "res://shaders/mainShader.gdshader"
-
+var base := OS.get_executable_path().get_base_dir().path_join("contents")
 
 func _ready():
 	var execute = $Execute
 	execute.pressed.connect(_on_execute_pressed)
-	
+	print(base)
 	code.text = GLOBAL.ShaderFrag
-	#insert_functions_lib(2)
 	insert_functions_lib()
 
 
@@ -29,13 +28,11 @@ func _on_execute_pressed() -> void:
 	
 
 func insert_functions_lib(start_line: int = 2):
-	var dir = DirAccess.open("res://functions/")
+	var dir = DirAccess.open("res://contents/functions")
 	if dir == null:
-		push_error("Dossier introuvable")
 		return
-
 	var i := 0
 	for file in dir.get_files():
 		if file.get_extension() == "gdshaderinc":
-			code.insert_line_at(start_line + i, '#include "res://functions/%s"' % file)
+			code.insert_line_at(start_line + i, '#include "res://contents/functions/%s"' % file)
 			i += 1

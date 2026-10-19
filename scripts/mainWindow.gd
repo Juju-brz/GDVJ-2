@@ -19,7 +19,6 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	GLOBAL.color_changed.emit(colorRect.color)
-	GLOBAL.ShaderFrag = GLOBAL.ShaderFrag.insert(3, "proute")
 
 
 func _on_code_pushed(code: String) -> void:

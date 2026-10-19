@@ -16,6 +16,7 @@ shader = ExtResource("3_tefeu")
 shader_parameter/BPM = 120.0
 
 [node name="Main" type="Node2D" unique_id=642545413 node_paths=PackedStringArray("sub_viewport", "texRect", "colorRect", "BPM_Line_Edit")]
+visible = false
 script = ExtResource("1_jyhfs")
 sub_viewport = NodePath("SubViewport")
 texRect = NodePath("CanvasLayer/TextureRect")
@@ -245,9 +246,13 @@ current_tab = 0
 [node name="CodeEdit" type="CodeEdit" parent="UI/Functions/Functions/TabContainer" unique_id=404006726]
 layout_mode = 2
 syntax_highlighter = ExtResource("10_choun")
+draw_control_chars = true
 draw_tabs = true
 draw_spaces = true
+symbol_lookup_on_click = true
+symbol_tooltip_on_hover = true
 line_folding = true
+auto_brace_completion_enabled = true
 metadata/_tab_index = 0
 
 [node name="ButtonSave" type="Button" parent="UI/Functions/Functions/TabContainer/CodeEdit" unique_id=1464673314]
