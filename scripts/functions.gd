@@ -17,8 +17,6 @@ func _ready() -> void:
 func load_from_file(fileDir):
 	var file = FileAccess.open(fileDir, FileAccess.READ)
 	var content = file.get_as_text()
-	#print(file)
-	#print(content)
 	return content
 
 
