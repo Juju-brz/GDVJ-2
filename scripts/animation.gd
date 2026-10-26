@@ -118,8 +118,9 @@ func get_sprite_rect() -> Rect2:
 	if sprite_frames == null:
 		return Rect2()
 	var tex := sprite_frames.get_frame_texture(animation, frame)
+	#tex.Vector2(200.0, 200.0)
 	if tex == null:
 		return Rect2()
 	var size := tex.get_size()
-	var top_left := -size / 2.0 if centered else Vector2.ZERO
+	var top_left := -size * 0.5 if centered else Vector2.ZERO
 	return Rect2(top_left + offset, size)

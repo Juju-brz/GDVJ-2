@@ -3,7 +3,7 @@ class_name  ShaderCode
 
 @onready var code = self
 var shader_path = "res://shaders/mainShader.gdshader"
-var base := OS.get_executable_path().get_base_dir().path_join("contents")
+var base := OS.get_executable_path().get_base_dir().path_join("contents/")
 
 func _ready():
 	var execute = $Execute

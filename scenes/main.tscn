@@ -268,6 +268,11 @@ grow_horizontal = 0
 grow_vertical = 0
 text = "Save"
 
+[node name="CodeEdit2" type="CodeEdit" parent="UI/Functions/Functions/TabContainer" unique_id=1767690915]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
 [connection signal="pressed" from="UI/Propeties_Panel/Window/VBoxContainer/ButtonImage" to="CanvasLayer/mediaImport" method="_on_button_image_pressed"]
 [connection signal="pressed" from="UI/Propeties_Panel/Window/VBoxContainer/ButtonVideo" to="CanvasLayer/mediaImport" method="_on_button_video_pressed"]
 [connection signal="toggled" from="UI/Propeties_Panel/Window/VBoxContainer/CheckCode" to="UI" method="_on_check_code_toggled"]
