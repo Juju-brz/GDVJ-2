@@ -1,0 +1,299 @@
+[gd_scene format=3 uid="uid://c76vmibe63csv"]
+
+[ext_resource type="Script" uid="uid://dem03cehl18g6" path="res://scripts/main.gd" id="1_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://boolpupubgd3f" path="res://UI/CodeLine.tscn" id="2_tbgi4"]
+[ext_resource type="Shader" uid="uid://b0jcj53b5croi" path="res://shaders/mainShader.gdshader" id="3_tefeu"]
+[ext_resource type="Script" uid="uid://d2ht8jdigqi78" path="res://scripts/media_import.gd" id="4_o6xl0"]
+[ext_resource type="Theme" uid="uid://bw2i1kpeccik" path="res://Themes/juju.tres" id="4_tefeu"]
+[ext_resource type="Script" uid="uid://bllo8srcd4uax" path="res://scripts/ui.gd" id="5_o6xl0"]
+[ext_resource type="Script" uid="uid://n2qolndaj24c" path="res://scripts/color_palette.gd" id="5_tbgi4"]
+[ext_resource type="Script" uid="uid://b3xbx6c3gelh0" path="res://scripts/bpm_line_edit.gd" id="7_tipki"]
+[ext_resource type="Script" uid="uid://rl8itots4uke" path="res://scripts/functions.gd" id="9_85g3d"]
+[ext_resource type="CodeHighlighter" uid="uid://mikmy4deotb0" path="res://UI/SyntaxColor.tres" id="10_choun"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ojabb"]
+shader = ExtResource("3_tefeu")
+shader_parameter/BPM = 120.0
+
+[node name="Main" type="Node2D" unique_id=642545413 node_paths=PackedStringArray("sub_viewport", "texRect", "colorRect", "BPM_Line_Edit")]
+visible = false
+script = ExtResource("1_jyhfs")
+sub_viewport = NodePath("SubViewport")
+texRect = NodePath("CanvasLayer/TextureRect")
+colorRect = NodePath("SubViewport/ColorRect")
+BPM_Line_Edit = NodePath("UI/Propeties_Panel/Window/VBoxContainer/HBoxContainer/BPM_Line_Edit")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=130595857]
+size = Vector2i(1280, 720)
+
+[node name="ColorRect" type="ColorRect" parent="SubViewport" unique_id=1368685040]
+material = SubResource("ShaderMaterial_ojabb")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.67785305, 0.0003527984, 0.67961687, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=728399109]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=500291957]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="mediaImport" type="Node2D" parent="CanvasLayer" unique_id=827084082 node_paths=PackedStringArray("file_dialog_image", "file_dialog_video", "color_rect")]
+script = ExtResource("4_o6xl0")
+file_dialog_image = NodePath("../../FileDialog_image")
+file_dialog_video = NodePath("../../FileDialog_video")
+color_rect = NodePath("../../SubViewport/ColorRect")
+
+[node name="FileDialog_image" type="FileDialog" parent="." unique_id=1966622314]
+title = "Open a File"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*png", "*.jpg", "*.jpeg", "*.svg", "*.webp")
+use_native_dialog = true
+
+[node name="FileDialog_video" type="FileDialog" parent="." unique_id=1436063736]
+title = "Open a Directory"
+file_mode = 2
+access = 2
+filters = PackedStringArray("*png", "*.jpg", "*.jpeg", "*.svg")
+use_native_dialog = true
+
+[node name="UI" type="Control" parent="." unique_id=1981191330 node_paths=PackedStringArray("color_palette", "code_line", "function", "test")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_tefeu")
+script = ExtResource("5_o6xl0")
+color_palette = NodePath("Color_Palette/Window")
+code_line = NodePath("CodeLine/CodeLineWindow")
+function = NodePath("Functions/Functions")
+test = NodePath("Propeties_Panel/Window/VBoxContainer/test")
+
+[node name="Propeties_Panel" type="Control" parent="UI" unique_id=883644413]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Window" type="Window" parent="UI/Propeties_Panel" unique_id=1172507678]
+oversampling_override = 1.0
+title = "Propeties Panel"
+position = Vector2i(345, 36)
+size = Vector2i(272, 566)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Propeties_Panel/Window" unique_id=213695121]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonImage" type="Button" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=1112446033]
+layout_mode = 2
+text = "Import Media"
+
+[node name="ButtonVideo" type="Button" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=826516093]
+layout_mode = 2
+text = "import image sequence"
+
+[node name="Label2" type="Label" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=113334318]
+visible = false
+layout_mode = 2
+text = "Loop Animation (Alpha)"
+
+[node name="HSeparator" type="HSeparator" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=992584073]
+layout_mode = 2
+
+[node name="GUI" type="Label" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=1409470558]
+layout_mode = 2
+text = "GUI"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CheckCode" type="CheckButton" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=1299150340]
+layout_mode = 2
+text = "Code Panel"
+
+[node name="CheckColorPalette" type="CheckButton" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=1731296238]
+layout_mode = 2
+text = "Color Palette Panel
+"
+
+[node name="CheckFunctions" type="CheckButton" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=1039785589]
+layout_mode = 2
+text = "Functions"
+
+[node name="HSeparator2" type="HSeparator" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=1453738857]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=865681601]
+layout_mode = 2
+text = "AUDIO"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=506101977]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/Propeties_Panel/Window/VBoxContainer/HBoxContainer" unique_id=715706233]
+layout_mode = 2
+text = "BPM"
+horizontal_alignment = 1
+
+[node name="BPM_Line_Edit" type="LineEdit" parent="UI/Propeties_Panel/Window/VBoxContainer/HBoxContainer" unique_id=420750488]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "120"
+alignment = 1
+script = ExtResource("7_tipki")
+
+[node name="test" type="Control" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=650267080]
+visible = false
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="UI/Propeties_Panel/Window/VBoxContainer/test" unique_id=1090233595]
+layout_mode = 0
+offset_right = 68.5
+offset_bottom = 31.0
+text = "POUTE"
+
+[node name="Color_Palette" type="Control" parent="UI" unique_id=726714338 node_paths=PackedStringArray("color_picker")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_tbgi4")
+color_picker = NodePath("Window/VBoxContainer/ColorPicker")
+
+[node name="Window" type="Window" parent="UI/Color_Palette" unique_id=2129214435]
+oversampling_override = 1.0
+title = "Color Palette"
+position = Vector2i(899, 36)
+size = Vector2i(313, 611)
+visible = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Color_Palette/Window" unique_id=116535653]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorPicker" type="ColorPicker" parent="UI/Color_Palette/Window/VBoxContainer" unique_id=1775879278]
+layout_mode = 2
+edit_alpha = false
+picker_shape = 2
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="UI/Color_Palette/Window/VBoxContainer" unique_id=1696268050]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="UI/Color_Palette/Window/VBoxContainer" unique_id=722723677]
+visible = false
+layout_mode = 2
+text = "Test
+"
+
+[node name="Button" type="Button" parent="UI/Color_Palette/Window/VBoxContainer" unique_id=1371850500]
+layout_mode = 2
+text = "Copy Color"
+
+[node name="CodeLine" parent="UI" unique_id=1876606309 instance=ExtResource("2_tbgi4")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CodeLineWindow" parent="UI/CodeLine" index="0" unique_id=488710302]
+visible = false
+
+[node name="Functions" type="Control" parent="UI" unique_id=970065845]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Functions" type="Window" parent="UI/Functions" unique_id=1261847861]
+oversampling_override = 1.0
+title = "Functions"
+position = Vector2i(916, 67)
+size = Vector2i(414, 583)
+visible = false
+
+[node name="FileDialogSave" type="FileDialog" parent="UI/Functions/Functions" unique_id=2099204610]
+oversampling_override = 1.0
+filters = PackedStringArray("*.gdshaderinc", "*.juju")
+use_native_dialog = true
+
+[node name="TabContainer" type="TabContainer" parent="UI/Functions/Functions" unique_id=422073127 node_paths=PackedStringArray("codeEdit", "file_dialog_save")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 0
+script = ExtResource("9_85g3d")
+codeEdit = NodePath("CodeEdit")
+file_dialog_save = NodePath("../FileDialogSave")
+
+[node name="CodeEdit" type="CodeEdit" parent="UI/Functions/Functions/TabContainer" unique_id=404006726]
+layout_mode = 2
+syntax_highlighter = ExtResource("10_choun")
+draw_control_chars = true
+draw_tabs = true
+draw_spaces = true
+symbol_lookup_on_click = true
+symbol_tooltip_on_hover = true
+line_folding = true
+auto_brace_completion_enabled = true
+metadata/_tab_index = 0
+
+[node name="ButtonSave" type="Button" parent="UI/Functions/Functions/TabContainer/CodeEdit" unique_id=1464673314]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -85.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Save"
+
+[node name="CodeEdit2" type="CodeEdit" parent="UI/Functions/Functions/TabContainer" unique_id=1767690915]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[connection signal="pressed" from="UI/Propeties_Panel/Window/VBoxContainer/ButtonImage" to="CanvasLayer/mediaImport" method="_on_button_image_pressed"]
+[connection signal="pressed" from="UI/Propeties_Panel/Window/VBoxContainer/ButtonVideo" to="CanvasLayer/mediaImport" method="_on_button_video_pressed"]
+[connection signal="toggled" from="UI/Propeties_Panel/Window/VBoxContainer/CheckCode" to="UI" method="_on_check_code_toggled"]
+[connection signal="toggled" from="UI/Propeties_Panel/Window/VBoxContainer/CheckColorPalette" to="UI" method="_on_check_color_palette_toggled"]
+[connection signal="toggled" from="UI/Propeties_Panel/Window/VBoxContainer/CheckFunctions" to="UI" method="_on_check_function_toggled"]
+[connection signal="text_submitted" from="UI/Propeties_Panel/Window/VBoxContainer/HBoxContainer/BPM_Line_Edit" to="." method="_on_bpm_line_edit_text_submitted"]
+[connection signal="text_submitted" from="UI/Propeties_Panel/Window/VBoxContainer/HBoxContainer/BPM_Line_Edit" to="UI" method="_on_bpm_line_edit_text_submitted"]
+[connection signal="pressed" from="UI/Color_Palette/Window/VBoxContainer/Button" to="UI/Color_Palette" method="_on_button_pressed"]
+[connection signal="confirmed" from="UI/Functions/Functions/FileDialogSave" to="UI/Functions" method="_on_file_dialog_save_confirmed"]
+[connection signal="files_selected" from="UI/Functions/Functions/FileDialogSave" to="UI/Functions" method="_on_file_dialog_save_files_selected"]
+[connection signal="pressed" from="UI/Functions/Functions/TabContainer/CodeEdit/ButtonSave" to="UI/Functions" method="_on_button_save_pressed"]
+
+[editable path="UI/CodeLine"]

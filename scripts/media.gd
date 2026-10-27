@@ -9,7 +9,7 @@ var zoom_mode = false
 var lock = false
 @export var emetteur: Node
 
-
+signal draggingON(is_dragging : bool)
 #@export var texRect :TextureRect
 ## Called when the node enters the scene tree for the first time.
 func _ready():
@@ -48,10 +48,18 @@ func _input(event):
 				is_selected = true
 				is_dragging = true
 				drag_offset = global_position - get_global_mouse_position()
+				if is_selected:
+					#GLOBAL.emit_signal("draggingON")
+					GLOBAL.seleted_changed.emit(is_dragging)
+					
+					print("emit signal is selected")
+
 			else:
 				is_selected = false 
 		else:
 			is_dragging = false
+			if is_selected == false:
+				GLOBAL.seleted_changed.emit(is_dragging)
 		
 	if is_selected:
 		if Input.is_action_just_pressed("media_lock"):

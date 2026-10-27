@@ -19,6 +19,8 @@ void fragment() {
 	// SOUND CAPTATION //
 	float BPS = BPM / 60.0; //Beat per second
 	float onde = sin(TIME * BPS * TAU * 0.50);
+	 float BEAT_PHASE = fract(TIME * BPS);
+	 float PULSE = sin(BEAT_PHASE * TAU); 
 	
 	// CENTER UV //
 	vec2 uv = UV * 2.0 - 1.0;
@@ -33,6 +35,7 @@ void fragment() {
 
 signal code_pushed(code)
 signal color_changed(bg_color: Color)
+signal seleted_changed(is_dragging: bool)
 
 var mouse_activation : bool = true
 var BPM : String = "120.0"

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c76vmibe63csv"]
 
-[ext_resource type="Script" uid="uid://dem03cehl18g6" path="res://scripts/mainWindow.gd" id="1_jyhfs"]
+[ext_resource type="Script" uid="uid://dem03cehl18g6" path="res://scripts/main.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://boolpupubgd3f" path="res://UI/CodeLine.tscn" id="2_tbgi4"]
 [ext_resource type="Shader" uid="uid://b0jcj53b5croi" path="res://shaders/mainShader.gdshader" id="3_tefeu"]
 [ext_resource type="Script" uid="uid://d2ht8jdigqi78" path="res://scripts/media_import.gd" id="4_o6xl0"]
@@ -65,7 +65,7 @@ access = 2
 filters = PackedStringArray("*png", "*.jpg", "*.jpeg", "*.svg")
 use_native_dialog = true
 
-[node name="UI" type="Control" parent="." unique_id=1981191330 node_paths=PackedStringArray("color_palette", "code_line", "function")]
+[node name="UI" type="Control" parent="." unique_id=1981191330 node_paths=PackedStringArray("color_palette", "code_line", "function", "test")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -77,6 +77,7 @@ script = ExtResource("5_o6xl0")
 color_palette = NodePath("Color_Palette/Window")
 code_line = NodePath("CodeLine/CodeLineWindow")
 function = NodePath("Functions/Functions")
+test = NodePath("Propeties_Panel/Window/VBoxContainer/test")
 
 [node name="Propeties_Panel" type="Control" parent="UI" unique_id=883644413]
 layout_mode = 1
@@ -157,6 +158,16 @@ text = "120"
 alignment = 1
 script = ExtResource("7_tipki")
 
+[node name="test" type="Control" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=650267080]
+visible = false
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="UI/Propeties_Panel/Window/VBoxContainer/test" unique_id=1090233595]
+layout_mode = 0
+offset_right = 68.5
+offset_bottom = 31.0
+text = "PrOUTE"
+
 [node name="Color_Palette" type="Control" parent="UI" unique_id=726714338 node_paths=PackedStringArray("color_picker")]
 layout_mode = 1
 anchors_preset = 15
@@ -212,16 +223,13 @@ grow_vertical = 2
 [node name="CodeLineWindow" parent="UI/CodeLine" index="0" unique_id=488710302]
 visible = false
 
-[node name="Functions" type="Control" parent="UI" unique_id=970065845 node_paths=PackedStringArray("codeEdit", "file_dialog_save")]
+[node name="Functions" type="Control" parent="UI" unique_id=970065845]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("9_85g3d")
-codeEdit = NodePath("Functions/TabContainer/CodeEdit")
-file_dialog_save = NodePath("Functions/FileDialogSave")
 
 [node name="Functions" type="Window" parent="UI/Functions" unique_id=1261847861]
 oversampling_override = 1.0
@@ -235,13 +243,16 @@ oversampling_override = 1.0
 filters = PackedStringArray("*.gdshaderinc", "*.juju")
 use_native_dialog = true
 
-[node name="TabContainer" type="TabContainer" parent="UI/Functions/Functions" unique_id=422073127]
+[node name="TabContainer" type="TabContainer" parent="UI/Functions/Functions" unique_id=422073127 node_paths=PackedStringArray("codeEdit", "file_dialog_save")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 current_tab = 0
+script = ExtResource("9_85g3d")
+codeEdit = NodePath("CodeEdit")
+file_dialog_save = NodePath("../FileDialogSave")
 
 [node name="CodeEdit" type="CodeEdit" parent="UI/Functions/Functions/TabContainer" unique_id=404006726]
 layout_mode = 2
