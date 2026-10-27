@@ -158,15 +158,24 @@ text = "120"
 alignment = 1
 script = ExtResource("7_tipki")
 
-[node name="test" type="Control" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=650267080]
+[node name="test" type="VBoxContainer" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=1831037016]
 visible = false
 layout_mode = 2
+size_flags_vertical = 8
 
 [node name="LineEdit" type="LineEdit" parent="UI/Propeties_Panel/Window/VBoxContainer/test" unique_id=1090233595]
-layout_mode = 0
-offset_right = 68.5
-offset_bottom = 31.0
+layout_mode = 2
 text = "PrOUTE"
+
+[node name="HSeparator" type="HSeparator" parent="UI/Propeties_Panel/Window/VBoxContainer/test" unique_id=1079625869]
+layout_mode = 2
+
+[node name="CheckButton" type="CheckButton" parent="UI/Propeties_Panel/Window/VBoxContainer/test" unique_id=1430896773]
+layout_mode = 2
+text = "LOCK"
+
+[node name="HSeparator3" type="HSeparator" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=1373303553]
+layout_mode = 2
 
 [node name="Color_Palette" type="Control" parent="UI" unique_id=726714338 node_paths=PackedStringArray("color_picker")]
 layout_mode = 1
