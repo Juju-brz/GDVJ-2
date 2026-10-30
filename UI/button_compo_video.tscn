@@ -1,4 +1,7 @@
 [gd_scene format=3 uid="uid://yskplgqtvglr"]
 
+[ext_resource type="Script" uid="uid://ce8tr5mqmvj21" path="res://scripts/button_compo_video.gd" id="1_1u025"]
+
 [node name="ButtonCompoVideo" type="Button" unique_id=1228571772]
 size_flags_horizontal = 3
+script = ExtResource("1_1u025")

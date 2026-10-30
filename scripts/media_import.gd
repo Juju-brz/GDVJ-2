@@ -17,7 +17,7 @@ const AnimScene = preload("res://scenes/Animation.tscn")
 func _ready() -> void:
 	file_dialog_image.file_selected.connect(on_file_selected)
 	file_dialog_video.dir_selected.connect(on_dir_selected)
-
+	GLOBAL.button_compo.connect(_on_button_compo_video_pressed)
 
 func open_file_dialog_image():
 	file_dialog_image.show()
@@ -52,7 +52,7 @@ func on_file_selected(path: String) -> void:
 	
 	#ResourceLoader.load_threaded_request(new_instance)
 	instances.append(new_instance)
-	new_instance.next_id +=1
+	#new_instance.next_id +=1
 	print("id", new_instance.next_id)
 
 func on_dir_selected(dir : String): 
@@ -98,6 +98,6 @@ func _on_button_video_pressed() -> void:
 	file_dialog_video.show()
 
 
-func _on_button_compo_video_pressed() -> void:
+func _on_button_compo_video_pressed(id) -> void:
 	file_dialog_video.show()
-	ButtonCompoVideo.icon = load("res://media/jujuLogo.png")
+	#ButtonCompoVideo.icon = load("res://media/jujuLogo.png")

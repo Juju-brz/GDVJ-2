@@ -310,9 +310,8 @@ grow_vertical = 2
 
 [node name="Window" type="Window" parent="UI/CompositionVideo" unique_id=2031633769]
 oversampling_override = 1.0
-position = Vector2i(314, 390)
-size = Vector2i(596, 134)
-visible = false
+position = Vector2i(325, 390)
+size = Vector2i(504, 141)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/CompositionVideo/Window" unique_id=2043018296]
 anchors_preset = 15
@@ -358,6 +357,5 @@ text = "CLOSE"
 [connection signal="confirmed" from="UI/Functions/Functions/FileDialogSave" to="UI/Functions" method="_on_file_dialog_save_confirmed"]
 [connection signal="files_selected" from="UI/Functions/Functions/FileDialogSave" to="UI/Functions" method="_on_file_dialog_save_files_selected"]
 [connection signal="pressed" from="UI/Functions/Functions/TabContainer/CodeEdit/ButtonSave" to="UI/Functions" method="_on_button_save_pressed"]
-[connection signal="pressed" from="UI/CompositionVideo/Window/VBoxContainer/HBoxContainer/ButtonCompoVideo" to="CanvasLayer/mediaImport" method="_on_button_compo_video_pressed"]
 
 [editable path="UI/CodeLine"]

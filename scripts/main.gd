@@ -4,7 +4,7 @@ extends Node2D
 @export var texRect: TextureRect
 @export var colorRect : ColorRect
 
-
+var id: int
 signal color(BGColor : Color)
 var switch = true
 @export var BPM_Line_Edit : LineEdit

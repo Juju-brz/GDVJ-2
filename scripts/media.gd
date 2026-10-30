@@ -11,7 +11,13 @@ var lock = false
 
 signal draggingON(is_dragging : bool)
 
-static var next_id := 0 # increment with every instances
+static var next_id :int = 0 # increment with every instances
+var id = "image"
+
+func _init():
+	id += str(next_id)
+	print(id)
+	next_id += 1
 
 func _ready():
 	sprite = self
@@ -49,20 +55,20 @@ func _input(event):
 				is_selected = true
 				is_dragging = true
 				drag_offset = global_position - get_global_mouse_position()
-				#if is_selected:
-					##GLOBAL.emit_signal("draggingON")
-					#GLOBAL.seleted_changed.emit(is_dragging)
-					#
-					#print("emit signal is selected")
+				if is_selected:
+					#GLOBAL.emit_signal("draggingON")
+					GLOBAL.seleted_changed.emit(is_dragging)
+					
+					print("emit signal is selected")
 
 			else:
 				is_selected = false 
 		else:
 			is_dragging = false
 			## TEST ##
-			#if is_selected == false:
-				#GLOBAL.seleted_changed.emit(is_dragging)
-				#print("emit signal is not selected")
+			if is_selected == false:
+				GLOBAL.seleted_changed.emit(is_dragging)
+				print("emit signal is not selected")
 		
 	if is_selected:
 		if Input.is_action_just_pressed("media_lock"):
@@ -111,8 +117,8 @@ func _process(delta):
 		else:
 			global_position = get_global_mouse_position() + drag_offset
 			
-	if is_selected:
-		send_signal()
+	#if is_selected:
+		#send_signal()
 	#else:
 		#send_signal()
 	#sprite.rotation += deg_to_rad(45.0 * delta)
@@ -132,8 +138,8 @@ func _on_color_changed(bg_color: Color) -> void:
 
 ## SIGNALS ##
 
-func send_signal():
-	GLOBAL.seleted_changed.emit(is_dragging)
+#func send_signal():
+	#GLOBAL.seleted_changed.emit(is_dragging)
 	
 	#print("emit signal is selected")
 
