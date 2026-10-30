@@ -7,6 +7,7 @@ var instances: Array = []  #All media imported
 const TARGET_SIZE := 200.0 
 @export var file_dialog_image : FileDialog
 @export var file_dialog_video : FileDialog
+@export var loading_screen : Control
 const MediaScene = preload("res://scenes/media.tscn")
 const AnimScene = preload("res://scenes/Animation.tscn")
 #@export var canvas : CanvasLayer
@@ -14,7 +15,7 @@ const AnimScene = preload("res://scenes/Animation.tscn")
 
 func _ready() -> void:
 	file_dialog_image.file_selected.connect(on_file_selected)
-	file_dialog_video.dir_selected.connect(_on_dir_selected)
+	file_dialog_video.dir_selected.connect(on_dir_selected)
 
 
 func open_file_dialog_image():
@@ -51,25 +52,39 @@ func on_file_selected(path: String) -> void:
 	#ResourceLoader.load_threaded_request(new_instance)
 	instances.append(new_instance)
 
-func _on_dir_selected(dir : String): 
-	var new_instance = AnimScene.instantiate()
-	add_child(new_instance)
-	var files := Array(DirAccess.get_files_at(dir)).filter(
+func on_dir_selected(dir : String): 
+	var files: Array = Array(DirAccess.get_files_at(dir)).filter(
 		func(f): return f.get_extension().to_lower() in ["png", "jpg", "jpeg", "webp"]
 	)
 	files.sort_custom(func(a, b): return a.naturalnocasecmp_to(b) < 0)
+	files = files.map(func(f): return dir.path_join(f))
 
+	var textures: Array = []
+	textures.resize(files.size())
+
+	var task_id := WorkerThreadPool.add_group_task(
+		func(i):
+			var img := Image.load_from_file(files[i])
+			if img != null and not img.is_empty():
+				textures[i] = ImageTexture.create_from_image(img),
+		files.size()
+	)
+	while not WorkerThreadPool.is_group_task_completed(task_id):
+		await get_tree().process_frame
+	WorkerThreadPool.wait_for_group_task_completion(task_id)
+
+	# Sur le thread principal : seulement l'assemblage, quasi instantané
 	var frames := SpriteFrames.new()
 	frames.set_animation_speed("default", 24)
-	for f in files:
-		var img := Image.load_from_file(dir.path_join(f))
-		if img != null:
-			frames.add_frame("default", ImageTexture.create_from_image(img))
+	for tex in textures:
+		if tex != null:
+			frames.add_frame("default", tex)
 
+	var new_instance = AnimScene.instantiate()
+	add_child(new_instance)
 	new_instance.sprite_frames = frames
-	new_instance.play("default")
 	new_instance.position = Vector2(640, 360)
-	print("import animation",new_instance)
+	new_instance.play("default")
 
 func _on_button_image_pressed() -> void:
 	open_file_dialog_image()

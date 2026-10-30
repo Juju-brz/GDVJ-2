@@ -45,10 +45,11 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
 
-[node name="mediaImport" type="Node2D" parent="CanvasLayer" unique_id=827084082 node_paths=PackedStringArray("file_dialog_image", "file_dialog_video", "color_rect")]
+[node name="mediaImport" type="Node2D" parent="CanvasLayer" unique_id=827084082 node_paths=PackedStringArray("file_dialog_image", "file_dialog_video", "loading_screen", "color_rect")]
 script = ExtResource("4_o6xl0")
 file_dialog_image = NodePath("../../FileDialog_image")
 file_dialog_video = NodePath("../../FileDialog_video")
+loading_screen = NodePath("")
 color_rect = NodePath("../../SubViewport/ColorRect")
 
 [node name="FileDialog_image" type="FileDialog" parent="." unique_id=1966622314]
