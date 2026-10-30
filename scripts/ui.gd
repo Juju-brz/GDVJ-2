@@ -23,8 +23,6 @@ func _on_check_function_toggled(toggled_on: bool) -> void:
 	function.visible = toggled_on
 
 func _receive_signal(selected : bool):
-	
-
 	if selected:
 		print("receive signal is selected")
 		test.show()

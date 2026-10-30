@@ -48,6 +48,7 @@ func on_file_selected(path: String) -> void:
 		var screen_size = get_viewport_rect().size
 		new_instance.position = screen_size * 0.5
 	
+	#ResourceLoader.load_threaded_request(new_instance)
 	instances.append(new_instance)
 
 func _on_dir_selected(dir : String): 
