@@ -10,8 +10,9 @@ var lock = false
 @export var emetteur: Node
 
 signal draggingON(is_dragging : bool)
-#@export var texRect :TextureRect
-## Called when the node enters the scene tree for the first time.
+
+static var next_id := 0 # increment with every instances
+
 func _ready():
 	sprite = self
 	set_process_input(true)
@@ -134,7 +135,7 @@ func _on_color_changed(bg_color: Color) -> void:
 func send_signal():
 	GLOBAL.seleted_changed.emit(is_dragging)
 	
-	print("emit signal is selected")
+	#print("emit signal is selected")
 
 #func send_signal_not_selected():
 	#if is_selected == false:

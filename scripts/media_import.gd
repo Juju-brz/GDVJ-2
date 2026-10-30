@@ -12,6 +12,7 @@ const MediaScene = preload("res://scenes/media.tscn")
 const AnimScene = preload("res://scenes/Animation.tscn")
 #@export var canvas : CanvasLayer
 @export var color_rect : ColorRect
+@export var ButtonCompoVideo : Button
 
 func _ready() -> void:
 	file_dialog_image.file_selected.connect(on_file_selected)
@@ -51,6 +52,8 @@ func on_file_selected(path: String) -> void:
 	
 	#ResourceLoader.load_threaded_request(new_instance)
 	instances.append(new_instance)
+	new_instance.next_id +=1
+	print("id", new_instance.next_id)
 
 func on_dir_selected(dir : String): 
 	var files: Array = Array(DirAccess.get_files_at(dir)).filter(
@@ -61,7 +64,8 @@ func on_dir_selected(dir : String):
 
 	var textures: Array = []
 	textures.resize(files.size())
-
+	
+	### DONT FREEZE SCREEN
 	var task_id := WorkerThreadPool.add_group_task(
 		func(i):
 			var img := Image.load_from_file(files[i])
@@ -92,3 +96,8 @@ func _on_button_image_pressed() -> void:
 
 func _on_button_video_pressed() -> void:
 	file_dialog_video.show()
+
+
+func _on_button_compo_video_pressed() -> void:
+	file_dialog_video.show()
+	ButtonCompoVideo.icon = load("res://media/jujuLogo.png")

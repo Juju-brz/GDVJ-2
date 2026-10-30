@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://b3xbx6c3gelh0" path="res://scripts/bpm_line_edit.gd" id="7_tipki"]
 [ext_resource type="Script" uid="uid://rl8itots4uke" path="res://scripts/functions.gd" id="9_85g3d"]
 [ext_resource type="CodeHighlighter" uid="uid://mikmy4deotb0" path="res://UI/SyntaxColor.tres" id="10_choun"]
+[ext_resource type="PackedScene" uid="uid://yskplgqtvglr" path="res://UI/button_compo_video.tscn" id="11_ya4ey"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ojabb"]
 shader = ExtResource("3_tefeu")
@@ -45,12 +46,12 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
 
-[node name="mediaImport" type="Node2D" parent="CanvasLayer" unique_id=827084082 node_paths=PackedStringArray("file_dialog_image", "file_dialog_video", "loading_screen", "color_rect")]
+[node name="mediaImport" type="Node2D" parent="CanvasLayer" unique_id=827084082 node_paths=PackedStringArray("file_dialog_image", "file_dialog_video", "color_rect", "ButtonCompoVideo")]
 script = ExtResource("4_o6xl0")
 file_dialog_image = NodePath("../../FileDialog_image")
 file_dialog_video = NodePath("../../FileDialog_video")
-loading_screen = NodePath("")
 color_rect = NodePath("../../SubViewport/ColorRect")
+ButtonCompoVideo = NodePath("../../UI/CompositionVideo/Window/VBoxContainer/HBoxContainer/ButtonCompoVideo")
 
 [node name="FileDialog_image" type="FileDialog" parent="." unique_id=1966622314]
 title = "Open a File"
@@ -66,7 +67,7 @@ access = 2
 filters = PackedStringArray("*png", "*.jpg", "*.jpeg", "*.svg")
 use_native_dialog = true
 
-[node name="UI" type="Control" parent="." unique_id=1981191330 node_paths=PackedStringArray("color_palette", "code_line", "function", "test")]
+[node name="UI" type="Control" parent="." unique_id=1981191330 node_paths=PackedStringArray("color_palette", "code_line", "function", "test", "Compo")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -79,6 +80,7 @@ color_palette = NodePath("Color_Palette/Window")
 code_line = NodePath("CodeLine/CodeLineWindow")
 function = NodePath("Functions/Functions")
 test = NodePath("Propeties_Panel/Window/VBoxContainer/test")
+Compo = NodePath("CompositionVideo/Window")
 
 [node name="Propeties_Panel" type="Control" parent="UI" unique_id=883644413]
 layout_mode = 1
@@ -108,6 +110,10 @@ text = "Import Media"
 [node name="ButtonVideo" type="Button" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=826516093]
 layout_mode = 2
 text = "import image sequence"
+
+[node name="ButtonCompVideos" type="Button" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=1844992684]
+layout_mode = 2
+text = "create Composition Vidéos"
 
 [node name="Label2" type="Label" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=113334318]
 visible = false
@@ -294,8 +300,55 @@ visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
+[node name="CompositionVideo" type="Control" parent="UI" unique_id=1395411035]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Window" type="Window" parent="UI/CompositionVideo" unique_id=2031633769]
+oversampling_override = 1.0
+position = Vector2i(314, 390)
+size = Vector2i(596, 134)
+visible = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/CompositionVideo/Window" unique_id=2043018296]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/CompositionVideo/Window/VBoxContainer" unique_id=1711228763]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ButtonCompoVideo" parent="UI/CompositionVideo/Window/VBoxContainer/HBoxContainer" unique_id=1228571772 instance=ExtResource("11_ya4ey")]
+layout_mode = 2
+
+[node name="ButtonCompoVideo2" parent="UI/CompositionVideo/Window/VBoxContainer/HBoxContainer" unique_id=795341215 instance=ExtResource("11_ya4ey")]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UI/CompositionVideo/Window/VBoxContainer" unique_id=1946896192]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="UI/CompositionVideo/Window/VBoxContainer/HBoxContainer2" unique_id=1670159002]
+layout_mode = 2
+text = "LOOP"
+
+[node name="LineEdit" type="LineEdit" parent="UI/CompositionVideo/Window/VBoxContainer/HBoxContainer2" unique_id=1706811685]
+layout_mode = 2
+text = "CLOSE"
+
+[node name="Button2" type="Button" parent="UI/CompositionVideo/Window/VBoxContainer/HBoxContainer2" unique_id=326714374]
+layout_mode = 2
+text = "CLOSE"
+
 [connection signal="pressed" from="UI/Propeties_Panel/Window/VBoxContainer/ButtonImage" to="CanvasLayer/mediaImport" method="_on_button_image_pressed"]
 [connection signal="pressed" from="UI/Propeties_Panel/Window/VBoxContainer/ButtonVideo" to="CanvasLayer/mediaImport" method="_on_button_video_pressed"]
+[connection signal="pressed" from="UI/Propeties_Panel/Window/VBoxContainer/ButtonCompVideos" to="UI" method="_on_button_comp_videos_pressed"]
 [connection signal="toggled" from="UI/Propeties_Panel/Window/VBoxContainer/CheckCode" to="UI" method="_on_check_code_toggled"]
 [connection signal="toggled" from="UI/Propeties_Panel/Window/VBoxContainer/CheckColorPalette" to="UI" method="_on_check_color_palette_toggled"]
 [connection signal="toggled" from="UI/Propeties_Panel/Window/VBoxContainer/CheckFunctions" to="UI" method="_on_check_function_toggled"]
@@ -305,5 +358,6 @@ metadata/_tab_index = 1
 [connection signal="confirmed" from="UI/Functions/Functions/FileDialogSave" to="UI/Functions" method="_on_file_dialog_save_confirmed"]
 [connection signal="files_selected" from="UI/Functions/Functions/FileDialogSave" to="UI/Functions" method="_on_file_dialog_save_files_selected"]
 [connection signal="pressed" from="UI/Functions/Functions/TabContainer/CodeEdit/ButtonSave" to="UI/Functions" method="_on_button_save_pressed"]
+[connection signal="pressed" from="UI/CompositionVideo/Window/VBoxContainer/HBoxContainer/ButtonCompoVideo" to="CanvasLayer/mediaImport" method="_on_button_compo_video_pressed"]
 
 [editable path="UI/CodeLine"]
