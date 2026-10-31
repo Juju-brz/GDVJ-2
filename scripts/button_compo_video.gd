@@ -12,3 +12,4 @@ func _init():
 
 func _ready():
 	pressed.connect(func(): GLOBAL.button_compo.emit(id))
+	print("button id", id)

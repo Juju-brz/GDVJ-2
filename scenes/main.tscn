@@ -10,7 +10,9 @@
 [ext_resource type="Script" uid="uid://b3xbx6c3gelh0" path="res://scripts/bpm_line_edit.gd" id="7_tipki"]
 [ext_resource type="Script" uid="uid://rl8itots4uke" path="res://scripts/functions.gd" id="9_85g3d"]
 [ext_resource type="CodeHighlighter" uid="uid://mikmy4deotb0" path="res://UI/SyntaxColor.tres" id="10_choun"]
+[ext_resource type="Script" uid="uid://ccajgieb5ws0" path="res://scripts/composition_video.gd" id="11_trceg"]
 [ext_resource type="PackedScene" uid="uid://yskplgqtvglr" path="res://UI/button_compo_video.tscn" id="11_ya4ey"]
+[ext_resource type="Script" uid="uid://d4al31rrfr4oj" path="res://scripts/cliptable.gd" id="12_a8y0u"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ojabb"]
 shader = ExtResource("3_tefeu")
@@ -51,7 +53,7 @@ script = ExtResource("4_o6xl0")
 file_dialog_image = NodePath("../../FileDialog_image")
 file_dialog_video = NodePath("../../FileDialog_video")
 color_rect = NodePath("../../SubViewport/ColorRect")
-ButtonCompoVideo = NodePath("../../UI/CompositionVideo/Window/VBoxContainer/HBoxContainer/ButtonCompoVideo")
+ButtonCompoVideo = NodePath("../../UI/CompositionVideo/Window/VBoxContainer/CLIPTABLE/ButtonCompoVideo")
 
 [node name="FileDialog_image" type="FileDialog" parent="." unique_id=1966622314]
 title = "Open a File"
@@ -307,6 +309,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("11_trceg")
 
 [node name="Window" type="Window" parent="UI/CompositionVideo" unique_id=2031633769]
 oversampling_override = 1.0
@@ -320,14 +323,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/CompositionVideo/Window/VBoxContainer" unique_id=1711228763]
+[node name="CLIPTABLE" type="HBoxContainer" parent="UI/CompositionVideo/Window/VBoxContainer" unique_id=1711228763]
 layout_mode = 2
 size_flags_vertical = 3
+script = ExtResource("12_a8y0u")
 
-[node name="ButtonCompoVideo" parent="UI/CompositionVideo/Window/VBoxContainer/HBoxContainer" unique_id=1228571772 instance=ExtResource("11_ya4ey")]
+[node name="ButtonCompoVideo" parent="UI/CompositionVideo/Window/VBoxContainer/CLIPTABLE" unique_id=1228571772 instance=ExtResource("11_ya4ey")]
 layout_mode = 2
 
-[node name="ButtonCompoVideo2" parent="UI/CompositionVideo/Window/VBoxContainer/HBoxContainer" unique_id=795341215 instance=ExtResource("11_ya4ey")]
+[node name="ButtonCompoVideo2" parent="UI/CompositionVideo/Window/VBoxContainer/CLIPTABLE" unique_id=795341215 instance=ExtResource("11_ya4ey")]
+layout_mode = 2
+
+[node name="ButtonCompoVideo3" parent="UI/CompositionVideo/Window/VBoxContainer/CLIPTABLE" unique_id=918760787 instance=ExtResource("11_ya4ey")]
+layout_mode = 2
+
+[node name="ButtonCompoVideo4" parent="UI/CompositionVideo/Window/VBoxContainer/CLIPTABLE" unique_id=46927466 instance=ExtResource("11_ya4ey")]
 layout_mode = 2
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="UI/CompositionVideo/Window/VBoxContainer" unique_id=1946896192]
@@ -337,13 +347,13 @@ layout_mode = 2
 layout_mode = 2
 text = "LOOP"
 
-[node name="LineEdit" type="LineEdit" parent="UI/CompositionVideo/Window/VBoxContainer/HBoxContainer2" unique_id=1706811685]
+[node name="AddClipBut" type="Button" parent="UI/CompositionVideo/Window/VBoxContainer/HBoxContainer2" unique_id=374141676]
 layout_mode = 2
-text = "CLOSE"
+text = "ADD CLIP PANEL"
 
-[node name="Button2" type="Button" parent="UI/CompositionVideo/Window/VBoxContainer/HBoxContainer2" unique_id=326714374]
+[node name="DelBut" type="Button" parent="UI/CompositionVideo/Window/VBoxContainer/HBoxContainer2" unique_id=326714374]
 layout_mode = 2
-text = "CLOSE"
+text = "DELETTE"
 
 [connection signal="pressed" from="UI/Propeties_Panel/Window/VBoxContainer/ButtonImage" to="CanvasLayer/mediaImport" method="_on_button_image_pressed"]
 [connection signal="pressed" from="UI/Propeties_Panel/Window/VBoxContainer/ButtonVideo" to="CanvasLayer/mediaImport" method="_on_button_video_pressed"]
@@ -357,5 +367,7 @@ text = "CLOSE"
 [connection signal="confirmed" from="UI/Functions/Functions/FileDialogSave" to="UI/Functions" method="_on_file_dialog_save_confirmed"]
 [connection signal="files_selected" from="UI/Functions/Functions/FileDialogSave" to="UI/Functions" method="_on_file_dialog_save_files_selected"]
 [connection signal="pressed" from="UI/Functions/Functions/TabContainer/CodeEdit/ButtonSave" to="UI/Functions" method="_on_button_save_pressed"]
+[connection signal="pressed" from="UI/CompositionVideo/Window/VBoxContainer/HBoxContainer2/AddClipBut" to="UI/CompositionVideo/Window/VBoxContainer/CLIPTABLE" method="_on_add_clip_but_pressed"]
+[connection signal="pressed" from="UI/CompositionVideo/Window/VBoxContainer/HBoxContainer2/DelBut" to="UI/CompositionVideo" method="_on_del_but_pressed"]
 
 [editable path="UI/CodeLine"]
