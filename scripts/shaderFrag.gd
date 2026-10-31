@@ -22,7 +22,7 @@ func _input(event: InputEvent) -> void:
 func _on_execute_pressed() -> void:
 	var user_code = self.text
 	GLOBAL.ShaderFrag = user_code
-	GLOBAL.code_pushed.emit(user_code)
+	EVENTS.code_pushed.emit(user_code)
 	#CodePush.emit(user_code)
 	print("signal emit : code Shader")
 	

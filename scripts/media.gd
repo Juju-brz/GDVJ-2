@@ -56,8 +56,8 @@ func _input(event):
 				is_dragging = true
 				drag_offset = global_position - get_global_mouse_position()
 				if is_selected:
-					#GLOBAL.emit_signal("draggingON")
-					GLOBAL.seleted_changed.emit(is_dragging)
+					#EVENTS.emit_signal("draggingON")
+					EVENTS.seleted_changed.emit(is_dragging)
 					
 					print("emit signal is selected")
 
@@ -67,7 +67,7 @@ func _input(event):
 			is_dragging = false
 			## TEST ##
 			if is_selected == false:
-				GLOBAL.seleted_changed.emit(is_dragging)
+				EVENTS.seleted_changed.emit(is_dragging)
 				print("emit signal is not selected")
 		
 	if is_selected:
@@ -139,11 +139,11 @@ func _on_color_changed(bg_color: Color) -> void:
 ## SIGNALS ##
 
 #func send_signal():
-	#GLOBAL.seleted_changed.emit(is_dragging)
+	#EVENTS.seleted_changed.emit(is_dragging)
 	
 	#print("emit signal is selected")
 
 #func send_signal_not_selected():
 	#if is_selected == false:
-		#GLOBAL.seleted_changed.emit(is_dragging)
+		#EVENTS.seleted_changed.emit(is_dragging)
 		#print("emit signal is not selected")

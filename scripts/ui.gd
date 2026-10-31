@@ -5,12 +5,13 @@ extends Control
 @export var code_line : Window
 @export var function : Window
 @export var test : VBoxContainer
-@export var Compo : Window
+#@export var Compo : Window
 
 var selected_media = false
+const comp_video = preload("res://UI/composition_video.tscn")
 
 func _ready():
-	GLOBAL.seleted_changed.connect(_receive_signal)
+	EVENTS.seleted_changed.connect(_receive_signal)
 	
 func _on_check_color_palette_toggled(toggled_on: bool) -> void:
 	color_palette.visible = toggled_on
@@ -36,4 +37,6 @@ func _receive_signal(selected : bool):
 
 
 func _on_button_comp_videos_pressed() -> void:
-	Compo.show()
+	pass
+	var b =comp_video.instantiate()
+	add_child(b)

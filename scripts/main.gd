@@ -11,14 +11,14 @@ var switch = true
 
 func _ready() -> void:
 	var tex: ViewportTexture = $SubViewport.get_texture()
-	GLOBAL.code_pushed.connect(_on_code_pushed)
+	EVENTS.code_pushed.connect(_on_code_pushed)
 	if switch == true:
 		texRect.texture = tex
 	bpm_changed()
 	#Code.text.insert(1, "proute")
 
 func _process(delta: float) -> void:
-	GLOBAL.color_changed.emit(colorRect.color)
+	EVENTS.color_changed.emit(colorRect.color)
 
 
 func _on_code_pushed(code: String) -> void:

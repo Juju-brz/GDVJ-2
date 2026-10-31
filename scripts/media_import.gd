@@ -17,7 +17,7 @@ const AnimScene = preload("res://scenes/Animation.tscn")
 func _ready() -> void:
 	file_dialog_image.file_selected.connect(on_file_selected)
 	file_dialog_video.dir_selected.connect(on_dir_selected)
-	GLOBAL.button_compo.connect(_on_button_compo_video_pressed)
+	EVENTS.button_compo.connect(_on_button_compo_video_pressed)
 
 func open_file_dialog_image():
 	file_dialog_image.show()

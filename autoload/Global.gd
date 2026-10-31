@@ -34,11 +34,11 @@ void fragment() {
 }"""
 
 ### SIGNALS ###
-signal code_pushed(code)
-signal color_changed(bg_color: Color)
-signal seleted_changed(is_dragging: bool)
-signal loading_screen(time:float)
-signal button_compo(id :int)
+#signal code_pushed(code)
+#signal color_changed(bg_color: Color)
+#signal seleted_changed(is_dragging: bool)
+#signal loading_screen(time:float)
+#signal button_compo(id :int)
 
 var mouse_activation : bool = true
 var BPM : String = "120.0"
