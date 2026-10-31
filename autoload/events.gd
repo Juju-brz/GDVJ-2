@@ -1,5 +1,6 @@
 extends Node
 
+### SIGNALS ###
 
 signal code_pushed(code)
 signal color_changed(bg_color: Color)
