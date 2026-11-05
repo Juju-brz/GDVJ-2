@@ -45,9 +45,9 @@ layout_mode = 2
 [node name="HBoxContainer2" type="HBoxContainer" parent="Window/VBoxContainer" unique_id=218075773]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="Window/VBoxContainer/HBoxContainer2" unique_id=1392506682]
+[node name="LoopBut" type="Button" parent="Window/VBoxContainer/HBoxContainer2" unique_id=1392506682]
 layout_mode = 2
-text = "LOOP"
+text = "LOOP NUMBER"
 
 [node name="AddClipBut" type="Button" parent="Window/VBoxContainer/HBoxContainer2" unique_id=1904289634]
 layout_mode = 2

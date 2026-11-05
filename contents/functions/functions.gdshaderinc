@@ -36,6 +36,28 @@ float sdSegment(vec2 p,vec2 a,vec2 b) {
 	float h = clamp( dot(pa,ba)/dot(ba,ba), 0.0, 1.0 );
 	return length( pa - ba*h );
 }
+float dot2( in vec2 v ) { return dot(v,v); }
+
+float sdHeart( in vec2 p ) {
+	p.x = abs(p.x);
+
+	if( p.y+p.x>1.0 )
+			return sqrt(dot2(p-vec2(0.25,0.75))) - sqrt(2.0)/4.0;
+		return sqrt(min(dot2(p-vec2(0.00,1.00)),
+						dot2(p-0.5*max(p.x+p.y,0.0)))) * sign(p.x-p.y);
+}
+
+// EFFECTS
+float vortex(vec2 uv, float radius, float duplication) {
+    duplication = clamp(duplication, 4.0, 20.0); // clamp inside the body
+    float f = fract(sdCircle(uv, radius, duplication));
+    return f;
+}
+// REPEAT
+vec2 repeat(vec2 uv, float spacing) {
+	vec2 p = mod(uv, spacing) - 0.5 * spacing;
+	return p;
+}
 
 // BOOLEAN //
 float UNION (float a, float b) {
@@ -46,14 +68,22 @@ float INTERSECTION(float a, float b) {
 	return max(a, b);
 }
 
-float SOUSTRACTION(float a, float b) {
+float DIFFERENCE(float a, float b) {
 	return max(a, -b);
 }
 
+float EXCLUSION(float a, float b) {
+	return max(UNION(a, b), -INTERSECTION(a, b));
+}
 //TRANSFORM //
 mat2 rot(float a) {
 	float c = cos(a), s = sin(a);
 	return mat2(vec2(c, -s), vec2(s, c));
+}
+mat3 translate2d(vec2 t) {
+	return mat3(vec3(1.0, 0.0, 0.0),
+				vec3(0.0, 1.0, 0.0),
+				vec3(t.x, t.y, 1.0));
 }
 
 // COLOR //

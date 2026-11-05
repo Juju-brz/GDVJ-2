@@ -45,12 +45,11 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
 
-[node name="mediaImport" type="Node2D" parent="CanvasLayer" unique_id=827084082 node_paths=PackedStringArray("file_dialog_image", "file_dialog_video", "color_rect", "ButtonCompoVideo")]
+[node name="mediaImport" type="Node2D" parent="CanvasLayer" unique_id=827084082 node_paths=PackedStringArray("file_dialog_image", "file_dialog_video", "color_rect")]
 script = ExtResource("4_o6xl0")
 file_dialog_image = NodePath("../../FileDialog_image")
 file_dialog_video = NodePath("../../FileDialog_video")
 color_rect = NodePath("../../SubViewport/ColorRect")
-ButtonCompoVideo = NodePath("")
 
 [node name="FileDialog_image" type="FileDialog" parent="." unique_id=1966622314]
 title = "Open a File"
@@ -305,7 +304,6 @@ metadata/_tab_index = 1
 [connection signal="toggled" from="UI/Propeties_Panel/Window/VBoxContainer/CheckColorPalette" to="UI" method="_on_check_color_palette_toggled"]
 [connection signal="toggled" from="UI/Propeties_Panel/Window/VBoxContainer/CheckFunctions" to="UI" method="_on_check_function_toggled"]
 [connection signal="text_submitted" from="UI/Propeties_Panel/Window/VBoxContainer/HBoxContainer/BPM_Line_Edit" to="." method="_on_bpm_line_edit_text_submitted"]
-[connection signal="text_submitted" from="UI/Propeties_Panel/Window/VBoxContainer/HBoxContainer/BPM_Line_Edit" to="UI" method="_on_bpm_line_edit_text_submitted"]
 [connection signal="pressed" from="UI/Color_Palette/Window/VBoxContainer/Button" to="UI/Color_Palette" method="_on_button_pressed"]
 [connection signal="confirmed" from="UI/Functions/Functions/FileDialogSave" to="UI/Functions" method="_on_file_dialog_save_confirmed"]
 [connection signal="files_selected" from="UI/Functions/Functions/FileDialogSave" to="UI/Functions" method="_on_file_dialog_save_files_selected"]

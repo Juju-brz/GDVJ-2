@@ -76,8 +76,7 @@ func on_dir_selected(dir : String):
 	while not WorkerThreadPool.is_group_task_completed(task_id):
 		await get_tree().process_frame
 	WorkerThreadPool.wait_for_group_task_completion(task_id)
-
-	# Sur le thread principal : seulement l'assemblage, quasi instantané
+	
 	var frames := SpriteFrames.new()
 	frames.set_animation_speed("default", 24)
 	for tex in textures:
