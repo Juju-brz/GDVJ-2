@@ -2,6 +2,34 @@
 
 [ext_resource type="Script" uid="uid://ce8tr5mqmvj21" path="res://scripts/button_compo_video.gd" id="1_1u025"]
 
-[node name="ButtonCompoVideo" type="Button" unique_id=1228571772]
+[node name="ButtonCompoVideo" type="Control" unique_id=844080507 node_paths=PackedStringArray("buttonCompoVideo")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 script = ExtResource("1_1u025")
+buttonCompoVideo = NodePath("ButtonCompoVideo")
+
+[node name="ButtonCompoVideo" type="Button" parent="." unique_id=1885211758]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=841086749]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Control" type="Control" parent="." unique_id=1381197927]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="pressed" from="ButtonCompoVideo" to="." method="_on_button_compo_video_pressed"]

@@ -9,7 +9,7 @@ uniform float BPM = 120; // Default Value
 
 void fragment() {
 	
-	float sharp = 30.0;
+	float sharp = 40.0;
 	
 	// COLORS //
 	vec3 color1 = vec3(1.0, 0.5, 0.0); //orange

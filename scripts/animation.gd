@@ -14,7 +14,12 @@ var lock = false
 
 #@export var texRect :TextureRect
 ## Called when the node enters the scene tree for the first time.
+
+#func _init():
+	#EVENTS.button_compo,()
+
 func _ready():
+	EVENTS.button_compo.connect(_on_button_compo_video_pressed)
 	sprite = self
 	set_process_input(true)
 	#GLOBAL.color_changed.connect(_on_color_changed)
@@ -36,6 +41,8 @@ void fragment() {
 	material = mat
 	### MULTIPLY BLEND MODE ###
 
+func _on_button_compo_video_pressed():
+	print("choucroute farchis")
 
 func _input(event):
 	if Input.is_action_just_pressed("media_change_mode"):

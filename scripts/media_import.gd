@@ -14,11 +14,14 @@ const AnimScene = preload("res://scenes/Animation.tscn")
 @export var color_rect : ColorRect
 @export var ButtonCompoVideo : Button
 
+
+var boutonComp = false
+
 func _ready() -> void:
 	file_dialog_image.file_selected.connect(on_file_selected)
 	file_dialog_video.dir_selected.connect(on_dir_selected)
 	EVENTS.button_compo.connect(_on_button_compo_video_pressed)
-
+	EVENTS.add_button_compo_icon.connect(test)
 func open_file_dialog_image():
 	file_dialog_image.show()
 
@@ -88,6 +91,11 @@ func on_dir_selected(dir : String):
 	new_instance.sprite_frames = frames
 	new_instance.position = Vector2(640, 360)
 	new_instance.play("default")
+	
+	if boutonComp == true:
+		EVENTS.add_button_compo_icon.emit()
+		
+		boutonComp = false
 
 func _on_button_image_pressed() -> void:
 	open_file_dialog_image()
@@ -99,4 +107,9 @@ func _on_button_video_pressed() -> void:
 
 func _on_button_compo_video_pressed(id) -> void:
 	file_dialog_video.show()
+	boutonComp = true
 	#ButtonCompoVideo.icon = load("res://media/jujuLogo.png")
+
+
+func test():
+	print("plats de nouilles")
