@@ -16,9 +16,11 @@ func _ready():
 	EVENTS.add_button_compo_icon.connect(test)
 
 
-func test():
+func test(texture):
 	print("change this f*** icon")
-	buttonCompoVideo.icon = preload("res://media/jujuLogo.png")
+	print(texture)
+	#buttonCompoVideo.icon = preload("res://media/jujuLogo.png")
+	buttonCompoVideo.icon = texture
 	buttonCompoVideo.expand_icon = true
 
 

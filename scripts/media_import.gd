@@ -102,7 +102,8 @@ func on_dir_selected(dir : String):
 	
 	## TEST FOR COMPOSITION ##
 	if boutonComp == true:
-		EVENTS.add_button_compo_icon.emit()
+		var texture = new_instance.sprite.sprite_frames.get_frame_texture("default", 0)
+		EVENTS.add_button_compo_icon.emit(texture)
 		
 		boutonComp = false
 

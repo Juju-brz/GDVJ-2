@@ -112,7 +112,7 @@ float rosace(vec2 uv, float shape) {
 	
 	float halfpi = 1.57;
 	//vec2 p = rot(halfpi) * uv;
-	float d2 = abs(sdCircle(uv, 0.07, 80.0));
+	float d2 = abs(sdCircle(uv, shape -0.3, 80.0));
 	float d3 = 1e9;
 	for (int i = 0; i <10; i++) {
 		float halfpi = 1.57;
