@@ -46,6 +46,13 @@ float sdHeart( in vec2 p ) {
 		return sqrt(min(dot2(p-vec2(0.00,1.00)),
 						dot2(p-0.5*max(p.x+p.y,0.0)))) * sign(p.x-p.y);
 }
+float sdVesica(vec2 p, float r, float d) {
+    p = abs(p);
+
+    float b = sqrt(r*r-d*d);  // can delay this sqrt by rewriting the comparison
+    return ((p.y-b)*d > p.x*b) ? length(p-vec2(0.0,b))*sign(d)
+                               : length(p-vec2(-d,0.0))-r;
+}
 
 // EFFECTS
 float vortex(vec2 uv, float radius, float duplication) {
@@ -75,6 +82,8 @@ float DIFFERENCE(float a, float b) {
 float EXCLUSION(float a, float b) {
 	return max(UNION(a, b), -INTERSECTION(a, b));
 }
+
+
 //TRANSFORM //
 mat2 rot(float a) {
 	float c = cos(a), s = sin(a);
@@ -84,6 +93,37 @@ mat3 translate2d(vec2 t) {
 	return mat3(vec3(1.0, 0.0, 0.0),
 				vec3(0.0, 1.0, 0.0),
 				vec3(t.x, t.y, 1.0));
+}
+
+// GOTHIC Geometries //
+float Quatrefoil(vec2 uv, float radius, float sharp) {
+	float d1 = sdCircle(uv + vec2(0.0,0.2), radius, sharp);
+	float d2 = sdCircle(uv + vec2(0.2,0.0), radius, sharp);
+	float d3 = sdCircle(uv - vec2(0.2, 0.0), radius, sharp);
+	float d4 = sdCircle(uv - vec2(0.0, 0.2), radius, sharp);
+	float e1 = EXCLUSION(d2, d3);
+	float e2 = EXCLUSION(d1, d4);
+	float e3 = INTERSECTION(e1, e2);
+	return e3;
+}
+
+float rosace(vec2 uv, float shape) {
+	float d1 = abs(sdCircle(uv, 0.6, 80.0));
+	
+	float halfpi = 1.57;
+	//vec2 p = rot(halfpi) * uv;
+	float d2 = abs(sdCircle(uv, 0.07, 80.0));
+	float d3 = 1e9;
+	for (int i = 0; i <10; i++) {
+		float halfpi = 1.57;
+		float a = float(i) * TAU / 10.0;
+		vec2 p = rot(a) * uv;
+		d3 = min(d3, abs(sdVesica(p + vec2(0.0, 0.3), 0.5, shape)) * 80.0);
+		//halfpi = halfpi * 2.0;
+	}
+	float e1 = UNION(d1, d2);
+	float e2 = UNION(e1, d3);
+	return e2;
 }
 
 // COLOR //

@@ -1,19 +1,21 @@
 extends Node2D
 
 
-
+#### VARIABLES ####
 ### IMPORT MEDIA ###
 var instances: Array = []  #All media imported
 const TARGET_SIZE := 200.0 
+
 @export var file_dialog_image : FileDialog
 @export var file_dialog_video : FileDialog
-@export var loading_screen : Control
+
 const MediaScene = preload("res://scenes/media.tscn")
 const AnimScene = preload("res://scenes/Animation.tscn")
-#@export var canvas : CanvasLayer
-@export var color_rect : ColorRect
-@export var ButtonCompoVideo : Button
 
+#@export var canvas : CanvasLayer
+#@export var color_rect : ColorRect
+#@export var ButtonCompoVideo : Button
+#@export var loading_screen : Control
 
 var boutonComp = false
 
@@ -22,6 +24,8 @@ func _ready() -> void:
 	file_dialog_video.dir_selected.connect(on_dir_selected)
 	EVENTS.button_compo.connect(_on_button_compo_video_pressed)
 	EVENTS.add_button_compo_icon.connect(test)
+
+
 func open_file_dialog_image():
 	file_dialog_image.show()
 
@@ -68,7 +72,7 @@ func on_dir_selected(dir : String):
 	var textures: Array = []
 	textures.resize(files.size())
 	
-	### DONT FREEZE SCREEN
+	### DONT FREEZE SCREEN  BEGIN ###
 	var task_id := WorkerThreadPool.add_group_task(
 		func(i):
 			var img := Image.load_from_file(files[i])
@@ -76,22 +80,27 @@ func on_dir_selected(dir : String):
 				textures[i] = ImageTexture.create_from_image(img),
 		files.size()
 	)
+	
 	while not WorkerThreadPool.is_group_task_completed(task_id):
 		await get_tree().process_frame
 	WorkerThreadPool.wait_for_group_task_completion(task_id)
+	
+	### DONT FREEZE SCREEN END ###
 	
 	var frames := SpriteFrames.new()
 	frames.set_animation_speed("default", 24)
 	for tex in textures:
 		if tex != null:
 			frames.add_frame("default", tex)
-
+	
+	## CREATE INSTANCE ##
 	var new_instance = AnimScene.instantiate()
 	add_child(new_instance)
 	new_instance.sprite_frames = frames
 	new_instance.position = Vector2(640, 360)
 	new_instance.play("default")
 	
+	## TEST FOR COMPOSITION ##
 	if boutonComp == true:
 		EVENTS.add_button_compo_icon.emit()
 		
@@ -100,10 +109,8 @@ func on_dir_selected(dir : String):
 func _on_button_image_pressed() -> void:
 	open_file_dialog_image()
 
-
 func _on_button_video_pressed() -> void:
 	file_dialog_video.show()
-
 
 func _on_button_compo_video_pressed(id) -> void:
 	file_dialog_video.show()

@@ -37,6 +37,5 @@ func _receive_signal(selected : bool):
 
 
 func _on_button_comp_videos_pressed() -> void:
-	pass
-	var b =comp_video.instantiate()
+	var b = comp_video.instantiate()
 	add_child(b)

@@ -3,11 +3,11 @@ extends Node2D
 @export var sub_viewport: SubViewport
 @export var texRect: TextureRect
 @export var colorRect : ColorRect
+@export var BPM_Line_Edit : LineEdit
 
 var id: int
 signal color(BGColor : Color)
 var switch = true
-@export var BPM_Line_Edit : LineEdit
 
 func _ready() -> void:
 	var tex: ViewportTexture = $SubViewport.get_texture()

@@ -9,7 +9,7 @@ var is_selected := false
 @onready var sprite
 var zoom_mode = false
 var lock = false
-@export var emetteur: Node
+#@export var emetteur: Node
 
 
 #@export var texRect :TextureRect

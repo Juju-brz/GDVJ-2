@@ -9,14 +9,15 @@ var zoom_mode = false
 var lock = false
 @export var emetteur: Node
 
-signal draggingON(is_dragging : bool)
+#signal draggingON(is_dragging : bool)
 
+## ID of media
 static var next_id :int = 0 # increment with every instances
 var id = "image"
 
 func _init():
 	id += str(next_id)
-	print(id)
+	print("media",id)
 	next_id += 1
 
 func _ready():
