@@ -18,7 +18,7 @@ const AnimScene = preload("res://scenes/Animation.tscn")
 #@export var loading_screen : Control
 
 var boutonComp = false
-
+var buttonid = null
 func _ready() -> void:
 	file_dialog_image.file_selected.connect(on_file_selected)
 	file_dialog_video.dir_selected.connect(on_dir_selected)
@@ -103,7 +103,7 @@ func on_dir_selected(dir : String):
 	## TEST FOR COMPOSITION ##
 	if boutonComp == true:
 		var texture = new_instance.sprite.sprite_frames.get_frame_texture("default", 0)
-		EVENTS.add_button_compo_icon.emit(texture)
+		EVENTS.add_button_compo_icon.emit(buttonid, texture)
 		
 		boutonComp = false
 
@@ -117,6 +117,7 @@ func _on_button_compo_video_pressed(id) -> void:
 	file_dialog_video.show()
 	boutonComp = true
 	#ButtonCompoVideo.icon = load("res://media/jujuLogo.png")
+	buttonid = id
 
 
 func test():

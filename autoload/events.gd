@@ -9,4 +9,4 @@ signal loading_screen(time:float)
 
 #MEDIA
 signal button_compo(id :int)
-signal add_button_compo_icon(icon: Texture2D)
+signal add_button_compo_icon(id : int , icon: Texture2D)

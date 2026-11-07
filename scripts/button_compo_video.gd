@@ -13,15 +13,18 @@ func _init():
 func _ready():
 	#pressed.connect(func(): EVENTS.button_compo.emit(id))
 	print("button id", id)
-	EVENTS.add_button_compo_icon.connect(test)
+	EVENTS.add_button_compo_icon.connect(changeButtonIcon)
 
 
-func test(texture):
-	print("change this f*** icon")
-	print(texture)
-	#buttonCompoVideo.icon = preload("res://media/jujuLogo.png")
-	buttonCompoVideo.icon = texture
-	buttonCompoVideo.expand_icon = true
+func changeButtonIcon(buttonid, texture):
+	if buttonid != id:
+		pass
+	else:
+		print("change this f*** icon")
+		print(texture)
+		#buttonCompoVideo.icon = preload("res://media/jujuLogo.png")
+		buttonCompoVideo.icon = texture
+		buttonCompoVideo.expand_icon = true
 
 
 func _on_button_compo_video_pressed() -> void:
