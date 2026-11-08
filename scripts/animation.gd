@@ -1,7 +1,6 @@
 extends AnimatedSprite2D
 
 
-
 var is_dragging := false
 var drag_offset := Vector2.ZERO
 
@@ -14,12 +13,15 @@ var lock = false
 
 #@export var texRect :TextureRect
 ## Called when the node enters the scene tree for the first time.
-
-#func _init():
-	#EVENTS.button_compo,()
+var id : int
+func _init():
+	EVENTS.add_button_compo_icon.connect(assign_id)
 
 func _ready():
 	EVENTS.button_compo.connect(_on_button_compo_video_pressed)
+	EVENTS.hide_media.connect(hide_media)
+	EVENTS.lock_media.connect(lock_media)
+	EVENTS.add_button_compo_icon.connect(assign_id)
 	sprite = self
 	set_process_input(true)
 	#GLOBAL.color_changed.connect(_on_color_changed)
@@ -116,7 +118,7 @@ func bring_to_front() -> void:
 
 func send_to_back() -> void:
 	get_parent().move_child(self, +1)  
-	
+
 
 func _on_color_changed(bg_color: Color) -> void:
 	sprite.material.set_shader_parameter("blend_color", bg_color)
@@ -131,3 +133,22 @@ func get_sprite_rect() -> Rect2:
 	var size := tex.get_size()
 	var top_left := -size * 0.5 if centered else Vector2.ZERO
 	return Rect2(top_left + offset, size)
+
+func hide_media(buttonid):
+	if buttonid != id:
+		pass
+	else:
+		
+		self.hide()
+
+func lock_media(buttonid):
+	if lock == true:
+		lock = false
+		print(lock)
+	else:
+		lock = true
+		print(lock)
+
+func assign_id(buttonid):
+	id = buttonid
+	print("id image apply")

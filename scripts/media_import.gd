@@ -19,11 +19,12 @@ const AnimScene = preload("res://scenes/Animation.tscn")
 
 var boutonComp = false
 var buttonid = null
+
 func _ready() -> void:
 	file_dialog_image.file_selected.connect(on_file_selected)
 	file_dialog_video.dir_selected.connect(on_dir_selected)
 	EVENTS.button_compo.connect(_on_button_compo_video_pressed)
-	EVENTS.add_button_compo_icon.connect(test)
+	#EVENTS.add_button_compo_icon.connect(test)
 
 
 func open_file_dialog_image():
@@ -118,7 +119,3 @@ func _on_button_compo_video_pressed(id) -> void:
 	boutonComp = true
 	#ButtonCompoVideo.icon = load("res://media/jujuLogo.png")
 	buttonid = id
-
-
-func test():
-	print("plats de nouilles")

@@ -25,7 +25,15 @@ func changeButtonIcon(buttonid, texture):
 		#buttonCompoVideo.icon = preload("res://media/jujuLogo.png")
 		buttonCompoVideo.icon = texture
 		buttonCompoVideo.expand_icon = true
-
+	## ADD SYSTEM FOR CONNECTION ## with ID and condition if buttonid != id:
 
 func _on_button_compo_video_pressed() -> void:
 	EVENTS.button_compo.emit(id)
+
+
+func _on_but_hide_pressed() -> void:
+	EVENTS.hide_media.emit(id)
+
+
+func _on_but_lock_pressed() -> void:
+	EVENTS.lock_media.emit(id)

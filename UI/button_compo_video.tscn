@@ -34,14 +34,16 @@ metadata/_edit_use_anchors_ = true
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=841086749]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=7379888]
+[node name="ButHide" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=7379888]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "HIDE"
 
-[node name="Button2" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1924441391]
+[node name="ButLock" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1924441391]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "LOCK"
 
 [connection signal="pressed" from="VBoxContainer/ButtonCompoVideo" to="." method="_on_button_compo_video_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ButHide" to="." method="_on_but_hide_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ButLock" to="." method="_on_but_lock_pressed"]
