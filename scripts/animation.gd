@@ -13,7 +13,7 @@ var hidebool : bool = false
 
 #@export var texRect :TextureRect
 
-var id : int
+var id  = null
 
 func _init():
 	
@@ -160,6 +160,9 @@ func lock_media(buttonid):
 			lock = true
 
 func assign_id(buttonid):
-	id = buttonid
-	print("id image apply")
-	print("id image", id)
+	if id != null:
+		pass
+	else:
+		id = buttonid
+		print("id image apply")
+		print("id image", id)
