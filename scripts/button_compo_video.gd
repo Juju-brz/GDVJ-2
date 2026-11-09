@@ -49,7 +49,10 @@ func _on_but_lock_pressed() -> void:
 		lock = false
 
 func _on_but_del_pressed() -> void:
-	EVENTS.delete_media.emit()
+	EVENTS.delete_media.emit(id)
 
-func delette_icon():
-	buttonCompoVideo.icon = null
+func delette_icon(imageid):
+	if id != imageid:
+		pass
+	else:
+		buttonCompoVideo.icon = null

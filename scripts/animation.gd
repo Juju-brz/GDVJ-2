@@ -106,11 +106,14 @@ func _input(event):
 				send_to_back()
 			
 			if Input.is_action_just_pressed("media_delete"):
-				delete_image()
+				delete_image(id)
 
-func delete_image():
-	queue_free()
-	EVENTS.delete_icon.emit()
+func delete_image(idbutton):
+	if id != idbutton:
+		pass
+	else:
+		queue_free()
+		EVENTS.delete_icon.emit(idbutton)
 
 func _process(delta):
 	if is_dragging:
