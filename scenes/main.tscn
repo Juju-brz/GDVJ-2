@@ -104,12 +104,13 @@ layout_mode = 2
 text = "Import Media"
 
 [node name="ButtonVideo" type="Button" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=826516093]
+visible = false
 layout_mode = 2
 text = "import image sequence"
 
 [node name="ButtonCompVideos" type="Button" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=1844992684]
 layout_mode = 2
-text = "create Composition Vidéos"
+text = "create Composition Videos"
 
 [node name="Label2" type="Label" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=113334318]
 visible = false
