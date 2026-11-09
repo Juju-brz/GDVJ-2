@@ -18,7 +18,7 @@ func _ready():
 	#pressed.connect(func(): EVENTS.button_compo.emit(id))
 	print("button id", id)
 	EVENTS.add_button_compo_icon.connect(changeButtonIcon)
-
+	EVENTS.delete_icon.connect(delette_icon)
 
 func changeButtonIcon(buttonid, texture):
 	if buttonid != id:
@@ -30,7 +30,6 @@ func changeButtonIcon(buttonid, texture):
 func _on_button_compo_video_pressed() -> void:
 	EVENTS.button_compo.emit(id)
 
-
 func _on_but_hide_pressed() -> void:
 	EVENTS.hide_media.emit(id)
 	if hide == false:
@@ -40,7 +39,6 @@ func _on_but_hide_pressed() -> void:
 		buthide.text = "HIDE"
 		hide = false
 
-
 func _on_but_lock_pressed() -> void:
 	EVENTS.lock_media.emit(id)
 	if lock == false:
@@ -49,3 +47,9 @@ func _on_but_lock_pressed() -> void:
 	else:
 		butlock.text = "LOCK"
 		lock = false
+
+func _on_but_del_pressed() -> void:
+	EVENTS.delete_media.emit()
+
+func delette_icon():
+	buttonCompoVideo.icon = null

@@ -26,6 +26,7 @@ func _ready():
 	EVENTS.lock_media.connect(lock_media)
 	
 	EVENTS.add_button_compo_icon.connect(assign_id)
+	EVENTS.delete_media.connect(delete_image)
 	#EVENTS.test.connect(assign_id)
 	sprite = self
 	set_process_input(true)
@@ -109,6 +110,7 @@ func _input(event):
 
 func delete_image():
 	queue_free()
+	EVENTS.delete_icon.emit()
 
 func _process(delta):
 	if is_dragging:

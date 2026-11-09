@@ -41,6 +41,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "LOCK"
 
+[node name="ButDel" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=948206787]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "DELETE"
+
 [connection signal="pressed" from="VBoxContainer/ButtonCompoVideo" to="." method="_on_button_compo_video_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/ButHide" to="." method="_on_but_hide_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/ButLock" to="." method="_on_but_lock_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ButDel" to="." method="_on_but_del_pressed"]
