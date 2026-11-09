@@ -5,6 +5,10 @@ static var next_id := 0
 var id: int
 @export var buttonCompoVideo : Button
 #signal action_pressed(id: int)
+@export var buthide : Button
+@export var butlock : Button
+var hide : bool = false
+var lock : bool = false
 
 func _init():
 	id = next_id
@@ -20,12 +24,8 @@ func changeButtonIcon(buttonid, texture):
 	if buttonid != id:
 		pass
 	else:
-		print("change this f*** icon")
-		print(texture)
-		#buttonCompoVideo.icon = preload("res://media/jujuLogo.png")
 		buttonCompoVideo.icon = texture
 		buttonCompoVideo.expand_icon = true
-	## ADD SYSTEM FOR CONNECTION ## with ID and condition if buttonid != id:
 
 func _on_button_compo_video_pressed() -> void:
 	EVENTS.button_compo.emit(id)
@@ -33,7 +33,19 @@ func _on_button_compo_video_pressed() -> void:
 
 func _on_but_hide_pressed() -> void:
 	EVENTS.hide_media.emit(id)
+	if hide == false:
+		buthide.text = "UNHIDE"
+		hide = true
+	else:
+		buthide.text = "HIDE"
+		hide = false
 
 
 func _on_but_lock_pressed() -> void:
 	EVENTS.lock_media.emit(id)
+	if lock == false:
+		butlock.text = "UNLOCK"
+		lock = true
+	else:
+		butlock.text = "LOCK"
+		lock = false

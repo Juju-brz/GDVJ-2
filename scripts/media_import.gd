@@ -106,6 +106,7 @@ func on_dir_selected(dir : String):
 		var texture = new_instance.sprite.sprite_frames.get_frame_texture("default", 0)
 		EVENTS.add_button_compo_icon.emit(buttonid, texture)
 		
+		EVENTS.add_id_media.emit(buttonid)
 		boutonComp = false
 
 func _on_button_image_pressed() -> void:

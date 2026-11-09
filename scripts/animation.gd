@@ -9,19 +9,24 @@ var is_selected := false
 var zoom_mode = false
 var lock = false
 #@export var emetteur: Node
-
+var hidebool : bool = false
 
 #@export var texRect :TextureRect
-## Called when the node enters the scene tree for the first time.
+
 var id : int
+
 func _init():
-	EVENTS.add_button_compo_icon.connect(assign_id)
+	
+	#EVENTS.add_button_compo_icon.connect(assign_id)
+	EVENTS.add_id_media.connect(assign_id)
 
 func _ready():
 	EVENTS.button_compo.connect(_on_button_compo_video_pressed)
 	EVENTS.hide_media.connect(hide_media)
 	EVENTS.lock_media.connect(lock_media)
+	
 	EVENTS.add_button_compo_icon.connect(assign_id)
+	#EVENTS.test.connect(assign_id)
 	sprite = self
 	set_process_input(true)
 	#GLOBAL.color_changed.connect(_on_color_changed)
@@ -112,13 +117,11 @@ func _process(delta):
 		else:
 			global_position = get_global_mouse_position() + drag_offset
 
-
 func bring_to_front() -> void:
 	get_parent().move_child(self, -1)
 
 func send_to_back() -> void:
 	get_parent().move_child(self, +1)  
-
 
 func _on_color_changed(bg_color: Color) -> void:
 	sprite.material.set_shader_parameter("blend_color", bg_color)
@@ -136,19 +139,27 @@ func get_sprite_rect() -> Rect2:
 
 func hide_media(buttonid):
 	if buttonid != id:
+	### TEST
+	#if buttonid == id:
 		pass
 	else:
-		
-		self.hide()
+		if hidebool == false:
+			self.visible = false
+			hidebool = true
+		else:
+			self.visible = true
+			hidebool = false
 
 func lock_media(buttonid):
-	if lock == true:
-		lock = false
-		print(lock)
+	if buttonid != id:
+		pass
 	else:
-		lock = true
-		print(lock)
+		if lock == true:
+			lock = false
+		else:
+			lock = true
 
 func assign_id(buttonid):
 	id = buttonid
 	print("id image apply")
+	print("id image", id)

@@ -62,8 +62,7 @@ float vortex(vec2 uv, float radius, float duplication) {
 }
 // REPEAT
 vec2 repeat(vec2 uv, float spacing) {
-	vec2 p = mod(uv, spacing) - 0.5 * spacing;
-	return p;
+	return mod(uv, spacing) - 0.5 * spacing;
 }
 
 // BOOLEAN //
@@ -132,6 +131,8 @@ vec3 palette (float t, vec3 a, vec3  b, vec3 c, vec3 d)  {
 }
 
 vec2 colorizeUV(vec2 uv, float speed) {
-	vec2 colorizeUV = vec2(sin(uv.x + TIME * speed), cos(uv.y + TIME * speed) );
-	return colorizeUV;
+	return vec2(sin(uv.x + TIME * speed), cos(uv.y + TIME * speed) );
+}
+vec3 invert(vec3 color) {
+	return 1.0 - color.rgb;
 }

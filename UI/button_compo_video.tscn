@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ce8tr5mqmvj21" path="res://scripts/button_compo_video.gd" id="1_1u025"]
 
-[node name="ButtonCompoVideo" type="Control" unique_id=844080507 node_paths=PackedStringArray("buttonCompoVideo")]
+[node name="ButtonCompoVideo" type="Control" unique_id=844080507 node_paths=PackedStringArray("buttonCompoVideo", "buthide", "butlock")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,11 +12,8 @@ grow_vertical = 2
 size_flags_horizontal = 3
 script = ExtResource("1_1u025")
 buttonCompoVideo = NodePath("VBoxContainer/ButtonCompoVideo")
-
-[node name="Control" type="Control" parent="." unique_id=1381197927]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+buthide = NodePath("VBoxContainer/HBoxContainer/ButHide")
+butlock = NodePath("VBoxContainer/HBoxContainer/ButLock")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1483932995]
 layout_mode = 1
