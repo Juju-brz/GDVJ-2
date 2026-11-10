@@ -7,8 +7,10 @@ var id: int
 #signal action_pressed(id: int)
 @export var buthide : Button
 @export var butlock : Button
-var hide : bool = false
-var lock : bool = false
+
+var mediaImport : bool = false
+var hide : bool        = false
+var lock : bool        = false
 
 func _init():
 	id = next_id
@@ -18,7 +20,7 @@ func _ready():
 	#pressed.connect(func(): EVENTS.button_compo.emit(id))
 	print("button id", id)
 	EVENTS.add_button_compo_icon.connect(changeButtonIcon)
-
+	EVENTS.delete_icon.connect(delette_icon)
 
 func changeButtonIcon(buttonid, texture):
 	if buttonid != id:
@@ -26,26 +28,45 @@ func changeButtonIcon(buttonid, texture):
 	else:
 		buttonCompoVideo.icon = texture
 		buttonCompoVideo.expand_icon = true
-
+		mediaImport = true
 func _on_button_compo_video_pressed() -> void:
 	EVENTS.button_compo.emit(id)
 
-
 func _on_but_hide_pressed() -> void:
-	EVENTS.hide_media.emit(id)
-	if hide == false:
-		buthide.text = "UNHIDE"
-		hide = true
+	if mediaImport == false:
+		pass
 	else:
-		buthide.text = "HIDE"
-		hide = false
-
+		EVENTS.hide_media.emit(id)
+		if hide == false:
+			buthide.text = "UNHIDE"
+			hide = true
+		else:
+			buthide.text = "HIDE"
+			hide = false
 
 func _on_but_lock_pressed() -> void:
-	EVENTS.lock_media.emit(id)
-	if lock == false:
-		butlock.text = "UNLOCK"
-		lock = true
+	if mediaImport == false:
+		pass
 	else:
-		butlock.text = "LOCK"
-		lock = false
+		EVENTS.lock_media.emit(id)
+		if lock == false:
+			butlock.text = "UNLOCK"
+			lock = true
+		else:
+			butlock.text = "LOCK"
+			lock = false
+
+func _on_but_del_pressed() -> void:
+	EVENTS.delete_media.emit(id)
+
+
+func delette_icon(imageid):
+	if id != imageid:
+		pass
+	else:
+		buttonCompoVideo.icon = null
+		mediaImport = false
+
+
+func _on_del_but_pressed() -> void:
+	EVENTS.delete_media.emit(id)

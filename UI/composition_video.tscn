@@ -55,7 +55,8 @@ text = "ADD CLIP PANEL"
 
 [node name="DelBut" type="Button" parent="Window/VBoxContainer/HBoxContainer2" unique_id=214730787]
 layout_mode = 2
-text = "DELETTE"
+text = "DELETTE ALL"
 
 [connection signal="pressed" from="Window/VBoxContainer/HBoxContainer2/AddClipBut" to="Window/VBoxContainer/CLIPTABLE" method="_on_add_clip_but_pressed"]
 [connection signal="pressed" from="Window/VBoxContainer/HBoxContainer2/DelBut" to="." method="_on_del_but_pressed"]
+[connection signal="pressed" from="Window/VBoxContainer/HBoxContainer2/DelBut" to="Window/VBoxContainer/CLIPTABLE/ButtonCompoVideo" method="_on_del_but_pressed"]

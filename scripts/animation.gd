@@ -26,6 +26,7 @@ func _ready():
 	EVENTS.lock_media.connect(lock_media)
 	
 	EVENTS.add_button_compo_icon.connect(assign_id)
+	EVENTS.delete_media.connect(delete_image)
 	#EVENTS.test.connect(assign_id)
 	sprite = self
 	set_process_input(true)
@@ -105,10 +106,14 @@ func _input(event):
 				send_to_back()
 			
 			if Input.is_action_just_pressed("media_delete"):
-				delete_image()
+				delete_image(id)
 
-func delete_image():
-	queue_free()
+func delete_image(idbutton):
+	if id != idbutton:
+		pass
+	else:
+		queue_free()
+		EVENTS.delete_icon.emit(idbutton)
 
 func _process(delta):
 	if is_dragging:
@@ -166,3 +171,16 @@ func assign_id(buttonid):
 		id = buttonid
 		print("id image apply")
 		print("id image", id)
+
+
+func _on_anim_finished():
+	print("chouchou")
+
+
+func _on_animation_finished() -> void:
+	print("chouchou")
+
+
+func _on_animation_looped() -> void:
+	print("loop")
+	#self.modulate.a = 0.1
