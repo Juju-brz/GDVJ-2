@@ -171,3 +171,16 @@ func assign_id(buttonid):
 		id = buttonid
 		print("id image apply")
 		print("id image", id)
+
+
+func _on_anim_finished():
+	print("chouchou")
+
+
+func _on_animation_finished() -> void:
+	print("chouchou")
+
+
+func _on_animation_looped() -> void:
+	print("loop")
+	#self.modulate.a = 0.1

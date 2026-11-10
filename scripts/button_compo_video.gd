@@ -66,3 +66,7 @@ func delette_icon(imageid):
 	else:
 		buttonCompoVideo.icon = null
 		mediaImport = false
+
+
+func _on_del_but_pressed() -> void:
+	EVENTS.delete_media.emit(id)
