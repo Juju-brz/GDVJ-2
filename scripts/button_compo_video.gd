@@ -66,7 +66,13 @@ func delette_icon(imageid):
 	else:
 		buttonCompoVideo.icon = null
 		mediaImport = false
+		butlock.text = "LOCK"
+		buthide.text = "HIDE"
 
 
-func _on_del_but_pressed() -> void:
-	EVENTS.delete_media.emit(id)
+
+	
+
+func _on_del_all_but_pressed() -> void:
+	#EVENTS.delete_media.emit(id)
+	EVENTS.delete_all_media.emit()
