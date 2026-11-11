@@ -27,6 +27,7 @@ func _ready():
 	
 	EVENTS.add_button_compo_icon.connect(assign_id)
 	EVENTS.delete_media.connect(delete_image)
+	EVENTS.delete_all_media.connect(delette_all)
 	#EVENTS.test.connect(assign_id)
 	sprite = self
 	set_process_input(true)
@@ -40,7 +41,6 @@ render_mode blend_mul;
 
 void fragment() {
 	vec4 c = texture(TEXTURE, UV);
-	// transparent -> blanc (neutre), opaque -> sa vraie couleur
 	COLOR = vec4(mix(vec3(1.0), c.rgb, c.a), 1.0);
 }
 """
@@ -108,12 +108,12 @@ func _input(event):
 			if Input.is_action_just_pressed("media_delete"):
 				delete_image(id)
 
-func delete_image(idbutton):
-	if id != idbutton:
+func delete_image(buttonid):
+	if buttonid != id:
 		pass
 	else:
 		queue_free()
-		EVENTS.delete_icon.emit(idbutton)
+		EVENTS.delete_icon.emit(buttonid)
 
 func _process(delta):
 	if is_dragging:
@@ -144,8 +144,6 @@ func get_sprite_rect() -> Rect2:
 
 func hide_media(buttonid):
 	if buttonid != id:
-	### TEST
-	#if buttonid == id:
 		pass
 	else:
 		if hidebool == false:
@@ -172,15 +170,5 @@ func assign_id(buttonid):
 		print("id image apply")
 		print("id image", id)
 
-
-func _on_anim_finished():
-	print("chouchou")
-
-
-func _on_animation_finished() -> void:
-	print("chouchou")
-
-
-func _on_animation_looped() -> void:
-	print("loop")
-	#self.modulate.a = 0.1
+func delette_all():
+	queue_free()

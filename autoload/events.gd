@@ -14,4 +14,5 @@ signal hide_media(id : int)
 signal lock_media(id : int)
 signal add_id_media(id : int)
 signal delete_icon
-signal delete_media()
+signal delete_media(id : int)
+signal delete_all_media()
