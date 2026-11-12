@@ -2,6 +2,9 @@ extends Control
 
 var numberanim : Array
 var animplay = false
+var looptime : int
+
+
 func _on_del_all_but_pressed() -> void:
 	self.queue_free()
 
@@ -27,6 +30,8 @@ func delete_id_array(id):
 
 func _on_clip_play_but_pressed() -> void:
 	#animplay = false
+	#var stop = false
+	
 	EVENTS.anim_stop.emit()
 	for i in numberanim:
 		print(i)
@@ -40,3 +45,9 @@ func _on_clip_play_but_pressed() -> void:
 func animation_finish():
 	animplay = true
 	print(" animplay = true")
+
+
+func _on_line_edit_text_submitted(new_text: String) -> void:
+	looptime = new_text.to_int()
+	print(looptime)
+	EVENTS.loop_time.emit(looptime)

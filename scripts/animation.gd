@@ -17,7 +17,6 @@ var id  = null
 
 func _init():
 	
-	#EVENTS.add_button_compo_icon.connect(assign_id)
 	EVENTS.add_id_media.connect(assign_id)
 
 func _ready():
@@ -30,7 +29,8 @@ func _ready():
 	EVENTS.delete_all_media.connect(delette_all)
 	EVENTS.anim_stop.connect(stop_anim)
 	EVENTS.anim_play.connect(play_anim)
-	#EVENTS.test.connect(assign_id)
+	EVENTS.loop_time.connect(new_loop_time)
+
 	sprite = self
 	set_process_input(true)
 	#GLOBAL.color_changed.connect(_on_color_changed)
@@ -193,14 +193,20 @@ func play_anim(idArray):
 		#EVENTS.anim_finish.emit()
 
 
-#func _on_animation_finished() -> void:
-	#if playlist == true:
-		#
-		#EVENTS.anim_finish.emit()
 
+var loop = 1
+var turn = 1
 
 func _on_animation_looped() -> void:
 	if playlist == true:
-		EVENTS.anim_finish.emit()
-		print("loop")
-		stop_anim()
+		if turn >= loop:
+			EVENTS.anim_finish.emit()
+			print("loop")
+			stop_anim()
+		else:
+			turn += 1
+			print("turn", turn)
+
+func new_loop_time(looptime : int):
+	loop = looptime
+	print(loop)
