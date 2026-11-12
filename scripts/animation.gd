@@ -28,6 +28,8 @@ func _ready():
 	EVENTS.add_button_compo_icon.connect(assign_id)
 	EVENTS.delete_media.connect(delete_image)
 	EVENTS.delete_all_media.connect(delette_all)
+	EVENTS.anim_stop.connect(stop_anim)
+	EVENTS.anim_play.connect(play_anim)
 	#EVENTS.test.connect(assign_id)
 	sprite = self
 	set_process_input(true)
@@ -172,3 +174,33 @@ func assign_id(buttonid):
 
 func delette_all():
 	queue_free()
+
+
+func stop_anim():
+	self.stop()
+	self.visible = false
+
+var playlist = false
+
+func play_anim(idArray):
+	if idArray != id:
+		pass
+	else:
+		playlist = true
+		self.visible = true
+		#self.fra
+		self.play()
+		#EVENTS.anim_finish.emit()
+
+
+#func _on_animation_finished() -> void:
+	#if playlist == true:
+		#
+		#EVENTS.anim_finish.emit()
+
+
+func _on_animation_looped() -> void:
+	if playlist == true:
+		EVENTS.anim_finish.emit()
+		print("loop")
+		stop_anim()

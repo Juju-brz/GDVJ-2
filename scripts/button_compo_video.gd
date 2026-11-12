@@ -70,9 +70,6 @@ func delette_icon(imageid):
 		buthide.text = "HIDE"
 
 
-
-	
-
 func _on_del_all_but_pressed() -> void:
 	#EVENTS.delete_media.emit(id)
 	EVENTS.delete_all_media.emit()

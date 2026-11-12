@@ -57,6 +57,14 @@ text = "ADD CLIP PANEL"
 layout_mode = 2
 text = "DELETTE ALL"
 
+[node name="ClipPlayBut" type="Button" parent="Window/VBoxContainer/HBoxContainer2" unique_id=2045658328]
+layout_mode = 2
+text = "clip playlist"
+
+[node name="CheckButton" type="CheckButton" parent="Window/VBoxContainer/HBoxContainer2" unique_id=1012061113]
+layout_mode = 2
+
 [connection signal="pressed" from="Window/VBoxContainer/HBoxContainer2/AddClipBut" to="Window/VBoxContainer/CLIPTABLE" method="_on_add_clip_but_pressed"]
 [connection signal="pressed" from="Window/VBoxContainer/HBoxContainer2/DelAllBut" to="." method="_on_del_all_but_pressed"]
 [connection signal="pressed" from="Window/VBoxContainer/HBoxContainer2/DelAllBut" to="Window/VBoxContainer/CLIPTABLE/ButtonCompoVideo" method="_on_del_all_but_pressed"]
+[connection signal="pressed" from="Window/VBoxContainer/HBoxContainer2/ClipPlayBut" to="." method="_on_clip_play_but_pressed"]

@@ -1,6 +1,42 @@
 extends Control
 
-
-
+var numberanim : Array
+var animplay = false
 func _on_del_all_but_pressed() -> void:
 	self.queue_free()
+
+func _ready() -> void:
+	EVENTS.add_id_media.connect(add_id_array)
+	EVENTS.delete_media.connect(delete_id_array)
+	EVENTS.anim_finish.connect(animation_finish)
+
+
+func add_id_array(id):
+	var d = id
+	if d in numberanim:
+		pass 
+	else:
+		numberanim.append(id)
+		print("anim import ","id", numberanim)
+	
+
+func delete_id_array(id):
+	numberanim.erase(id)
+	print("anim delette ","id", numberanim)
+
+
+func _on_clip_play_but_pressed() -> void:
+	#animplay = false
+	EVENTS.anim_stop.emit()
+	for i in numberanim:
+		print(i)
+		EVENTS.anim_play.emit(i)
+		#while  animplay == false:
+			#pass
+		await EVENTS.anim_finish
+	animplay = false
+	
+
+func animation_finish():
+	animplay = true
+	print(" animplay = true")
