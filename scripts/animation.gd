@@ -199,14 +199,15 @@ var turn = 1
 
 func _on_animation_looped() -> void:
 	if playlist == true:
-		if turn >= loop:
+		if turn >= GLOBAL.loop:
 			EVENTS.anim_finish.emit()
 			print("loop")
 			stop_anim()
+			turn = 1
 		else:
 			turn += 1
 			print("turn", turn)
 
 func new_loop_time(looptime : int):
-	loop = looptime
+	GLOBAL.loop = looptime
 	print(loop)

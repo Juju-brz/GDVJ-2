@@ -42,3 +42,4 @@ void fragment() {
 
 var mouse_activation : bool = true
 var BPM : String = "120.0"
+var loop = 1
