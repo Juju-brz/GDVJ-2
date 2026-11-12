@@ -10,8 +10,6 @@ This program use GDShaders for more information read the docs
 
 https://docs.godotengine.org/en/stable/tutorials/shaders/shader_reference/shading_language.html
 
-
-
 if you are good to GLSL for convert to Godot Shader 
 
 https://docs.godotengine.org/en/stable/tutorials/shaders/converting_glsl_to_godot_shaders.html
@@ -19,6 +17,8 @@ https://docs.godotengine.org/en/stable/tutorials/shaders/converting_glsl_to_godo
 # Commandes
 
 ALT + ENTER = Execute Code
+
+ALT + F4 = Close Program
 
 ### Media Commandes
 
@@ -31,10 +31,6 @@ Backspace = Delette Media
 mouse wheel = rotate / zoom
 
 ALT = change mode  for mouse wheel
-
-
-
-
 
 ### import Media
 
