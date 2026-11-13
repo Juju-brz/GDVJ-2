@@ -88,3 +88,4 @@ func quicksort(list: Array):
 
 func _on_button_pressed() -> void:
 	stop = true
+	EVENTS.exit_playlist.emit()

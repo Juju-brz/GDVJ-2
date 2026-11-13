@@ -26,6 +26,8 @@ void fragment() {
 	vec2 uv = UV * 2.0 - 1.0;
 	uv.x *= 16.0 / 9.0;
 	
+	// IMAGE BACKGOUND //
+	vec4 tex = texture(TEXTURE, UV);
 	
 	vec3 color = mix(color3, color2, uv.x + onde);
 	

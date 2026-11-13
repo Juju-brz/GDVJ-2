@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://dem03cehl18g6" path="res://scripts/main.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://boolpupubgd3f" path="res://UI/CodeLine.tscn" id="2_tbgi4"]
 [ext_resource type="Shader" uid="uid://b0jcj53b5croi" path="res://shaders/mainShader.gdshader" id="3_tefeu"]
+[ext_resource type="Texture2D" uid="uid://bsji11nvp7sqx" path="res://vlcsnap-2026-05-18-13h36m35s999.png" id="3_ya4ey"]
+[ext_resource type="Shader" uid="uid://ddv66ynbt2spi" path="res://scenes/test.gdshader" id="4_eb6dy"]
 [ext_resource type="Script" uid="uid://d2ht8jdigqi78" path="res://scripts/media_import.gd" id="4_o6xl0"]
 [ext_resource type="Theme" uid="uid://bw2i1kpeccik" path="res://Themes/juju.tres" id="4_tefeu"]
 [ext_resource type="Script" uid="uid://bllo8srcd4uax" path="res://scripts/ui.gd" id="5_o6xl0"]
@@ -15,13 +17,18 @@
 shader = ExtResource("3_tefeu")
 shader_parameter/BPM = 120.0
 
-[node name="Main" type="Node2D" unique_id=642545413 node_paths=PackedStringArray("sub_viewport", "texRect", "colorRect", "BPM_Line_Edit")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_trceg"]
+shader = ExtResource("4_eb6dy")
+shader_parameter/tint = Color(1, 0.5, 0.7, 1)
+
+[node name="Main" type="Node2D" unique_id=642545413 node_paths=PackedStringArray("sub_viewport", "texRect", "colorRect", "BPM_Line_Edit", "file_dialog_texture")]
 visible = false
 script = ExtResource("1_jyhfs")
 sub_viewport = NodePath("SubViewport")
 texRect = NodePath("CanvasLayer/TextureRect")
 colorRect = NodePath("SubViewport/ColorRect")
 BPM_Line_Edit = NodePath("UI/Propeties_Panel/Window/VBoxContainer/HBoxContainer/BPM_Line_Edit")
+file_dialog_texture = NodePath("FileDialog_texture")
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=130595857]
 size = Vector2i(1280, 720)
@@ -50,6 +57,27 @@ script = ExtResource("4_o6xl0")
 file_dialog_image = NodePath("../../FileDialog_image")
 file_dialog_video = NodePath("../../FileDialog_video")
 
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer" unique_id=1667902123]
+visible = false
+material = SubResource("ShaderMaterial_trceg")
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1413.0
+offset_top = -227.0
+offset_right = 107.0
+offset_bottom = 133.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("3_ya4ey")
+
+[node name="FileDialog_texture" type="FileDialog" parent="." unique_id=520300303]
+title = "Open a File"
+file_mode = 0
+access = 2
+use_native_dialog = true
+
 [node name="FileDialog_image" type="FileDialog" parent="." unique_id=1966622314]
 title = "Open a File"
 file_mode = 0
@@ -64,7 +92,7 @@ access = 2
 filters = PackedStringArray("*png", "*.jpg", "*.jpeg", "*.svg")
 use_native_dialog = true
 
-[node name="UI" type="Control" parent="." unique_id=1981191330 node_paths=PackedStringArray("color_palette", "code_line", "function", "test")]
+[node name="UI" type="Control" parent="." unique_id=1981191330 node_paths=PackedStringArray("color_palette", "code_line", "function", "test", "propertie_panel")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -77,6 +105,7 @@ color_palette = NodePath("Color_Palette/Window")
 code_line = NodePath("CodeLine/CodeLineWindow")
 function = NodePath("Functions/Functions")
 test = NodePath("Propeties_Panel/Window/VBoxContainer/test")
+propertie_panel = NodePath("Propeties_Panel/Window")
 
 [node name="Propeties_Panel" type="Control" parent="UI" unique_id=883644413]
 layout_mode = 1
@@ -98,6 +127,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ImportTexBut" type="Button" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=1370407762]
+visible = false
+layout_mode = 2
+text = "Import Image Background"
 
 [node name="ButtonImage" type="Button" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=1112446033]
 layout_mode = 2
@@ -293,6 +327,8 @@ grow_horizontal = 0
 grow_vertical = 0
 text = "Save"
 
+[connection signal="file_selected" from="FileDialog_texture" to="." method="_on_file_dialog_texture_file_selected"]
+[connection signal="pressed" from="UI/Propeties_Panel/Window/VBoxContainer/ImportTexBut" to="." method="_on_import_tex_but_pressed"]
 [connection signal="pressed" from="UI/Propeties_Panel/Window/VBoxContainer/ButtonImage" to="CanvasLayer/mediaImport" method="_on_button_image_pressed"]
 [connection signal="pressed" from="UI/Propeties_Panel/Window/VBoxContainer/ButtonVideo" to="CanvasLayer/mediaImport" method="_on_button_video_pressed"]
 [connection signal="pressed" from="UI/Propeties_Panel/Window/VBoxContainer/ButtonCompVideos" to="UI" method="_on_button_comp_videos_pressed"]

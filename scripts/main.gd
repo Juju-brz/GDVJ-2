@@ -5,6 +5,8 @@ extends Node2D
 @export var colorRect : ColorRect
 @export var BPM_Line_Edit : LineEdit
 
+@export var file_dialog_texture : FileDialog
+
 var id: int
 signal color(BGColor : Color)
 var switch = true
@@ -34,3 +36,15 @@ func bpm_changed():
 
 func _on_bpm_line_edit_text_submitted(new_text: String) -> void:
 	bpm_changed()
+
+
+func _on_import_tex_but_pressed() -> void:
+	file_dialog_texture.show()
+
+
+func _on_file_dialog_texture_file_selected(path: String) -> void:
+	switch = false
+	var texture = Image.load_from_file(path)
+	texRect.texture = texture
+	print(texture)
+	print(texRect.texture)

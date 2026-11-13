@@ -11,7 +11,6 @@ var lock = false
 #@export var emetteur: Node
 var hidebool : bool = false
 
-#@export var texRect :TextureRect
 
 var id  = null
 
@@ -30,6 +29,7 @@ func _ready():
 	EVENTS.anim_stop.connect(stop_anim)
 	EVENTS.anim_play.connect(play_anim)
 	EVENTS.loop_time.connect(new_loop_time)
+	EVENTS.exit_playlist.connect(replay_anim_not_playlist)
 
 	sprite = self
 	set_process_input(true)
@@ -179,6 +179,12 @@ func delette_all():
 func stop_anim():
 	self.stop()
 	self.visible = false
+
+func replay_anim_not_playlist():
+	self.play()
+	self.visible = true
+	playlist = false
+
 
 var playlist = false
 

@@ -22,3 +22,4 @@ signal anim_stop()
 signal anim_play(id : int)
 signal anim_finish
 signal loop_time(looptime : int)
+signal exit_playlist
