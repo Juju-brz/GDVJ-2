@@ -9,7 +9,6 @@ var zoom_mode = false
 var lock = false
 @export var emetteur: Node
 
-#signal draggingON(is_dragging : bool)
 
 ## ID of media
 static var next_id :int = 0 # increment with every instances
@@ -135,16 +134,3 @@ func send_to_back() -> void:
 
 func _on_color_changed(bg_color: Color) -> void:
 	sprite.material.set_shader_parameter("blend_color", bg_color)
-
-
-## SIGNALS ##
-
-#func send_signal():
-	#EVENTS.seleted_changed.emit(is_dragging)
-	
-	#print("emit signal is selected")
-
-#func send_signal_not_selected():
-	#if is_selected == false:
-		#EVENTS.seleted_changed.emit(is_dragging)
-		#print("emit signal is not selected")

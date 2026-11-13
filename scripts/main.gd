@@ -15,7 +15,6 @@ func _ready() -> void:
 	if switch == true:
 		texRect.texture = tex
 	bpm_changed()
-	#Code.text.insert(1, "proute")
 
 func _process(delta: float) -> void:
 	EVENTS.color_changed.emit(colorRect.color)

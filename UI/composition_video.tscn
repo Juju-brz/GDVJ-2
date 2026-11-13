@@ -55,6 +55,11 @@ text = "LOOP NUMBER"
 layout_mode = 2
 text = "ADD CLIP PANEL"
 
+[node name="DelClipBut" type="Button" parent="Window/VBoxContainer/HBoxContainer2" unique_id=1528972198]
+visible = false
+layout_mode = 2
+text = "DELETTE CLIP PANEL"
+
 [node name="DelAllBut" type="Button" parent="Window/VBoxContainer/HBoxContainer2" unique_id=214730787]
 layout_mode = 2
 text = "DELETTE ALL"
@@ -64,7 +69,7 @@ layout_mode = 2
 
 [node name="ClipPlayBut" type="Button" parent="Window/VBoxContainer/HBoxContainer2" unique_id=2045658328]
 layout_mode = 2
-text = "clip playlist"
+text = "CLIP PLAYLIST"
 
 [node name="Label" type="Label" parent="Window/VBoxContainer/HBoxContainer2" unique_id=824343941]
 layout_mode = 2
@@ -78,12 +83,8 @@ script = ExtResource("4_mx8h4")
 [node name="CheckButton" type="CheckButton" parent="Window/VBoxContainer/HBoxContainer2" unique_id=788291899]
 layout_mode = 2
 
-[node name="HScrollBar" type="HScrollBar" parent="." unique_id=1194353371]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-
 [connection signal="pressed" from="Window/VBoxContainer/HBoxContainer2/AddClipBut" to="Window/VBoxContainer/CLIPTABLE" method="_on_add_clip_but_pressed"]
+[connection signal="pressed" from="Window/VBoxContainer/HBoxContainer2/DelClipBut" to="Window/VBoxContainer/CLIPTABLE" method="_on_del_clip_but_pressed"]
 [connection signal="pressed" from="Window/VBoxContainer/HBoxContainer2/DelAllBut" to="." method="_on_del_all_but_pressed"]
 [connection signal="pressed" from="Window/VBoxContainer/HBoxContainer2/DelAllBut" to="Window/VBoxContainer/CLIPTABLE/ButtonCompoVideo" method="_on_del_all_but_pressed"]
 [connection signal="pressed" from="Window/VBoxContainer/HBoxContainer2/ClipPlayBut" to="." method="_on_clip_play_but_pressed"]

@@ -1,11 +1,9 @@
 extends Control
 
-#@export var color_palette : Control
 @export var color_palette : Window
 @export var code_line : Window
 @export var function : Window
 @export var test : VBoxContainer
-#@export var Compo : Window
 
 var selected_media = false
 const comp_video = preload("res://UI/composition_video.tscn")
