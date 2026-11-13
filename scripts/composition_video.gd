@@ -6,6 +6,7 @@ var animplay = false
 var looptime : int
 var playlist = false
 var stop = false
+@export var window : Window
 
 func _on_del_all_but_pressed() -> void:
 	self.queue_free()
@@ -14,7 +15,8 @@ func _ready() -> void:
 	EVENTS.add_id_media.connect(add_id_array)
 	EVENTS.delete_media.connect(delete_id_array)
 	EVENTS.anim_finish.connect(animation_finish)
-
+	
+	window.always_on_top = true
 func add_id_array(id):
 	var d = id
 	if d in numberanim:

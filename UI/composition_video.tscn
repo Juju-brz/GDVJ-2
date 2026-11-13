@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://yskplgqtvglr" path="res://UI/button_compo_video.tscn" id="3_at1ir"]
 [ext_resource type="Script" uid="uid://b3xbx6c3gelh0" path="res://scripts/bpm_line_edit.gd" id="4_mx8h4"]
 
-[node name="CompositionVideo" type="Control" unique_id=758574285]
+[node name="CompositionVideo" type="Control" unique_id=758574285 node_paths=PackedStringArray("window")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,6 +13,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_8nfwn")
+window = NodePath("Window")
 
 [node name="Window" type="Window" parent="." unique_id=1057089431]
 oversampling_override = 1.0

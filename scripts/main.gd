@@ -43,8 +43,9 @@ func _on_import_tex_but_pressed() -> void:
 
 
 func _on_file_dialog_texture_file_selected(path: String) -> void:
-	switch = false
+	#switch = false
 	var texture = Image.load_from_file(path)
-	texRect.texture = texture
+	#texRect.texture = texture
+	texRect.texture = ImageTexture.create_from_image(texture)
 	print(texture)
 	print(texRect.texture)

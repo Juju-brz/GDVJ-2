@@ -129,7 +129,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ImportTexBut" type="Button" parent="UI/Propeties_Panel/Window/VBoxContainer" unique_id=1370407762]
-visible = false
 layout_mode = 2
 text = "Import Image Background"
 
