@@ -83,6 +83,10 @@ script = ExtResource("4_mx8h4")
 [node name="CheckButton" type="CheckButton" parent="Window/VBoxContainer/HBoxContainer2" unique_id=788291899]
 layout_mode = 2
 
+[node name="Button" type="Button" parent="Window/VBoxContainer/HBoxContainer2" unique_id=2043062853]
+layout_mode = 2
+text = "But_Stop Playlist"
+
 [connection signal="pressed" from="Window/VBoxContainer/HBoxContainer2/AddClipBut" to="Window/VBoxContainer/CLIPTABLE" method="_on_add_clip_but_pressed"]
 [connection signal="pressed" from="Window/VBoxContainer/HBoxContainer2/DelClipBut" to="Window/VBoxContainer/CLIPTABLE" method="_on_del_clip_but_pressed"]
 [connection signal="pressed" from="Window/VBoxContainer/HBoxContainer2/DelAllBut" to="." method="_on_del_all_but_pressed"]
@@ -90,3 +94,4 @@ layout_mode = 2
 [connection signal="pressed" from="Window/VBoxContainer/HBoxContainer2/ClipPlayBut" to="." method="_on_clip_play_but_pressed"]
 [connection signal="text_submitted" from="Window/VBoxContainer/HBoxContainer2/LineEdit" to="." method="_on_line_edit_text_submitted"]
 [connection signal="toggled" from="Window/VBoxContainer/HBoxContainer2/CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="pressed" from="Window/VBoxContainer/HBoxContainer2/Button" to="." method="_on_button_pressed"]
