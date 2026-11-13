@@ -1,17 +1,17 @@
 extends Control
 
-#@export var color_palette : Control
 @export var color_palette : Window
 @export var code_line : Window
 @export var function : Window
 @export var test : VBoxContainer
-#@export var Compo : Window
+@export var propertie_panel : Window
 
 var selected_media = false
 const comp_video = preload("res://UI/composition_video.tscn")
 
 func _ready():
 	EVENTS.seleted_changed.connect(_receive_signal)
+	propertie_panel.always_on_top = true
 	
 func _on_check_color_palette_toggled(toggled_on: bool) -> void:
 	color_palette.visible = toggled_on

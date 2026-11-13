@@ -11,13 +11,11 @@ var lock = false
 #@export var emetteur: Node
 var hidebool : bool = false
 
-#@export var texRect :TextureRect
 
 var id  = null
 
 func _init():
 	
-	#EVENTS.add_button_compo_icon.connect(assign_id)
 	EVENTS.add_id_media.connect(assign_id)
 
 func _ready():
@@ -28,7 +26,11 @@ func _ready():
 	EVENTS.add_button_compo_icon.connect(assign_id)
 	EVENTS.delete_media.connect(delete_image)
 	EVENTS.delete_all_media.connect(delette_all)
-	#EVENTS.test.connect(assign_id)
+	EVENTS.anim_stop.connect(stop_anim)
+	EVENTS.anim_play.connect(play_anim)
+	EVENTS.loop_time.connect(new_loop_time)
+	EVENTS.exit_playlist.connect(replay_anim_not_playlist)
+
 	sprite = self
 	set_process_input(true)
 	#GLOBAL.color_changed.connect(_on_color_changed)
@@ -172,3 +174,46 @@ func assign_id(buttonid):
 
 func delette_all():
 	queue_free()
+
+
+func stop_anim():
+	self.stop()
+	self.visible = false
+
+func replay_anim_not_playlist():
+	self.play()
+	self.visible = true
+	playlist = false
+
+
+var playlist = false
+
+func play_anim(idArray):
+	if idArray != id:
+		pass
+	else:
+		playlist = true
+		self.visible = true
+		#self.fra
+		self.play()
+		#EVENTS.anim_finish.emit()
+
+
+
+var loop = 1
+var turn = 1
+
+func _on_animation_looped() -> void:
+	if playlist == true:
+		if turn >= GLOBAL.loop:
+			EVENTS.anim_finish.emit()
+			print("loop")
+			stop_anim()
+			turn = 1
+		else:
+			turn += 1
+			print("turn", turn)
+
+func new_loop_time(looptime : int):
+	GLOBAL.loop = looptime
+	print(loop)

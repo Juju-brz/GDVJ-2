@@ -26,6 +26,8 @@ void fragment() {
 	vec2 uv = UV * 2.0 - 1.0;
 	uv.x *= 16.0 / 9.0;
 	
+	// IMAGE BACKGOUND //
+	vec4 tex = texture(TEXTURE, UV);
 	
 	vec3 color = mix(color3, color2, uv.x + onde);
 	
@@ -33,12 +35,7 @@ void fragment() {
 	COLOR = vec4(color, 1.0);
 }"""
 
-### SIGNALS ###
-#signal code_pushed(code)
-#signal color_changed(bg_color: Color)
-#signal seleted_changed(is_dragging: bool)
-#signal loading_screen(time:float)
-#signal button_compo(id :int)
 
 var mouse_activation : bool = true
 var BPM : String = "120.0"
+var loop = 1

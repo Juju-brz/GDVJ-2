@@ -136,3 +136,11 @@ vec2 colorizeUV(vec2 uv, float speed) {
 vec3 invert(vec3 color) {
 	return 1.0 - color.rgb;
 }
+
+
+// EFFECTS //
+float random (vec2 st, float x) { //from the book of shaders
+    return sin(dot(st.xy,
+                         vec2(1.0,5.0))*
+                                x);
+}
