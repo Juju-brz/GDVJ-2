@@ -14,8 +14,8 @@ var switch = true
 func _ready() -> void:
 	var tex: ViewportTexture = $SubViewport.get_texture()
 	EVENTS.code_pushed.connect(_on_code_pushed)
-	if switch == true:
-		texRect.texture = tex
+	#if switch == true:
+		#texRect.texture = tex
 	bpm_changed()
 
 func _process(delta: float) -> void:
