@@ -27,15 +27,19 @@ void fragment() {
 	uv.x *= 16.0 / 9.0;
 	
 	// IMAGE BACKGOUND //
-	vec4 tex = texture(TEXTURE, UV);
+	vec2 t = fract(UV * 4.0);
+	//t += sin(TIME);
+	vec4 tex = texture(TEXTURE, t);
 	
 	vec3 color = mix(color3, color2, uv.x + onde);
 	
 	// OUTPUT //
 	COLOR = vec4(color, 1.0);
+	//COLOR = vec4(tex.rgb, tex.a);
 }"""
 
 
 var mouse_activation : bool = true
 var BPM : String = "120.0"
 var loop = 1
+var playlist = false

@@ -19,6 +19,9 @@ func _ready() -> void:
 	file_dialog_image.file_selected.connect(on_file_selected)
 	file_dialog_video.dir_selected.connect(on_dir_selected)
 	EVENTS.button_compo.connect(_on_button_compo_video_pressed)
+	
+	file_dialog_image.always_on_top = true
+	file_dialog_video.always_on_top = true
 
 
 func open_file_dialog_image():

@@ -17,6 +17,8 @@ var id  = null
 func _init():
 	
 	EVENTS.add_id_media.connect(assign_id)
+	if GLOBAL.playlist == true:
+		stop_anim()
 
 func _ready():
 	EVENTS.button_compo.connect(_on_button_compo_video_pressed)
@@ -183,7 +185,7 @@ func stop_anim():
 func replay_anim_not_playlist():
 	self.play()
 	self.visible = true
-	playlist = false
+	GLOBAL.playlist = false
 
 
 var playlist = false
@@ -192,7 +194,7 @@ func play_anim(idArray):
 	if idArray != id:
 		pass
 	else:
-		playlist = true
+		GLOBAL.playlist = true
 		self.visible = true
 		#self.fra
 		self.play()
@@ -204,7 +206,7 @@ var loop = 1
 var turn = 1
 
 func _on_animation_looped() -> void:
-	if playlist == true:
+	if GLOBAL.playlist == true:
 		if turn >= GLOBAL.loop:
 			EVENTS.anim_finish.emit()
 			print("loop")

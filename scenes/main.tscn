@@ -17,6 +17,10 @@
 shader = ExtResource("3_tefeu")
 shader_parameter/BPM = 120.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a8y0u"]
+shader = ExtResource("3_tefeu")
+shader_parameter/BPM = 120.0
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_trceg"]
 shader = ExtResource("4_eb6dy")
 shader_parameter/tint = Color(1, 0.5, 0.7, 1)
@@ -45,11 +49,13 @@ color = Color(0.67785305, 0.0003527984, 0.67961687, 1)
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=728399109]
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=500291957]
+material = SubResource("ShaderMaterial_a8y0u")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("3_ya4ey")
 expand_mode = 1
 
 [node name="mediaImport" type="Node2D" parent="CanvasLayer" unique_id=827084082 node_paths=PackedStringArray("file_dialog_image", "file_dialog_video")]
@@ -118,7 +124,7 @@ grow_vertical = 2
 [node name="Window" type="Window" parent="UI/Propeties_Panel" unique_id=1172507678]
 oversampling_override = 1.0
 title = "Propeties Panel"
-position = Vector2i(924, 36)
+position = Vector2i(990, 54)
 size = Vector2i(272, 566)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/Propeties_Panel/Window" unique_id=213695121]
@@ -227,7 +233,7 @@ color_picker = NodePath("Window/VBoxContainer/ColorPicker")
 [node name="Window" type="Window" parent="UI/Color_Palette" unique_id=2129214435]
 oversampling_override = 1.0
 title = "Color Palette"
-position = Vector2i(899, 36)
+position = Vector2i(658, 36)
 size = Vector2i(313, 611)
 visible = false
 
