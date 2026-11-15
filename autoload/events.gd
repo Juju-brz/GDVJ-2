@@ -16,6 +16,7 @@ signal add_id_media(id : int)
 signal delete_icon
 signal delete_media(id : int)
 signal delete_all_media()
+signal replace_ex_media(id: int)
 
 # Playlist #
 signal anim_stop()

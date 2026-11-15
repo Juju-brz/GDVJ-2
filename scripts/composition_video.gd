@@ -35,14 +35,14 @@ func delete_id_array(id):
 
 func _on_clip_play_but_pressed() -> void:
 	stop = false
-	play_clip()
+	playlist_on()
 
 func _on_check_button_toggled(toggled_on: bool) -> void:
-	play_clip()
+	playlist_on()
 	if toggled_on == false:
 		stop = true
 
-func play_clip():
+func playlist_on():
 	#playlist = true
 	#var stop = false
 	if numberanim.is_empty():
@@ -58,7 +58,7 @@ func play_clip():
 
 func animation_finish():
 	animplay = true
-	print(" animplay = true")
+	print("animplay = true")
 
 func _on_line_edit_text_submitted(new_text: String) -> void:
 	#looptime = new_text.to_int()

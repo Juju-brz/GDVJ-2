@@ -29,8 +29,10 @@ func changeButtonIcon(buttonid, texture):
 		buttonCompoVideo.icon = texture
 		buttonCompoVideo.expand_icon = true
 		mediaImport = true
+
 func _on_button_compo_video_pressed() -> void:
 	EVENTS.button_compo.emit(id)
+
 
 func _on_but_hide_pressed() -> void:
 	if mediaImport == false:
