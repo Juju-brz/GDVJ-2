@@ -1,7 +1,7 @@
 extends Control
 
 var numberanim : Array
-var animOrder : Array
+#var animOrder : Array
 var animplay = false
 var looptime : int
 var playlist = false
@@ -17,12 +17,14 @@ func _ready() -> void:
 	EVENTS.anim_finish.connect(animation_finish)
 	
 	window.always_on_top = true
+
 func add_id_array(id):
 	var d = id
 	if d in numberanim:
 		pass 
 	else:
 		numberanim.append(id)
+		print("anim import ","id", numberanim)
 		numberanim = quicksort(numberanim)
 		print("anim import ","id", numberanim)
 		#animOrder = quicksort(numberanim)
@@ -31,7 +33,6 @@ func add_id_array(id):
 func delete_id_array(id):
 	numberanim.erase(id)
 	print("anim delette ","id", numberanim)
-
 
 func _on_clip_play_but_pressed() -> void:
 	stop = false
@@ -75,7 +76,7 @@ func quicksort(list: Array):
 	  
 	var little = []  
 	var big = []
-	print("pivot", pivot)
+	#print("pivot", pivot)
 	
 	for number in list:  
 		if number < pivot:  
@@ -86,7 +87,6 @@ func quicksort(list: Array):
 			#print("big",big)
 
 	return quicksort(little) + [pivot] + quicksort(big)
-
 
 func _on_button_pressed() -> void:
 	stop = true

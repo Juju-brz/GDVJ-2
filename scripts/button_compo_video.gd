@@ -33,7 +33,6 @@ func changeButtonIcon(buttonid, texture):
 func _on_button_compo_video_pressed() -> void:
 	EVENTS.button_compo.emit(id)
 
-
 func _on_but_hide_pressed() -> void:
 	if mediaImport == false:
 		pass
@@ -61,7 +60,6 @@ func _on_but_lock_pressed() -> void:
 func _on_but_del_pressed() -> void:
 	EVENTS.delete_media.emit(id)
 
-
 func delette_icon(imageid):
 	if id != imageid:
 		pass
@@ -70,7 +68,6 @@ func delette_icon(imageid):
 		mediaImport = false
 		butlock.text = "LOCK"
 		buthide.text = "HIDE"
-
 
 func _on_del_all_but_pressed() -> void:
 	#EVENTS.delete_media.emit(id)

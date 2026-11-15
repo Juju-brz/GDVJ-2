@@ -12,7 +12,7 @@ signal color(BGColor : Color)
 var switch = true
 
 func _ready() -> void:
-	var tex: ViewportTexture = $SubViewport.get_texture()
+	#var tex: ViewportTexture = $SubViewport.get_texture()
 	EVENTS.code_pushed.connect(_on_code_pushed)
 	#if switch == true:
 		#texRect.texture = tex
@@ -21,7 +21,6 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	EVENTS.color_changed.emit(colorRect.color)
-
 
 func _on_code_pushed(code: String) -> void:
 	colorRect.material.shader.code = code
@@ -38,10 +37,8 @@ func bpm_changed():
 func _on_bpm_line_edit_text_submitted(new_text: String) -> void:
 	bpm_changed()
 
-
 func _on_import_tex_but_pressed() -> void:
 	file_dialog_texture.show()
-
 
 func _on_file_dialog_texture_file_selected(path: String) -> void:
 	#switch = false
