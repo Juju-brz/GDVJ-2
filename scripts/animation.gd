@@ -118,6 +118,12 @@ func delete_image(buttonid):
 	else:
 		queue_free()
 		EVENTS.delete_icon.emit(buttonid)
+		#EVENTS.anim_finish.emit()
+	if play_playlist == true:
+		print("proute")
+		EVENTS.anim_finish.emit()
+
+var play_playlist = false
 
 func _process(delta):
 	if is_dragging:
@@ -176,11 +182,13 @@ func assign_id(buttonid):
 
 func delette_all():
 	queue_free()
+	EVENTS.anim_finish.emit()
 
 
 func stop_anim():
 	self.stop()
 	self.visible = false
+	play_playlist = false
 
 func replay_anim_not_playlist():
 	self.play()
@@ -196,11 +204,8 @@ func play_anim(idArray):
 	else:
 		GLOBAL.playlist = true
 		self.visible = true
-		#self.fra
 		self.play()
-		#EVENTS.anim_finish.emit()
-
-
+		play_playlist = true
 
 var loop = 1
 var turn = 1
@@ -209,7 +214,7 @@ func _on_animation_looped() -> void:
 	if GLOBAL.playlist == true:
 		if turn >= GLOBAL.loop:
 			EVENTS.anim_finish.emit()
-			print("loop")
+			print("loop",GLOBAL.loop )
 			stop_anim()
 			turn = 1
 		else:

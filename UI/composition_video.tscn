@@ -17,7 +17,7 @@ window = NodePath("Window")
 
 [node name="Window" type="Window" parent="." unique_id=1057089431]
 oversampling_override = 1.0
-position = Vector2i(254, 492)
+position = Vector2i(254, 328)
 size = Vector2i(820, 287)
 min_size = Vector2i(650, 76)
 
@@ -88,6 +88,9 @@ layout_mode = 2
 [node name="Button" type="Button" parent="Window/VBoxContainer/HBoxContainer2" unique_id=2043062853]
 layout_mode = 2
 text = "Stop Playlist"
+
+[node name="VSeparator2" type="VSeparator" parent="Window/VBoxContainer/HBoxContainer2" unique_id=850657317]
+layout_mode = 2
 
 [connection signal="pressed" from="Window/VBoxContainer/HBoxContainer2/AddClipBut" to="Window/VBoxContainer/CLIPTABLE" method="_on_add_clip_but_pressed"]
 [connection signal="pressed" from="Window/VBoxContainer/HBoxContainer2/DelClipBut" to="Window/VBoxContainer/CLIPTABLE" method="_on_del_clip_but_pressed"]
