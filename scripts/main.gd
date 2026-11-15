@@ -29,7 +29,7 @@ func _on_code_pushed(code: String) -> void:
 func bpm_changed():
 	GLOBAL.BPM = BPM_Line_Edit.text
 	var bpmfloat = GLOBAL.BPM 
-	var mat := colorRect.material as ShaderMaterial
+	var mat := texRect.material as ShaderMaterial
 	mat.set_shader_parameter("BPM", bpmfloat)
 	print("BPM submitted")
 	print("BPM value", GLOBAL.BPM)
