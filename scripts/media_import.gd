@@ -100,6 +100,7 @@ func on_dir_selected(dir : String):
 	
 	## FOR COMPOSITION ##
 	if boutonComp == true:
+		EVENTS.delete_media.emit(buttonid)
 		var texture = new_instance.sprite.sprite_frames.get_frame_texture("default", 0)
 		EVENTS.add_button_compo_icon.emit(buttonid, texture)
 		
@@ -116,3 +117,4 @@ func _on_button_compo_video_pressed(id) -> void:
 	file_dialog_video.show()
 	boutonComp = true
 	buttonid = id
+	
