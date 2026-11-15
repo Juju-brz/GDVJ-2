@@ -131,6 +131,5 @@ func bring_to_front() -> void:
 func send_to_back() -> void:
 	get_parent().move_child(self, +1)  
 
-
 func _on_color_changed(bg_color: Color) -> void:
 	sprite.material.set_shader_parameter("blend_color", bg_color)

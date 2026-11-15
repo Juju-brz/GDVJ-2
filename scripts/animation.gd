@@ -1,6 +1,7 @@
 extends AnimatedSprite2D
 
 
+### VARIABLES ###
 var is_dragging := false
 var drag_offset := Vector2.ZERO
 
@@ -11,8 +12,15 @@ var lock = false
 #@export var emetteur: Node
 var hidebool : bool = false
 
-
 var id  = null
+
+# Playlist #
+var loop = 1
+var turn = 1
+var play_playlist = false
+var playlist = false
+
+### FUNCTIONS ###
 
 func _init():
 	
@@ -62,7 +70,6 @@ func _input(event):
 			zoom_mode = false
 		else:
 			zoom_mode = true
-	
 	
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
@@ -123,8 +130,6 @@ func delete_image(buttonid):
 		print("proute")
 		EVENTS.anim_finish.emit()
 
-var play_playlist = false
-
 func _process(delta):
 	if is_dragging:
 		if lock == true:
@@ -184,19 +189,16 @@ func delette_all():
 	queue_free()
 	EVENTS.anim_finish.emit()
 
-
 func stop_anim():
 	self.stop()
 	self.visible = false
 	play_playlist = false
+	lock = true
 
 func replay_anim_not_playlist():
 	self.play()
 	self.visible = true
 	GLOBAL.playlist = false
-
-
-var playlist = false
 
 func play_anim(idArray):
 	if idArray != id:
@@ -206,9 +208,7 @@ func play_anim(idArray):
 		self.visible = true
 		self.play()
 		play_playlist = true
-
-var loop = 1
-var turn = 1
+		lock = false
 
 func _on_animation_looped() -> void:
 	if GLOBAL.playlist == true:
