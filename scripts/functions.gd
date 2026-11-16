@@ -19,12 +19,10 @@ func load_from_file(fileDir):
 	var content = file.get_as_text()
 	return content
 
-
 ### SAVE ###
 
 func _on_button_save_pressed() -> void:
 	file_dialog_save.show()
-
 
 func _on_file_selected(path: String) -> void:
 	var f := FileAccess.open(path, FileAccess.WRITE)

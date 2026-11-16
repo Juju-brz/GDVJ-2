@@ -250,17 +250,6 @@ layout_mode = 2
 edit_alpha = false
 picker_shape = 2
 
-[node name="ColorPickerButton" type="ColorPickerButton" parent="UI/Color_Palette/Window/VBoxContainer" unique_id=1696268050]
-visible = false
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Label" type="Label" parent="UI/Color_Palette/Window/VBoxContainer" unique_id=722723677]
-visible = false
-layout_mode = 2
-text = "Test
-"
-
 [node name="Button" type="Button" parent="UI/Color_Palette/Window/VBoxContainer" unique_id=1371850500]
 layout_mode = 2
 text = "Copy Color"
@@ -345,6 +334,6 @@ text = "Save"
 [connection signal="pressed" from="UI/Color_Palette/Window/VBoxContainer/Button" to="UI/Color_Palette" method="_on_button_pressed"]
 [connection signal="confirmed" from="UI/Functions/Functions/FileDialogSave" to="UI/Functions" method="_on_file_dialog_save_confirmed"]
 [connection signal="files_selected" from="UI/Functions/Functions/FileDialogSave" to="UI/Functions" method="_on_file_dialog_save_files_selected"]
-[connection signal="pressed" from="UI/Functions/Functions/TabContainer/CodeEdit/ButtonSave" to="UI/Functions" method="_on_button_save_pressed"]
+[connection signal="pressed" from="UI/Functions/Functions/TabContainer/CodeEdit/ButtonSave" to="UI/Functions/Functions/TabContainer" method="_on_button_save_pressed"]
 
 [editable path="UI/CodeLine"]

@@ -182,7 +182,6 @@ func assign_id(buttonid):
 		pass
 	else:
 		id = buttonid
-		print("id image apply")
 		print("id image", id)
 
 func delette_all():
@@ -214,7 +213,7 @@ func _on_animation_looped() -> void:
 	if GLOBAL.playlist == true:
 		if turn >= GLOBAL.loop:
 			EVENTS.anim_finish.emit()
-			print("loop",GLOBAL.loop )
+			#print("loop",GLOBAL.loop )
 			stop_anim()
 			turn = 1
 		else:

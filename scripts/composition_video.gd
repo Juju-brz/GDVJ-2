@@ -1,12 +1,15 @@
 extends Control
 
 var numberanim : Array
-#var animOrder : Array
 var animplay = false
 var looptime : int
 var playlist = false
 var stop = false
 @export var window : Window
+
+func _init() -> void:
+	var Proute = "proute"
+	print(Proute)
 
 func _on_del_all_but_pressed() -> void:
 	self.queue_free()
@@ -37,11 +40,6 @@ func delete_id_array(id):
 func _on_clip_play_but_pressed() -> void:
 	stop = false
 	playlist_on()
-
-func _on_check_button_toggled(toggled_on: bool) -> void:
-	playlist_on()
-	if toggled_on == false:
-		stop = true
 
 func playlist_on():
 	#playlist = true
@@ -81,11 +79,9 @@ func quicksort(list: Array):
 	for number in list:  
 		if number < pivot:  
 			little.append(number)  
-			#print("little", little)
 		if number > pivot:  
 			big.append(number)  
-			#print("big",big)
-
+	
 	return quicksort(little) + [pivot] + quicksort(big)
 
 func _on_button_pressed() -> void:

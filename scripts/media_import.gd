@@ -23,10 +23,8 @@ func _ready() -> void:
 	file_dialog_image.always_on_top = true
 	file_dialog_video.always_on_top = true
 
-
 func open_file_dialog_image():
 	file_dialog_image.show()
-
 
 func on_file_selected(path: String) -> void:
 	var image = Image.load_from_file(path)
@@ -116,4 +114,3 @@ func _on_button_compo_video_pressed(id) -> void:
 	file_dialog_video.show()
 	boutonComp = true
 	buttonid = id
-	

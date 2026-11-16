@@ -17,7 +17,7 @@ window = NodePath("Window")
 
 [node name="Window" type="Window" parent="." unique_id=1057089431]
 oversampling_override = 1.0
-position = Vector2i(254, 328)
+position = Vector2i(254, 233)
 size = Vector2i(820, 287)
 min_size = Vector2i(650, 76)
 
@@ -78,10 +78,6 @@ layout_mode = 2
 text = "1"
 script = ExtResource("4_mx8h4")
 
-[node name="CheckButton" type="CheckButton" parent="Window/VBoxContainer/HBoxContainer2" unique_id=788291899]
-visible = false
-layout_mode = 2
-
 [node name="StopPlayBut" type="Button" parent="Window/VBoxContainer/HBoxContainer2" unique_id=2043062853]
 layout_mode = 2
 text = "Stop Playlist"
@@ -97,7 +93,6 @@ text = "DELETTE ALL"
 [connection signal="pressed" from="Window/VBoxContainer/HBoxContainer2/DelClipBut" to="Window/VBoxContainer/CLIPTABLE" method="_on_del_clip_but_pressed"]
 [connection signal="pressed" from="Window/VBoxContainer/HBoxContainer2/ClipPlayBut" to="." method="_on_clip_play_but_pressed"]
 [connection signal="text_submitted" from="Window/VBoxContainer/HBoxContainer2/LineEdit" to="." method="_on_line_edit_text_submitted"]
-[connection signal="toggled" from="Window/VBoxContainer/HBoxContainer2/CheckButton" to="." method="_on_check_button_toggled"]
 [connection signal="pressed" from="Window/VBoxContainer/HBoxContainer2/StopPlayBut" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Window/VBoxContainer/HBoxContainer2/DelAllBut" to="." method="_on_del_all_but_pressed"]
 [connection signal="pressed" from="Window/VBoxContainer/HBoxContainer2/DelAllBut" to="Window/VBoxContainer/CLIPTABLE/ButtonCompoVideo" method="_on_del_all_but_pressed"]

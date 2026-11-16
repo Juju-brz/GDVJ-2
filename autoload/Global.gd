@@ -40,5 +40,8 @@ void fragment() {
 
 var mouse_activation : bool = true
 var BPM : String = "120.0"
+
+static var compo_table_id := 0
+
 var loop = 1
 var playlist = false
