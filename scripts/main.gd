@@ -7,9 +7,9 @@ extends Node2D
 
 @export var file_dialog_texture : FileDialog
 
-var id: int
+#var id: int
 signal color(BGColor : Color)
-var switch = true
+#var switch = true
 
 func _ready() -> void:
 	#var tex: ViewportTexture = $SubViewport.get_texture()

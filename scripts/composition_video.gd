@@ -7,9 +7,9 @@ var playlist = false
 var stop = false
 @export var window : Window
 
-func _init() -> void:
-	var Proute = "proute"
-	print(Proute)
+#func _init() -> void:
+	#var Proute = "proute"
+	#print(Proute)
 
 func _on_del_all_but_pressed() -> void:
 	self.queue_free()
@@ -27,7 +27,7 @@ func add_id_array(id):
 		pass 
 	else:
 		numberanim.append(id)
-		print("anim import ","id", numberanim)
+		#print("anim import ","id", numberanim)
 		numberanim = quicksort(numberanim)
 		print("anim import ","id", numberanim)
 		#animOrder = quicksort(numberanim)
@@ -57,7 +57,7 @@ func playlist_on():
 
 func animation_finish():
 	animplay = true
-	print("animplay = true")
+	#print("animplay = true")
 
 func _on_line_edit_text_submitted(new_text: String) -> void:
 	#looptime = new_text.to_int()
