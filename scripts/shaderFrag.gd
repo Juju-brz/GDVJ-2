@@ -11,7 +11,7 @@ func _ready():
 	print(base)
 	code.text = GLOBAL.ShaderFrag
 	insert_functions_lib()
-
+	#EVENTS.send_function.connect(insert_functions_lib)
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("execute_shader"):
@@ -28,11 +28,12 @@ func _on_execute_pressed() -> void:
 	
 
 func insert_functions_lib(start_line: int = 2):
-	var dir = DirAccess.open("res://contents/functions")
-	if dir == null:
+	#var dir = DirAccess.open("res://contents/functions")
+	var dir = GLOBAL.funcdir
+	if not DirAccess.dir_exists_absolute(dir):
 		return
 	var i := 0
-	for file in dir.get_files():
+	for file in DirAccess.get_files_at(dir):
 		if file.get_extension() == "gdshaderinc":
 			code.insert_line_at(start_line + i, '#include "res://contents/functions/%s"' % file)
 			i += 1

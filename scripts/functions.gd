@@ -45,6 +45,8 @@ func search_functions():
 		else:
 			b.text = content_to_string
 			#print(b.text)
+		
+		#EVENTS.send_function.emit(content_to_string)
 	print("funcdir", funcdir)
 
 

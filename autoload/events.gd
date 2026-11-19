@@ -7,6 +7,9 @@ signal color_changed(bg_color: Color)
 signal seleted_changed(is_dragging: bool)
 signal loading_screen(time:float)
 
+## CODE ##
+#signal send_function(function : String)
+
 ### MEDIA ####
 signal button_compo(id :int)
 signal add_button_compo_icon(id : int , icon: Texture2D)
