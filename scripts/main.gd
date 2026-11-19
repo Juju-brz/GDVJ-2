@@ -18,6 +18,8 @@ func _ready() -> void:
 		#texRect.texture = tex
 	bpm_changed()
 	file_dialog_texture.always_on_top = true
+	#var shader: Shader = SHADERBUILDER.make_shader(GLOBAL.ShaderFrag)
+	#colorRect.material.shader = shader
 
 func _process(delta: float) -> void:
 	EVENTS.color_changed.emit(colorRect.color)
@@ -47,3 +49,4 @@ func _on_file_dialog_texture_file_selected(path: String) -> void:
 	texRect.texture = ImageTexture.create_from_image(texture)
 	print(texture)
 	print(texRect.texture)
+	

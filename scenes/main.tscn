@@ -9,6 +9,7 @@
 [ext_resource type="Theme" uid="uid://bw2i1kpeccik" path="res://Themes/juju.tres" id="4_tefeu"]
 [ext_resource type="Script" uid="uid://bllo8srcd4uax" path="res://scripts/ui.gd" id="5_o6xl0"]
 [ext_resource type="Script" uid="uid://n2qolndaj24c" path="res://scripts/color_palette.gd" id="5_tbgi4"]
+[ext_resource type="Script" uid="uid://11ywg6xucfwr" path="res://scenes/test.gd" id="6_eb6dy"]
 [ext_resource type="Script" uid="uid://b3xbx6c3gelh0" path="res://scripts/bpm_line_edit.gd" id="7_tipki"]
 [ext_resource type="Script" uid="uid://rl8itots4uke" path="res://scripts/functions.gd" id="9_85g3d"]
 
@@ -77,6 +78,7 @@ offset_bottom = 133.0
 grow_horizontal = 0
 grow_vertical = 2
 texture = ExtResource("3_ya4ey")
+script = ExtResource("6_eb6dy")
 
 [node name="FileDialog_texture" type="FileDialog" parent="." unique_id=520300303]
 title = "Open a File"
@@ -285,14 +287,13 @@ oversampling_override = 1.0
 filters = PackedStringArray("*.gdshaderinc", "*.juju")
 use_native_dialog = true
 
-[node name="TabContainer" type="TabContainer" parent="UI/Functions/Functions" unique_id=422073127 node_paths=PackedStringArray("codeEdit", "file_dialog_save")]
+[node name="TabContainer" type="TabContainer" parent="UI/Functions/Functions" unique_id=422073127 node_paths=PackedStringArray("file_dialog_save")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("9_85g3d")
-codeEdit = NodePath("")
 file_dialog_save = NodePath("../FileDialogSave")
 
 [connection signal="file_selected" from="FileDialog_texture" to="." method="_on_file_dialog_texture_file_selected"]

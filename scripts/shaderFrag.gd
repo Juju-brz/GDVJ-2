@@ -3,15 +3,18 @@ class_name  ShaderCode
 
 @onready var code = self
 var shader_path = "res://shaders/mainShader.gdshader"
-var base := OS.get_executable_path().get_base_dir().path_join("contents/")
+#var base := OS.get_executable_path().get_base_dir().path_join("contents/")
 
 func _ready():
 	var execute = $Execute
 	execute.pressed.connect(_on_execute_pressed)
-	print(base)
+	#print(base)
 	code.text = GLOBAL.ShaderFrag
 	insert_functions_lib()
 	#EVENTS.send_function.connect(insert_functions_lib)
+	#build_code(code.text)
+	#var build = SHADERBUILDER.make_shader(code.text)
+	#print(build)
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("execute_shader"):
@@ -25,6 +28,7 @@ func _on_execute_pressed() -> void:
 	EVENTS.code_pushed.emit(user_code)
 	#CodePush.emit(user_code)
 	print("signal emit : code Shader")
+
 	
 
 func insert_functions_lib(start_line: int = 2):
@@ -35,5 +39,5 @@ func insert_functions_lib(start_line: int = 2):
 	var i := 0
 	for file in DirAccess.get_files_at(dir):
 		if file.get_extension() == "gdshaderinc":
-			code.insert_line_at(start_line + i, '#include "res://contents/functions/%s"' % file)
+			code.insert_line_at(start_line + i, '#include "./contents/functions/%s"' % file)
 			i += 1
