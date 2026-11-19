@@ -2,8 +2,10 @@ extends Control
 
 var numberanim : Array
 var animplay = false
+
 var looptime : int
 var playlist = false
+
 var stop = false
 @export var window : Window
 
@@ -63,7 +65,6 @@ func _on_line_edit_text_submitted(new_text: String) -> void:
 	#looptime = new_text.to_int()
 	#EVENTS.loop_time.emit(looptime)
 	GLOBAL.loop = new_text.to_int()
-
 
 # REORGANIZE ARRAY ANIM #
 func quicksort(list: Array):

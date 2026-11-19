@@ -23,7 +23,6 @@ var playlist = false
 ### FUNCTIONS ###
 
 func _init():
-	
 	EVENTS.add_id_media.connect(assign_id)
 	if GLOBAL.playlist == true:
 		stop_anim()
@@ -177,7 +176,6 @@ func delete_image(buttonid):
 	if play_playlist == true:
 		print("proute")
 		EVENTS.anim_finish.emit()
-
 
 func assign_id(buttonid):
 	if id != null:

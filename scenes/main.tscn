@@ -11,7 +11,6 @@
 [ext_resource type="Script" uid="uid://n2qolndaj24c" path="res://scripts/color_palette.gd" id="5_tbgi4"]
 [ext_resource type="Script" uid="uid://b3xbx6c3gelh0" path="res://scripts/bpm_line_edit.gd" id="7_tipki"]
 [ext_resource type="Script" uid="uid://rl8itots4uke" path="res://scripts/functions.gd" id="9_85g3d"]
-[ext_resource type="CodeHighlighter" uid="uid://mikmy4deotb0" path="res://UI/SyntaxColor.tres" id="10_choun"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ojabb"]
 shader = ExtResource("3_tefeu")
@@ -292,35 +291,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 0
 script = ExtResource("9_85g3d")
-codeEdit = NodePath("CodeEdit")
+codeEdit = NodePath("")
 file_dialog_save = NodePath("../FileDialogSave")
-
-[node name="CodeEdit" type="CodeEdit" parent="UI/Functions/Functions/TabContainer" unique_id=404006726]
-layout_mode = 2
-syntax_highlighter = ExtResource("10_choun")
-draw_control_chars = true
-draw_tabs = true
-draw_spaces = true
-symbol_lookup_on_click = true
-symbol_tooltip_on_hover = true
-line_folding = true
-auto_brace_completion_enabled = true
-metadata/_tab_index = 0
-
-[node name="ButtonSave" type="Button" parent="UI/Functions/Functions/TabContainer/CodeEdit" unique_id=1464673314]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -85.0
-offset_top = -40.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Save"
 
 [connection signal="file_selected" from="FileDialog_texture" to="." method="_on_file_dialog_texture_file_selected"]
 [connection signal="pressed" from="UI/Propeties_Panel/Window/VBoxContainer/ImportTexBut" to="." method="_on_import_tex_but_pressed"]
@@ -334,6 +307,5 @@ text = "Save"
 [connection signal="pressed" from="UI/Color_Palette/Window/VBoxContainer/Button" to="UI/Color_Palette" method="_on_button_pressed"]
 [connection signal="confirmed" from="UI/Functions/Functions/FileDialogSave" to="UI/Functions" method="_on_file_dialog_save_confirmed"]
 [connection signal="files_selected" from="UI/Functions/Functions/FileDialogSave" to="UI/Functions" method="_on_file_dialog_save_files_selected"]
-[connection signal="pressed" from="UI/Functions/Functions/TabContainer/CodeEdit/ButtonSave" to="UI/Functions/Functions/TabContainer" method="_on_button_save_pressed"]
 
 [editable path="UI/CodeLine"]
