@@ -17,6 +17,7 @@ shader = ExtResource("4_eb6dy")
 shader_parameter/tint = Color(1, 0.5, 0.7, 1)
 
 [node name="Main" type="Node2D" unique_id=642545413 node_paths=PackedStringArray("texRect", "BPM_Line_Edit", "file_dialog_texture")]
+visible = false
 script = ExtResource("1_jyhfs")
 texRect = NodePath("CanvasLayer/TextureRect")
 BPM_Line_Edit = NodePath("UI/Propeties_Panel/Window/VBoxContainer/HBoxContainer/BPM_Line_Edit")
@@ -256,14 +257,13 @@ position = Vector2i(766, 36)
 size = Vector2i(446, 610)
 visible = false
 
-[node name="TabContainer" type="TabContainer" parent="UI/Functions/Functions" unique_id=422073127 node_paths=PackedStringArray("file_dialog_save")]
+[node name="TabContainer" type="TabContainer" parent="UI/Functions/Functions" unique_id=422073127]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("9_85g3d")
-file_dialog_save = NodePath("")
 
 [connection signal="file_selected" from="FileDialog_texture" to="." method="_on_file_dialog_texture_file_selected"]
 [connection signal="pressed" from="UI/Propeties_Panel/Window/VBoxContainer/ImportTexBut" to="." method="_on_import_tex_but_pressed"]
