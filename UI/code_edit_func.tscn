@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://duc3yvcxd2j3t"]
 
+[ext_resource type="Script" uid="uid://5n42kc1tj851" path="res://scripts/code_edit_func.gd" id="1_nc0xo"]
+
 [sub_resource type="CodeHighlighter" id="CodeHighlighter_x4rii"]
 number_color = Color(0.30875906, 0.5115807, 0.9547095, 1)
 symbol_color = Color(0.20757037, 0.6253251, 0.35961342, 1)
@@ -20,7 +22,7 @@ color_regions = {
 "//": Color(0.39096233, 0.38732284, 0.3982344, 1)
 }
 
-[node name="CodeEdit" type="CodeEdit" unique_id=1279346928]
+[node name="CodeEdit" type="CodeEdit" unique_id=1279346928 node_paths=PackedStringArray("SaveFileDialog", "codeEdit")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -34,6 +36,9 @@ symbol_lookup_on_click = true
 symbol_tooltip_on_hover = true
 line_folding = true
 auto_brace_completion_enabled = true
+script = ExtResource("1_nc0xo")
+SaveFileDialog = NodePath("FileDialog")
+codeEdit = NodePath(".")
 metadata/_tab_index = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1708984042]
@@ -55,3 +60,12 @@ text = "Save"
 [node name="CompileBut" type="Button" parent="HBoxContainer" unique_id=704850515]
 layout_mode = 2
 text = "Compile"
+
+[node name="FileDialog" type="FileDialog" parent="." unique_id=1987849251]
+access = 2
+use_native_dialog = true
+
+[connection signal="text_changed" from="." to="." method="_on_text_changed"]
+[connection signal="pressed" from="HBoxContainer/SaveBut" to="." method="_on_save_but_pressed"]
+[connection signal="pressed" from="HBoxContainer/CompileBut" to="." method="_on_compile_but_pressed"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]
