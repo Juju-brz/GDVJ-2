@@ -13,8 +13,8 @@ func _process(delta: float) -> void:
 func apply_shader():
 	var shader: Shader = SHADERBUILDER.make_shader(GLOBAL.ShaderFrag)
 
-	var mat := ShaderMaterial.new()   # le matériau
-	mat.shader = shader               # le shader va DANS le matériau
+	var mat := ShaderMaterial.new()
+	mat.shader = shader               
 	self.material = mat          
 
 func _input(event: InputEvent) -> void:

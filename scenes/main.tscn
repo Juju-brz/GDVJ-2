@@ -13,10 +13,6 @@
 [ext_resource type="Script" uid="uid://b3xbx6c3gelh0" path="res://scripts/bpm_line_edit.gd" id="7_tipki"]
 [ext_resource type="Script" uid="uid://rl8itots4uke" path="res://scripts/functions.gd" id="9_85g3d"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ojabb"]
-shader = ExtResource("3_tefeu")
-shader_parameter/BPM = 120.0
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a8y0u"]
 shader = ExtResource("3_tefeu")
 shader_parameter/BPM = 120.0
@@ -25,27 +21,11 @@ shader_parameter/BPM = 120.0
 shader = ExtResource("4_eb6dy")
 shader_parameter/tint = Color(1, 0.5, 0.7, 1)
 
-[node name="Main" type="Node2D" unique_id=642545413 node_paths=PackedStringArray("sub_viewport", "texRect", "colorRect", "BPM_Line_Edit", "file_dialog_texture")]
-visible = false
+[node name="Main" type="Node2D" unique_id=642545413 node_paths=PackedStringArray("texRect", "BPM_Line_Edit", "file_dialog_texture")]
 script = ExtResource("1_jyhfs")
-sub_viewport = NodePath("SubViewport")
 texRect = NodePath("CanvasLayer/TextureRect")
-colorRect = NodePath("SubViewport/ColorRect")
 BPM_Line_Edit = NodePath("UI/Propeties_Panel/Window/VBoxContainer/HBoxContainer/BPM_Line_Edit")
 file_dialog_texture = NodePath("FileDialog_texture")
-
-[node name="SubViewport" type="SubViewport" parent="." unique_id=130595857]
-size = Vector2i(1280, 720)
-
-[node name="ColorRect" type="ColorRect" parent="SubViewport" unique_id=1368685040]
-visible = false
-material = SubResource("ShaderMaterial_ojabb")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.67785305, 0.0003527984, 0.67961687, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=728399109]
 
