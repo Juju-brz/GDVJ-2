@@ -39,6 +39,7 @@ file_dialog_image = NodePath("../../FileDialog_image")
 file_dialog_video = NodePath("../../FileDialog_video")
 
 [node name="test" type="TextureRect" parent="CanvasLayer" unique_id=1667902123]
+visible = false
 material = SubResource("ShaderMaterial_trceg")
 anchors_preset = 11
 anchor_left = 1.0

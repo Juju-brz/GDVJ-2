@@ -4,7 +4,6 @@ extends Node
 var ShaderFrag : String = """shader_type canvas_item;
 
 
-
 uniform float BPM = 120; // Default Value
 
 void fragment() {
