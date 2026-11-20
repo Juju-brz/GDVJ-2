@@ -10,7 +10,7 @@ func _ready():
 	execute.pressed.connect(_on_execute_pressed)
 	#print(base)
 	code.text = GLOBAL.ShaderFrag
-	insert_functions_lib()
+	#insert_functions_lib()
 	#EVENTS.send_function.connect(insert_functions_lib)
 	#build_code(code.text)
 	#var build = SHADERBUILDER.make_shader(code.text)
