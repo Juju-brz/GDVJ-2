@@ -9,16 +9,7 @@ const FunctionTab = preload("res://UI/code_edit_func.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#load_from_file("res://contents/functions/functions.gdshaderinc")
-	#codeEdit.text = load_from_file("res://contents/functions/functions.gdshaderinc")
-	#file_dialog_save.file_selected.connect(_on_file_selected)
-	#codeEdit.duplicate()
-	#var dir = DirAccess.open(base)
-	#for f in DirAccess.get_files_at("./contents/functions"):
 	search_functions()
-
-
-
 
 
 ### LOAD ###
@@ -27,17 +18,12 @@ func search_functions():
 	for f in DirAccess.get_files_at(funcdir):
 		var b = FunctionTab.instantiate()
 		add_child(b)
-		#var b_codeEdit = b.get_node()
-		#b.text = "truc"
-		#print(b.text)
+		b.name = f.get_basename() 
 		print(f)
-		#codeEdit.text = f
-		#var content := FileAccess.open(f, FileAccess.READ) 
 		var path := funcdir.path_join(f)
 		var file := FileAccess.open(path, FileAccess.READ)
 		var content_to_string =file.get_as_text()
-		#print(content)
-		#print(content_to_string)
+		
 		## APPLY TO CODE TEXT
 		if file == null:
 			#pass
