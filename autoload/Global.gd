@@ -4,7 +4,6 @@ extends Node
 var ShaderFrag : String = """shader_type canvas_item;
 
 
-
 uniform float BPM = 120; // Default Value
 
 void fragment() {
@@ -37,8 +36,12 @@ void fragment() {
 	//COLOR = vec4(tex.rgb, tex.a);
 }"""
 
+var funcdir :=OS.get_executable_path().get_base_dir().path_join("contents/functions")
 
 var mouse_activation : bool = true
 var BPM : String = "120.0"
+
+static var compo_table_id := 0
+
 var loop = 1
 var playlist = false

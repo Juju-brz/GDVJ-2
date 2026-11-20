@@ -7,7 +7,7 @@ var is_selected := false
 @onready var sprite
 var zoom_mode = false
 var lock = false
-@export var emetteur: Node
+#@export var emetteur: Node
 
 
 ## ID of media
@@ -48,7 +48,6 @@ func _input(event):
 		else:
 			zoom_mode = true
 	
-	
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
 			if get_rect().has_point(to_local(event.position)):
@@ -56,11 +55,9 @@ func _input(event):
 				is_dragging = true
 				drag_offset = global_position - get_global_mouse_position()
 				if is_selected:
-					#EVENTS.emit_signal("draggingON")
 					EVENTS.seleted_changed.emit(is_dragging)
 					
 					print("emit signal is selected")
-
 			else:
 				is_selected = false 
 		else:
@@ -116,13 +113,6 @@ func _process(delta):
 			pass
 		else:
 			global_position = get_global_mouse_position() + drag_offset
-			
-	#if is_selected:
-		#send_signal()
-	#else:
-		#send_signal()
-	#sprite.rotation += deg_to_rad(45.0 * delta)
-	#sprite.scale +=  Vector2(sin(0.1 * delta),sin(0.1 * delta))
 
 
 func bring_to_front() -> void:

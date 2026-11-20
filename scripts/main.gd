@@ -1,30 +1,29 @@
 extends Node2D
 
-@export var sub_viewport: SubViewport
+#@export var sub_viewport: SubViewport
 @export var texRect: TextureRect
-@export var colorRect : ColorRect
+#@export var colorRect : ColorRect
 @export var BPM_Line_Edit : LineEdit
 
 @export var file_dialog_texture : FileDialog
-
-var id: int
-signal color(BGColor : Color)
-var switch = true
+#var shader: Shader
+#var id: int
+#signal color(BGColor : Color)
+#var switch = true
 
 func _ready() -> void:
 	#var tex: ViewportTexture = $SubViewport.get_texture()
 	EVENTS.code_pushed.connect(_on_code_pushed)
-	#if switch == true:
-		#texRect.texture = tex
-	bpm_changed()
 	file_dialog_texture.always_on_top = true
+	#shader = SHADERBUILDER.make_shader(GLOBAL.ShaderFrag)
+	#colorRect.material.shader = shader
+	apply_shader()
+	bpm_changed()
 
-func _process(delta: float) -> void:
-	EVENTS.color_changed.emit(colorRect.color)
 
 func _on_code_pushed(code: String) -> void:
-	colorRect.material.shader.code = code
-	color.emit(colorRect.color)
+	texRect.material.shader.code = code
+	apply_shader()
 
 func bpm_changed():
 	GLOBAL.BPM = BPM_Line_Edit.text
@@ -45,5 +44,14 @@ func _on_file_dialog_texture_file_selected(path: String) -> void:
 	var texture = Image.load_from_file(path)
 	#texRect.texture = texture
 	texRect.texture = ImageTexture.create_from_image(texture)
-	print(texture)
-	print(texRect.texture)
+	#print(texture)
+	#print(texRect.texture)
+
+#func apply_shader():
+	#shader = SHADERBUILDER.make_shader(GLOBAL.ShaderFrag)
+	
+func apply_shader():
+	var shader: Shader = SHADERBUILDER.make_shader(GLOBAL.ShaderFrag)
+	var mat := ShaderMaterial.new()
+	mat.shader = shader               
+	texRect.material = mat          

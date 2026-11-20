@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://duc3yvcxd2j3t"]
+
+[sub_resource type="CodeHighlighter" id="CodeHighlighter_x4rii"]
+number_color = Color(0.30875906, 0.5115807, 0.9547095, 1)
+symbol_color = Color(0.20757037, 0.6253251, 0.35961342, 1)
+function_color = Color(0.99215686, 0.79607844, 0, 1)
+member_variable_color = Color(0.9589761, 0.6601775, 0.754872, 1)
+keyword_colors = {
+"//": Color(0.8787422, 0, 0, 1),
+"TIME": Color(0.8039216, 0.4745098, 0.1882353, 1),
+"UV": Color(0.805388, 0.47427702, 0.1897483, 1),
+"float": Color(0.9999259, 0.4861694, 0.4186818, 1),
+"int": Color(1, 0.4862745, 0.41960785, 1),
+"return": Color(0.8801906, 0.65974784, 0.8757751, 1),
+"vec2": Color(1, 0.4862745, 0.41960785, 1),
+"vec3": Color(1, 0.4862745, 0.41960785, 1),
+"vec4": Color(1, 0.4862745, 0.41960785, 1)
+}
+color_regions = {
+"//": Color(0.39096233, 0.38732284, 0.3982344, 1)
+}
+
+[node name="CodeEdit" type="CodeEdit" unique_id=1279346928]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+syntax_highlighter = SubResource("CodeHighlighter_x4rii")
+draw_control_chars = true
+draw_tabs = true
+draw_spaces = true
+symbol_lookup_on_click = true
+symbol_tooltip_on_hover = true
+line_folding = true
+auto_brace_completion_enabled = true
+metadata/_tab_index = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1708984042]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -120.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="SaveBut" type="Button" parent="HBoxContainer" unique_id=2113301356]
+layout_mode = 2
+text = "Save"
+
+[node name="CompileBut" type="Button" parent="HBoxContainer" unique_id=704850515]
+layout_mode = 2
+text = "Compile"

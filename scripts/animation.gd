@@ -23,13 +23,12 @@ var playlist = false
 ### FUNCTIONS ###
 
 func _init():
-	
 	EVENTS.add_id_media.connect(assign_id)
 	if GLOBAL.playlist == true:
 		stop_anim()
 
 func _ready():
-	EVENTS.button_compo.connect(_on_button_compo_video_pressed)
+	#EVENTS.button_compo.connect(_on_button_compo_video_pressed)
 	EVENTS.hide_media.connect(hide_media)
 	EVENTS.lock_media.connect(lock_media)
 	
@@ -37,7 +36,7 @@ func _ready():
 	EVENTS.delete_media.connect(delete_image)
 	EVENTS.delete_all_media.connect(delette_all)
 	EVENTS.anim_stop.connect(stop_anim)
-	EVENTS.anim_play.connect(play_anim)
+	EVENTS.anim_play.connect(play_anim_in_playlist)
 	EVENTS.loop_time.connect(new_loop_time)
 	EVENTS.exit_playlist.connect(replay_anim_not_playlist)
 
@@ -61,8 +60,8 @@ void fragment() {
 	material = mat
 	### MULTIPLY BLEND MODE ###
 
-func _on_button_compo_video_pressed():
-	print("choucroute farchis")
+#func _on_button_compo_video_pressed():
+	#print("choucroute farchis")
 
 func _input(event):
 	if Input.is_action_just_pressed("media_change_mode"):
@@ -119,17 +118,6 @@ func _input(event):
 			if Input.is_action_just_pressed("media_delete"):
 				delete_image(id)
 
-func delete_image(buttonid):
-	if buttonid != id:
-		pass
-	else:
-		queue_free()
-		EVENTS.delete_icon.emit(buttonid)
-		#EVENTS.anim_finish.emit()
-	if play_playlist == true:
-		print("proute")
-		EVENTS.anim_finish.emit()
-
 func _process(delta):
 	if is_dragging:
 		if lock == true:
@@ -157,6 +145,7 @@ func get_sprite_rect() -> Rect2:
 	var top_left := -size * 0.5 if centered else Vector2.ZERO
 	return Rect2(top_left + offset, size)
 
+### BUTTON OPTION FUNCS ###
 func hide_media(buttonid):
 	if buttonid != id:
 		pass
@@ -177,12 +166,22 @@ func lock_media(buttonid):
 		else:
 			lock = true
 
+func delete_image(buttonid):
+	if buttonid != id:
+		pass
+	else:
+		queue_free()
+		EVENTS.delete_icon.emit(buttonid)
+		#EVENTS.anim_finish.emit()
+	if play_playlist == true:
+		print("proute")
+		EVENTS.anim_finish.emit()
+
 func assign_id(buttonid):
 	if id != null:
 		pass
 	else:
 		id = buttonid
-		print("id image apply")
 		print("id image", id)
 
 func delette_all():
@@ -200,7 +199,7 @@ func replay_anim_not_playlist():
 	self.visible = true
 	GLOBAL.playlist = false
 
-func play_anim(idArray):
+func play_anim_in_playlist(idArray):
 	if idArray != id:
 		pass
 	else:
@@ -214,12 +213,12 @@ func _on_animation_looped() -> void:
 	if GLOBAL.playlist == true:
 		if turn >= GLOBAL.loop:
 			EVENTS.anim_finish.emit()
-			print("loop",GLOBAL.loop )
+			#print("loop",GLOBAL.loop )
 			stop_anim()
 			turn = 1
 		else:
 			turn += 1
-			print("turn", turn)
+			#print("turn", turn)
 
 func new_loop_time(looptime : int):
 	GLOBAL.loop = looptime
