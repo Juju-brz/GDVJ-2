@@ -44,3 +44,7 @@ Go inside
 /contents/functions
 ```
 and add you files with your own functions library
+
+## Other Softwares
+
+I use OBS to make mapping
