@@ -48,11 +48,6 @@ layout_mode = 2
 [node name="HBoxContainer2" type="HBoxContainer" parent="Window/VBoxContainer" unique_id=218075773]
 layout_mode = 2
 
-[node name="LoopBut" type="Button" parent="Window/VBoxContainer/HBoxContainer2" unique_id=1392506682]
-visible = false
-layout_mode = 2
-text = "LOOP NUMBER"
-
 [node name="AddClipBut" type="Button" parent="Window/VBoxContainer/HBoxContainer2" unique_id=1904289634]
 layout_mode = 2
 text = "ADD CLIP PANEL"
@@ -97,6 +92,5 @@ text = "DELETTE ALL"
 [connection signal="pressed" from="Window/VBoxContainer/HBoxContainer2/DelClipBut" to="Window/VBoxContainer/CLIPTABLE" method="_on_del_clip_but_pressed"]
 [connection signal="pressed" from="Window/VBoxContainer/HBoxContainer2/ClipPlayBut" to="." method="_on_clip_play_but_pressed"]
 [connection signal="text_submitted" from="Window/VBoxContainer/HBoxContainer2/LineEdit" to="." method="_on_line_edit_text_submitted"]
-[connection signal="pressed" from="Window/VBoxContainer/HBoxContainer2/StopPlayBut" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Window/VBoxContainer/HBoxContainer2/StopPlayBut" to="." method="_on_stop_play_but_pressed"]
 [connection signal="pressed" from="Window/VBoxContainer/HBoxContainer2/DelAllBut" to="." method="_on_del_all_but_pressed"]
-[connection signal="pressed" from="Window/VBoxContainer/HBoxContainer2/DelAllBut" to="Window/VBoxContainer/CLIPTABLE/ButtonCompoVideo" method="_on_del_all_but_pressed"]

@@ -8,13 +8,13 @@ var playlist = false
 
 var stop = false
 @export var window : Window
+var idtable = "compotable"
 
-#func _init() -> void:
-	#var Proute = "proute"
-	#print(Proute)
 
-func _on_del_all_but_pressed() -> void:
-	self.queue_free()
+func _init() -> void:
+	idtable += str(GLOBAL.compo_table_id)
+	GLOBAL.compo_table_id += 1
+	print(idtable)
 
 func _ready() -> void:
 	EVENTS.add_id_media.connect(add_id_array)
@@ -29,24 +29,16 @@ func add_id_array(id):
 		pass 
 	else:
 		numberanim.append(id)
-		#print("anim import ","id", numberanim)
 		numberanim = quicksort(numberanim)
 		print("anim import ","id", numberanim)
-		#animOrder = quicksort(numberanim)
-		#print("Order anim import ","id", animOrder)
 
 func delete_id_array(id):
 	numberanim.erase(id)
 	print("anim delette ","id", numberanim)
 
-func _on_clip_play_but_pressed() -> void:
-	stop = false
-	playlist_on()
-
 func playlist_on():
-	#playlist = true
-	#var stop = false
 	if numberanim.is_empty():
+		print("CLIP EMPTY")
 		pass
 	else:
 		while stop == false:
@@ -59,14 +51,8 @@ func playlist_on():
 
 func animation_finish():
 	animplay = true
-	#print("animplay = true")
 
-func _on_line_edit_text_submitted(new_text: String) -> void:
-	#looptime = new_text.to_int()
-	#EVENTS.loop_time.emit(looptime)
-	GLOBAL.loop = new_text.to_int()
-
-# REORGANIZE ARRAY ANIM #
+## REORGANIZE ARRAY ANIM ##
 func quicksort(list: Array):
 	if list.size() <= 1: 
 		return list  
@@ -85,6 +71,20 @@ func quicksort(list: Array):
 	
 	return quicksort(little) + [pivot] + quicksort(big)
 
-func _on_button_pressed() -> void:
+func _on_line_edit_text_submitted(new_text: String) -> void:
+	GLOBAL.loop = new_text.to_int()
+
+func _on_clip_play_but_pressed() -> void:
+	stop = false
+	playlist_on()
+
+func _on_stop_play_but_pressed() -> void:
 	stop = true
 	EVENTS.exit_playlist.emit()
+
+func _on_del_all_but_pressed() -> void:
+	if idtable != idtable:
+		pass
+	else:
+		self.queue_free()
+		EVENTS.delete_all_media.emit()
