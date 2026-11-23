@@ -3,10 +3,12 @@ extends Control
 static var next_id := 0
 
 var id: int
+var idtable
 @export var buttonCompoVideo : Button
 #signal action_pressed(id: int)
 @export var buthide : Button
 @export var butlock : Button
+@export var CompositionVideo : Control
 
 var mediaImport : bool = false
 var hide : bool        = false
@@ -15,12 +17,24 @@ var lock : bool        = false
 func _init():
 	id = next_id
 	next_id += 1
+	
+	#idtable = 
+	#idtable += str(GLOBAL.compo_table_id)
+	#print("button id ", id, " ", "idtable ", idtable)
 
 func _ready():
 	#pressed.connect(func(): EVENTS.button_compo.emit(id))
-	print("button id", id)
+	#print("button id", id, "idtable", idtable)
+	#print(idtable)
 	EVENTS.add_button_compo_icon.connect(changeButtonIcon)
 	EVENTS.delete_icon.connect(delette_icon)
+	EVENTS.delete_all_media.connect(delette_all)
+	#var p = get_parent()
+	#while p.idtable == null:
+	#idtable = p.idtable 
+	#print("id table to button ", idtable)
+	print("button id ", id, " ", "idtable ", idtable)
+	
 
 func changeButtonIcon(buttonid, texture):
 	if buttonid != id:
@@ -68,3 +82,9 @@ func delette_icon(imageid):
 		mediaImport = false
 		butlock.text = "LOCK"
 		buthide.text = "HIDE"
+
+func delette_all(idtableTable):
+	if idtable != idtableTable:
+		pass
+	else:
+		EVENTS.delete_media.emit(id)

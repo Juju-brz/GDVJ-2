@@ -8,6 +8,8 @@ extends Control
 
 var selected_media = false
 const comp_video = preload("res://UI/composition_video.tscn")
+var idCompotable = 0
+
 
 func _ready():
 	EVENTS.seleted_changed.connect(_receive_signal)
@@ -38,4 +40,7 @@ func _receive_signal(selected : bool):
 
 func _on_button_comp_videos_pressed() -> void:
 	var b = comp_video.instantiate()
+	b.idtable = idCompotable
+	idCompotable += 1
+	print("id table", b.idtable)
 	add_child(b)

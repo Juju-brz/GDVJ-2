@@ -19,6 +19,7 @@ func _ready() -> void:
 	#colorRect.material.shader = shader
 	apply_shader()
 	bpm_changed()
+	
 
 
 func _on_code_pushed(code: String) -> void:

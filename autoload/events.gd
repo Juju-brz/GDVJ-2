@@ -20,7 +20,7 @@ signal delete_icon
 signal delete_media(id : int)
 signal delete_all_media()
 signal replace_ex_media(id: int)
-
+signal compotable(idtable: String)
 # Playlist #
 signal anim_stop()
 signal anim_play(id : int)

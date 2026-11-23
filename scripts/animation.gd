@@ -34,7 +34,7 @@ func _ready():
 	
 	EVENTS.add_button_compo_icon.connect(assign_id)
 	EVENTS.delete_media.connect(delete_image)
-	EVENTS.delete_all_media.connect(delette_all)
+	#EVENTS.delete_all_media.connect(delette_all)
 	EVENTS.anim_stop.connect(stop_anim)
 	EVENTS.anim_play.connect(play_anim_in_playlist)
 	EVENTS.loop_time.connect(new_loop_time)
@@ -184,9 +184,9 @@ func assign_id(buttonid):
 		id = buttonid
 		print("id image", id)
 
-func delette_all():
-	queue_free()
-	EVENTS.anim_finish.emit()
+#func delette_all():
+	#queue_free()
+	#EVENTS.anim_finish.emit()
 
 func stop_anim():
 	self.stop()
