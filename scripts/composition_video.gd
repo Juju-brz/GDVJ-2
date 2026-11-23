@@ -26,14 +26,17 @@ func _ready() -> void:
 	print(idtable, "CompoTable")
 	
 
-func add_id_array(id):
-	var d = id
-	if d in numberanim:
-		pass 
+func add_id_array(id, tableid):
+	if idtable != tableid:
+		pass
 	else:
-		numberanim.append(id)
-		numberanim = quicksort(numberanim)
-		print("anim import ","id", numberanim)
+		var d = id
+		if d in numberanim:
+			pass 
+		else:
+			numberanim.append(id)
+			numberanim = quicksort(numberanim)
+			print("anim import ","id", numberanim)
 
 func delete_id_array(id):
 	numberanim.erase(id)

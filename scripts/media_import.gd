@@ -14,6 +14,7 @@ const AnimScene = preload("res://scenes/Animation.tscn")
 
 var boutonComp = false
 var buttonid = null
+var tableid = null
 
 func _ready() -> void:
 	file_dialog_image.file_selected.connect(on_file_selected)
@@ -101,7 +102,7 @@ func on_dir_selected(dir : String):
 		var texture = new_instance.sprite.sprite_frames.get_frame_texture("default", 0)
 		EVENTS.add_button_compo_icon.emit(buttonid, texture)
 		
-		EVENTS.add_id_media.emit(buttonid)
+		EVENTS.add_id_media.emit(buttonid, tableid)
 		boutonComp = false
 
 func _on_button_image_pressed() -> void:
@@ -110,7 +111,8 @@ func _on_button_image_pressed() -> void:
 func _on_button_video_pressed() -> void:
 	file_dialog_video.show()
 
-func _on_button_compo_video_pressed(id) -> void:
+func _on_button_compo_video_pressed(id, tableId) -> void:
 	file_dialog_video.show()
 	boutonComp = true
 	buttonid = id
+	tableid = tableId

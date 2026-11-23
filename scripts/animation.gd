@@ -14,6 +14,7 @@ var hidebool : bool = false
 
 var id  = null
 
+var idtable = null
 # Playlist #
 var loop = 1
 var turn = 1
@@ -177,12 +178,13 @@ func delete_image(buttonid):
 		print("proute")
 		EVENTS.anim_finish.emit()
 
-func assign_id(buttonid):
+func assign_id(buttonid, CompoId):
 	if id != null:
 		pass
 	else:
 		id = buttonid
-		print("id image", id)
+		#idtable = CompoId
+		print("id image ", id, "id table " , idtable)
 
 #func delette_all():
 	#queue_free()
