@@ -22,8 +22,8 @@ func _ready() -> void:
 	EVENTS.add_id_media.connect(add_id_array)
 	EVENTS.delete_media.connect(delete_id_array)
 	EVENTS.anim_finish.connect(animation_finish)
-	window.always_on_top = true
-	print(idtable, "CompoTable")
+	#window.always_on_top = true
+	print(idtable, " CompoTable")
 	
 
 func add_id_array(id, tableid):
@@ -51,12 +51,15 @@ func playlist_on():
 			EVENTS.anim_stop.emit(idtable)
 			for i in numberanim:
 				print(i)
-				EVENTS.anim_play.emit(i)
+				EVENTS.anim_play.emit(i, idtable)
 				await EVENTS.anim_finish
 			animplay = false
 
-func animation_finish():
-	animplay = true
+func animation_finish(idtableImport):
+	if idtable != idtableImport:
+		pass
+	else:
+		animplay = true
 
 ## REORGANIZE ARRAY ANIM ##
 func quicksort(list: Array):
@@ -88,7 +91,7 @@ func _on_clip_play_but_pressed() -> void:
 
 func _on_stop_play_but_pressed() -> void:
 	stop = true
-	EVENTS.exit_playlist.emit()
+	EVENTS.exit_playlist.emit(idtable)
 
 func _on_del_all_but_pressed() -> void:
 	if idtable != idtable:

@@ -15,6 +15,7 @@ var hidebool : bool = false
 var id  = null
 
 var idtable = null
+
 # Playlist #
 var loop = 1
 var turn = 1
@@ -25,7 +26,7 @@ var playlist = false
 
 func _init():
 	EVENTS.add_id_media.connect(assign_id)
-	if GLOBAL.playlist == true:
+	if playlist == true:
 		stop_anim(idtable)
 
 func _ready():
@@ -192,6 +193,7 @@ func assign_id(buttonid, CompoId):
 
 func stop_anim(idtableImport):
 	if idtable != idtableImport:
+		print("stop anim pass")
 		pass
 	else:
 		self.stop()
@@ -199,25 +201,28 @@ func stop_anim(idtableImport):
 		play_playlist = false
 		lock = true
 
-func replay_anim_not_playlist():
-	self.play()
-	self.visible = true
-	GLOBAL.playlist = false
-
-func play_anim_in_playlist(idArray):
-	if idArray != id:
+func replay_anim_not_playlist(idTableImport):
+	if idtable != idTableImport:
 		pass
 	else:
-		GLOBAL.playlist = true
+		self.play()
+		self.visible = true
+		playlist = false
+
+func play_anim_in_playlist(idArray, idTableImport):
+	if idArray != id || idtable != idTableImport:
+		pass
+	else:
+		playlist = true
 		self.visible = true
 		self.play()
 		play_playlist = true
 		lock = false
 
 func _on_animation_looped() -> void:
-	if GLOBAL.playlist == true:
-		if turn >= GLOBAL.loop:
-			EVENTS.anim_finish.emit()
+	if playlist == true:
+		if turn >= loop:
+			EVENTS.anim_finish.emit(idtable)
 			#print("loop",GLOBAL.loop )
 			stop_anim(idtable)
 			turn = 1
@@ -229,6 +234,6 @@ func new_loop_time(looptime : int, idTableImport):
 	if idtable != idTableImport:
 		pass
 	else:
-		GLOBAL.loop = looptime
+		#GLOBAL.loop = looptime
 		loop = looptime
 		print(loop)

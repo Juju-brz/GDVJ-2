@@ -23,7 +23,7 @@ signal replace_ex_media(id: int)
 signal compotable(idtable: String)
 # Playlist #
 signal anim_stop(idtable : int)
-signal anim_play(id : int)
-signal anim_finish
+signal anim_play(id : int, idTable : int)
+signal anim_finish(idTable : int)
 signal loop_time(looptime : int, idTable : int)
-signal exit_playlist
+signal exit_playlist(idTable : int)
