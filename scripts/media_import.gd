@@ -57,7 +57,7 @@ func on_file_selected(path: String) -> void:
 	#ResourceLoader.load_threaded_request(new_instance)
 	instances.append(new_instance)
 	#new_instance.next_id +=1
-	print("id", new_instance.next_id)
+	print("id ", new_instance.next_id)
 
 func on_dir_selected(dir : String): 
 	var files: Array = Array(DirAccess.get_files_at(dir)).filter(

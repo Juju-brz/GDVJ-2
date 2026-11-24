@@ -48,7 +48,7 @@ func playlist_on():
 		pass
 	else:
 		while stop == false:
-			EVENTS.anim_stop.emit()
+			EVENTS.anim_stop.emit(idtable)
 			for i in numberanim:
 				print(i)
 				EVENTS.anim_play.emit(i)
@@ -78,7 +78,9 @@ func quicksort(list: Array):
 	return quicksort(little) + [pivot] + quicksort(big)
 
 func _on_line_edit_text_submitted(new_text: String) -> void:
-	GLOBAL.loop = new_text.to_int()
+	#GLOBAL.loop = new_text.to_int()
+	looptime = new_text.to_int()
+	EVENTS.loop_time.emit(looptime, idtable)
 
 func _on_clip_play_but_pressed() -> void:
 	stop = false

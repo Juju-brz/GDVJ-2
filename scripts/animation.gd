@@ -26,14 +26,14 @@ var playlist = false
 func _init():
 	EVENTS.add_id_media.connect(assign_id)
 	if GLOBAL.playlist == true:
-		stop_anim()
+		stop_anim(idtable)
 
 func _ready():
 	#EVENTS.button_compo.connect(_on_button_compo_video_pressed)
 	EVENTS.hide_media.connect(hide_media)
 	EVENTS.lock_media.connect(lock_media)
 	
-	EVENTS.add_button_compo_icon.connect(assign_id)
+	#EVENTS.add_button_compo_icon.connect(assign_id)
 	EVENTS.delete_media.connect(delete_image)
 	#EVENTS.delete_all_media.connect(delette_all)
 	EVENTS.anim_stop.connect(stop_anim)
@@ -183,18 +183,21 @@ func assign_id(buttonid, CompoId):
 		pass
 	else:
 		id = buttonid
-		#idtable = CompoId
-		print("id image ", id, "id table " , idtable)
+		idtable = CompoId
+		print( "Scene Animation" ,"id image ", id, " "," id table " , idtable)
 
 #func delette_all():
 	#queue_free()
 	#EVENTS.anim_finish.emit()
 
-func stop_anim():
-	self.stop()
-	self.visible = false
-	play_playlist = false
-	lock = true
+func stop_anim(idtableImport):
+	if idtable != idtableImport:
+		pass
+	else:
+		self.stop()
+		self.visible = false
+		play_playlist = false
+		lock = true
 
 func replay_anim_not_playlist():
 	self.play()
@@ -216,12 +219,16 @@ func _on_animation_looped() -> void:
 		if turn >= GLOBAL.loop:
 			EVENTS.anim_finish.emit()
 			#print("loop",GLOBAL.loop )
-			stop_anim()
+			stop_anim(idtable)
 			turn = 1
 		else:
 			turn += 1
 			#print("turn", turn)
 
-func new_loop_time(looptime : int):
-	GLOBAL.loop = looptime
-	print(loop)
+func new_loop_time(looptime : int, idTableImport):
+	if idtable != idTableImport:
+		pass
+	else:
+		GLOBAL.loop = looptime
+		loop = looptime
+		print(loop)

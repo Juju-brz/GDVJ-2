@@ -34,7 +34,6 @@ func _ready():
 	#idtable = p.idtable 
 	#print("id table to button ", idtable)
 	print("button id ", id, " ", "idtable ", idtable)
-	
 
 func changeButtonIcon(buttonid, texture):
 	if buttonid != id:
