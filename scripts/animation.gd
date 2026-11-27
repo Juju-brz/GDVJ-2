@@ -30,13 +30,9 @@ func _init():
 		stop_anim(idtable)
 
 func _ready():
-	#EVENTS.button_compo.connect(_on_button_compo_video_pressed)
 	EVENTS.hide_media.connect(hide_media)
 	EVENTS.lock_media.connect(lock_media)
-	
-	#EVENTS.add_button_compo_icon.connect(assign_id)
 	EVENTS.delete_media.connect(delete_image)
-	#EVENTS.delete_all_media.connect(delette_all)
 	EVENTS.anim_stop.connect(stop_anim)
 	EVENTS.anim_play.connect(play_anim_in_playlist)
 	EVENTS.loop_time.connect(new_loop_time)
@@ -62,8 +58,7 @@ void fragment() {
 	material = mat
 	### MULTIPLY BLEND MODE ###
 
-#func _on_button_compo_video_pressed():
-	#print("choucroute farchis")
+
 
 func _input(event):
 	if Input.is_action_just_pressed("media_change_mode"):
@@ -200,6 +195,7 @@ func stop_anim(idtableImport):
 		self.visible = false
 		play_playlist = false
 		lock = true
+		EVENTS.deactive_change_color.emit(id)
 
 func replay_anim_not_playlist(idTableImport):
 	if idtable != idTableImport:
@@ -218,6 +214,7 @@ func play_anim_in_playlist(idArray, idTableImport):
 		self.play()
 		play_playlist = true
 		lock = false
+		EVENTS.active_change_color.emit(id)
 
 func _on_animation_looped() -> void:
 	if playlist == true:

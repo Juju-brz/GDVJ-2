@@ -1,15 +1,9 @@
 extends Node2D
 
-#@export var sub_viewport: SubViewport
 @export var texRect: TextureRect
-#@export var colorRect : ColorRect
 @export var BPM_Line_Edit : LineEdit
-
 @export var file_dialog_texture : FileDialog
-#var shader: Shader
-#var id: int
-#signal color(BGColor : Color)
-#var switch = true
+
 
 func _ready() -> void:
 	#var tex: ViewportTexture = $SubViewport.get_texture()
@@ -48,9 +42,7 @@ func _on_file_dialog_texture_file_selected(path: String) -> void:
 	#print(texture)
 	#print(texRect.texture)
 
-#func apply_shader():
-	#shader = SHADERBUILDER.make_shader(GLOBAL.ShaderFrag)
-	
+
 func apply_shader():
 	var shader: Shader = SHADERBUILDER.make_shader(GLOBAL.ShaderFrag)
 	var mat := ShaderMaterial.new()

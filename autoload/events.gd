@@ -27,3 +27,7 @@ signal anim_play(id : int, idTable : int)
 signal anim_finish(idTable : int)
 signal loop_time(looptime : int, idTable : int)
 signal exit_playlist(idTable : int)
+
+#button
+signal active_change_color(id :int)
+signal deactive_change_color(id : int)

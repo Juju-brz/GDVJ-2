@@ -23,16 +23,11 @@ func _init():
 	#print("button id ", id, " ", "idtable ", idtable)
 
 func _ready():
-	#pressed.connect(func(): EVENTS.button_compo.emit(id))
-	#print("button id", id, "idtable", idtable)
-	#print(idtable)
 	EVENTS.add_button_compo_icon.connect(changeButtonIcon)
 	EVENTS.delete_icon.connect(delette_icon)
 	EVENTS.delete_all_media.connect(delette_all)
-	#var p = get_parent()
-	#while p.idtable == null:
-	#idtable = p.idtable 
-	#print("id table to button ", idtable)
+	EVENTS.active_change_color.connect(active_button)
+	EVENTS.deactive_change_color.connect(deactive_button)
 	print("button id ", id, " ", "idtable ", idtable)
 
 func changeButtonIcon(buttonid, texture):
@@ -87,3 +82,15 @@ func delette_all(idtableTable):
 		pass
 	else:
 		EVENTS.delete_media.emit(id)
+
+func active_button(ImportId):
+	if id != ImportId:
+		pass
+	else:
+		buttonCompoVideo.modulate = Color(0.726, 0.238, 0.241, 1.0)
+
+func deactive_button(ImportId):
+	if id != ImportId:
+		pass
+	else:
+		buttonCompoVideo.modulate = Color("7b9bcb")

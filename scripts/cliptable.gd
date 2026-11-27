@@ -1,11 +1,9 @@
 extends HBoxContainer
 
-
 const ButtonComp = preload("res://UI/button_compo_video.tscn")
 #var buttonArray : Array
 @export var compoVideo : Control
 var idtable
-
 
 
 func _ready() -> void:
@@ -31,6 +29,3 @@ func create_buttonComp():
 
 func cliptable_id():
 	pass
-
-#func _on_del_clip_but_pressed() -> void:
-	#buttonArray.pop_back()

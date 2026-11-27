@@ -17,7 +17,6 @@ shader = ExtResource("4_eb6dy")
 shader_parameter/tint = Color(1, 0.5, 0.7, 1)
 
 [node name="Main" type="Node2D" unique_id=642545413 node_paths=PackedStringArray("texRect", "BPM_Line_Edit", "file_dialog_texture")]
-visible = false
 script = ExtResource("1_jyhfs")
 texRect = NodePath("CanvasLayer/TextureRect")
 BPM_Line_Edit = NodePath("UI/Propeties_Panel/Window/VBoxContainer/HBoxContainer/BPM_Line_Edit")

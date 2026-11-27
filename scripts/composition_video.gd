@@ -9,14 +9,7 @@ var playlist = false
 var stop = false
 @export var window : Window
 var idtable
-#@onready var truc = $Window/VBoxContainer/CLIPTABLE/ButtonCompoVideo
 
-#func _init() -> void:
-	#idtable
-	#idtable += str(GLOBAL.compo_table_id)
-	##GLOBAL.compo_table_id += 1
-	#print(idtable)
-	#EVENTS.compotable.emit(idtable)
 
 func _ready() -> void:
 	EVENTS.add_id_media.connect(add_id_array)
@@ -24,7 +17,6 @@ func _ready() -> void:
 	EVENTS.anim_finish.connect(animation_finish)
 	#window.always_on_top = true
 	print(idtable, " CompoTable")
-	
 
 func add_id_array(id, tableid):
 	if idtable != tableid:
