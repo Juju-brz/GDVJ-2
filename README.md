@@ -44,7 +44,7 @@ ALT = change mode  for mouse wheel
 
 GDVJ read only image sequence
 
-choose a folder  who countain images jpg or png
+choose a folder  who countain images sequence on format jpg or png
 
 # Create your own functions
 Go inside
