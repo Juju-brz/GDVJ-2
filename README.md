@@ -13,6 +13,14 @@ https://docs.godotengine.org/en/stable/tutorials/shaders/shader_reference/shadin
 if you are good to GLSL for convert to Godot Shader 
 
 https://docs.godotengine.org/en/stable/tutorials/shaders/converting_glsl_to_godot_shaders.html
+## Launch on Linux
+
+```
+chmod +x main.x86_64
+./main.x86_64
+#or
+./main.sh
+```
 
 # Commandes
 
