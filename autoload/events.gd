@@ -23,7 +23,7 @@ signal replace_ex_media(id: int)
 signal compotable(idtable: String)
 # Playlist #
 signal anim_stop(idtable : int)
-signal anim_play(id : int, idTable : int)
+signal anim_play(id : int, idTable : int, looptime : int)
 signal anim_finish(idTable : int)
 signal loop_time(looptime : int, idTable : int)
 signal exit_playlist(idTable : int)
@@ -31,3 +31,4 @@ signal exit_playlist(idTable : int)
 #button
 signal active_change_color(id :int)
 signal deactive_change_color(id : int)
+signal send_stop_playlist(idtable : int)

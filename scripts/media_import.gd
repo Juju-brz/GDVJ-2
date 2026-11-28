@@ -2,7 +2,8 @@ extends Node2D
 
 
 #### VARIABLES ####
-### IMPORT MEDIA ###
+
+## IMPORT MEDIA ##
 var instances: Array = []  #All media imported
 const TARGET_SIZE := 200.0 
 
@@ -15,6 +16,8 @@ const AnimScene = preload("res://scenes/Animation.tscn")
 var boutonComp = false
 var buttonid = null
 var tableid = null
+
+### FUNCTIONS ###
 
 func _ready() -> void:
 	file_dialog_image.file_selected.connect(on_file_selected)

@@ -1,26 +1,28 @@
 extends Control
 
+### VARIABLES ###
+
 static var next_id := 0
 
 var id: int
 var idtable
 @export var buttonCompoVideo : Button
-#signal action_pressed(id: int)
-@export var buthide : Button
-@export var butlock : Button
+@export var buthide          : Button
+@export var butlock          : Button
 @export var CompositionVideo : Control
 
 var mediaImport : bool = false
+
+#Control Media
 var hide : bool        = false
 var lock : bool        = false
+
+
+### FUNCTIONS ###
 
 func _init():
 	id = next_id
 	next_id += 1
-	
-	#idtable = 
-	#idtable += str(GLOBAL.compo_table_id)
-	#print("button id ", id, " ", "idtable ", idtable)
 
 func _ready():
 	EVENTS.add_button_compo_icon.connect(changeButtonIcon)
@@ -29,6 +31,7 @@ func _ready():
 	EVENTS.active_change_color.connect(active_button)
 	EVENTS.deactive_change_color.connect(deactive_button)
 	print("button id ", id, " ", "idtable ", idtable)
+	buttonCompoVideo.modulate = Color("ffffffff")
 
 func changeButtonIcon(buttonid, texture):
 	if buttonid != id:
@@ -87,10 +90,10 @@ func active_button(ImportId):
 	if id != ImportId:
 		pass
 	else:
-		buttonCompoVideo.modulate = Color(0.726, 0.238, 0.241, 1.0)
+		buttonCompoVideo.modulate = Color(0.916, 0.421, 0.406, 1.0)
 
 func deactive_button(ImportId):
 	if id != ImportId:
 		pass
 	else:
-		buttonCompoVideo.modulate = Color("7b9bcb")
+		buttonCompoVideo.modulate = Color("ffffffff")

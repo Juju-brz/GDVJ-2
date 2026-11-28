@@ -11,7 +11,6 @@ const FunctionTab = preload("res://UI/code_edit_func.tscn")
 func _ready() -> void:
 	search_functions()
 
-
 ### LOAD ###
 
 func search_functions():
@@ -32,9 +31,6 @@ func search_functions():
 			b.text = content_to_string
 
 	print("funcdir", funcdir)
-
-
-
 
 ### SAVE ###
 

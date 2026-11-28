@@ -1,5 +1,7 @@
 extends Control
 
+### VARIABLES ###
+
 var numberanim : Array
 var animplay = false
 
@@ -10,6 +12,7 @@ var stop = false
 @export var window : Window
 var idtable
 
+### FUNCTIONS ###
 
 func _ready() -> void:
 	EVENTS.add_id_media.connect(add_id_array)
@@ -43,7 +46,7 @@ func playlist_on():
 			EVENTS.anim_stop.emit(idtable)
 			for i in numberanim:
 				print(i)
-				EVENTS.anim_play.emit(i, idtable)
+				EVENTS.anim_play.emit(i, idtable, looptime)
 				await EVENTS.anim_finish
 			animplay = false
 
@@ -84,6 +87,7 @@ func _on_clip_play_but_pressed() -> void:
 func _on_stop_play_but_pressed() -> void:
 	stop = true
 	EVENTS.exit_playlist.emit(idtable)
+	EVENTS.send_stop_playlist.emit(idtable)
 
 func _on_del_all_but_pressed() -> void:
 	if idtable != idtable:

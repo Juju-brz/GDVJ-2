@@ -5,8 +5,6 @@ var _regex := RegEx.new()
 
 func _ready() -> void:
 	_regex.compile("[^0-9]")
-	#text_changed.connect(_on_text_changed)
-
 
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed:

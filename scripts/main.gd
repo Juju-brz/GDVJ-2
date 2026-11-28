@@ -1,9 +1,14 @@
 extends Node2D
 
-@export var texRect: TextureRect
-@export var BPM_Line_Edit : LineEdit
+### VARIABLES ###
+
+
+@export var texRect             : TextureRect
+@export var BPM_Line_Edit       : LineEdit
 @export var file_dialog_texture : FileDialog
 
+
+### FUNCTIONS ###
 
 func _ready() -> void:
 	#var tex: ViewportTexture = $SubViewport.get_texture()
@@ -13,8 +18,6 @@ func _ready() -> void:
 	#colorRect.material.shader = shader
 	apply_shader()
 	bpm_changed()
-	
-
 
 func _on_code_pushed(code: String) -> void:
 	texRect.material.shader.code = code
@@ -35,13 +38,8 @@ func _on_import_tex_but_pressed() -> void:
 	file_dialog_texture.show()
 
 func _on_file_dialog_texture_file_selected(path: String) -> void:
-	#switch = false
 	var texture = Image.load_from_file(path)
-	#texRect.texture = texture
 	texRect.texture = ImageTexture.create_from_image(texture)
-	#print(texture)
-	#print(texRect.texture)
-
 
 func apply_shader():
 	var shader: Shader = SHADERBUILDER.make_shader(GLOBAL.ShaderFrag)

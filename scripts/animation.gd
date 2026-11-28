@@ -9,14 +9,13 @@ var is_selected := false
 @onready var sprite
 var zoom_mode = false
 var lock = false
-#@export var emetteur: Node
 var hidebool : bool = false
 
 var id  = null
 
 var idtable = null
 
-# Playlist #
+## Playlist ##
 var loop = 1
 var turn = 1
 var play_playlist = false
@@ -37,6 +36,7 @@ func _ready():
 	EVENTS.anim_play.connect(play_anim_in_playlist)
 	EVENTS.loop_time.connect(new_loop_time)
 	EVENTS.exit_playlist.connect(replay_anim_not_playlist)
+	EVENTS.send_stop_playlist.connect(deactive_color)
 
 	sprite = self
 	set_process_input(true)
@@ -170,9 +170,9 @@ func delete_image(buttonid):
 		queue_free()
 		EVENTS.delete_icon.emit(buttonid)
 		#EVENTS.anim_finish.emit()
-	if play_playlist == true:
-		print("proute")
-		EVENTS.anim_finish.emit()
+	#if play_playlist == true:
+		#print("proute")
+		#EVENTS.anim_finish.emit()
 
 func assign_id(buttonid, CompoId):
 	if id != null:
@@ -197,6 +197,12 @@ func stop_anim(idtableImport):
 		lock = true
 		EVENTS.deactive_change_color.emit(id)
 
+func deactive_color(idTableImport):
+	if idtable != idTableImport:
+		pass
+	else:
+		EVENTS.deactive_change_color.emit(id)
+
 func replay_anim_not_playlist(idTableImport):
 	if idtable != idTableImport:
 		pass
@@ -205,10 +211,12 @@ func replay_anim_not_playlist(idTableImport):
 		self.visible = true
 		playlist = false
 
-func play_anim_in_playlist(idArray, idTableImport):
+func play_anim_in_playlist(idArray, idTableImport, loopTimeImport):
 	if idArray != id || idtable != idTableImport:
+		print("pass")
 		pass
 	else:
+		loop = loopTimeImport
 		playlist = true
 		self.visible = true
 		self.play()
@@ -220,17 +228,14 @@ func _on_animation_looped() -> void:
 	if playlist == true:
 		if turn >= loop:
 			EVENTS.anim_finish.emit(idtable)
-			#print("loop",GLOBAL.loop )
 			stop_anim(idtable)
 			turn = 1
 		else:
 			turn += 1
-			#print("turn", turn)
 
 func new_loop_time(looptime : int, idTableImport):
 	if idtable != idTableImport:
 		pass
 	else:
-		#GLOBAL.loop = looptime
 		loop = looptime
-		print(loop)
+		#print(loop)
